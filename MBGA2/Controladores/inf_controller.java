@@ -16,7 +16,7 @@ public class inf_controller {
 		this.setDao(new inf_dao(this.aero));
 
 	}
-
+	//estoy probando github
 	public Aeropuerto getAero() {
 		return aero;
 	}
