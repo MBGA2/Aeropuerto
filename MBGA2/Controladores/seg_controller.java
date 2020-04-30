@@ -10,10 +10,12 @@ import Main.Aeropuerto;
 import Observer.Observer;
 import Transfer.seg.TCam;
 import Transfer.seg.TListCam;
+import Utils.NTYPE;
+import Utils.NotifyData;
 
 public class seg_controller {
 
-	public static final String nombreArch = "listaCamaras.txt";//rev
+	public static final String nombreArch = "Datos/Seg/listaCamaras.txt";//rev
 	private Aeropuerto data;
 	
 	public seg_controller(Aeropuerto aero) {

@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import DAOs.atm_dao;
 import Main.Aeropuerto;
 import Observer.Observer;
+import Utils.NTYPE;
+import Utils.NotifyData;
 import Datos.Flight;
 
 public class atm_controller {

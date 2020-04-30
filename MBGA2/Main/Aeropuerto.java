@@ -7,7 +7,7 @@ import java.util.List;
 import Datos.Flight;
 import Datos.seg.listCam;
 import Observer.Observable;
-import Utils.Inf.GeneratePlaneInfo;
+import Utils.GeneratePlaneInfo;
 import Vista.MainView;
 
 public class Aeropuerto extends Observable{

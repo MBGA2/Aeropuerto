@@ -1,4 +1,4 @@
-package Utils.atm;
+package Utils;
 import java.awt.*;  
 //In place of star we use Color,Dimension,Font,Graphics,event.ActionEvent,event.ActionListner.   
 //In place of star we use Calendar.   
@@ -9,8 +9,6 @@ import java.sql.Timestamp;
 
 import javax.swing.Timer;
 
-import Controladores.NTYPE;
-import Controladores.NotifyData;
 import Controladores.main_controller;
 
 import java.awt.event.ActionEvent; 

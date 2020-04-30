@@ -4,6 +4,8 @@ package Controladores;
 import DAOs.inf_dao;
 import Main.Aeropuerto;
 import Observer.Observer;
+import Utils.NTYPE;
+import Utils.NotifyData;
 
 public class inf_controller {
 	private Aeropuerto aero;
@@ -18,8 +20,8 @@ public class inf_controller {
 	}
 	//estoy probando github
 	//prueba2
-	//prueba3
-	//prueba4
+	//jaja
+
 	public Aeropuerto getAero() {
 		return aero;
 	}

@@ -3,11 +3,11 @@ package Controladores;
 import java.sql.*;
 import java.util.Random;
 
-import Conexion.conexion;
 import Datos.Flight;
 import Main.Aeropuerto;
+import Main.conexion;
 import Observer.Observer;
-import Utils.Inf.GeneratePlaneInfo;
+import Utils.GeneratePlaneInfo;
 
 public class main_controller {
 

@@ -1,6 +1,6 @@
 package Observer;
 
-import Controladores.NotifyData;
+import Utils.NotifyData;
 
 public interface Observer {
 	

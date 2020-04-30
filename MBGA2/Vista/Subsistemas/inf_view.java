@@ -1,4 +1,4 @@
-package Vista.Auxiliares;
+package Vista.Subsistemas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,11 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import Controladores.NotifyData;
 import Controladores.inf_controller;
 import DAOs.inf_dao;
 import Datos.Flight;
 import Observer.Observer;
+import Utils.NotifyData;
 import Vista.MainView;
 
 public class inf_view implements Observer {

@@ -1,4 +1,4 @@
-package Vista.Auxiliares;
+package Vista.Subsistemas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -10,12 +10,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Controladores.NotifyData;
 import Controladores.seg_controller;
 import Datos.seg.listCam;
 import Observer.Observer;
 import Transfer.seg.TListCam;
-
+import Utils.NotifyData;
 
 import java.awt.Dimension;
 
