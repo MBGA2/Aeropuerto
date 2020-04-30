@@ -18,7 +18,7 @@ public class inf_controller {
 	}
 	//estoy probando github
 	//prueba2
-	//mibranch
+
 	public Aeropuerto getAero() {
 		return aero;
 	}
