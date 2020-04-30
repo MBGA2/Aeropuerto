@@ -4,12 +4,25 @@ public class Path {
 	private String destination;
 	private String stopover;
 	private int duration;
+	private int actualPosX;
+	private int actualPosY;
+	
 	public Path(String destination, String stopover, int duration) {
 		super();
+		this.destination = destination;
 		this.stopover = stopover;
 		this.duration = duration;
-		this.destination = destination;
 	}
+
+	public Path(String destination, String stopover, int duration, int actualPosX, int actualPosY) {
+		super();
+		this.destination = destination;
+		this.stopover = stopover;
+		this.duration = duration;
+		this.actualPosX = actualPosX;
+		this.actualPosY = actualPosY;
+	}
+
 	public String getDestination() {
 		return destination;
 	}
@@ -27,6 +40,22 @@ public class Path {
 	}
 	public void setDuration(int duration) {
 		this.duration = duration;
+	}
+
+	public int getActualPosX() {
+		return actualPosX;
+	}
+
+	public void setActualPosX(int actualPosX) {
+		this.actualPosX = actualPosX;
+	}
+
+	public int getActualPosY() {
+		return actualPosY;
+	}
+
+	public void setActualPosY(int actualPosY) {
+		this.actualPosY = actualPosY;
 	}
 	
 }

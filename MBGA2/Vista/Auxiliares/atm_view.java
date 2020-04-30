@@ -86,7 +86,7 @@ public class atm_view extends JFrame implements Observer {
 				return rowColours.get(row);
 			}
 
-			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compañia", "Estado", "Alerta",
+			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compania", "Estado", "Alerta",
 					"Retraso" };
 
 			@Override
@@ -106,10 +106,10 @@ public class atm_view extends JFrame implements Observer {
 		this.getContentPane().add(this.panel);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0; // El área de texto empieza en la columna cero.
-		constraints.gridy = 0; // El área de texto empieza en la fila cero
-		constraints.gridwidth = 1; // El área de texto ocupa dos columnas.
-		constraints.gridheight = 1; // El área de texto ocupa 2 filas.
+		constraints.gridx = 0; // El ï¿½rea de texto empieza en la columna cero.
+		constraints.gridy = 0; // El ï¿½rea de texto empieza en la fila cero
+		constraints.gridwidth = 1; // El ï¿½rea de texto ocupa dos columnas.
+		constraints.gridheight = 1; // El ï¿½rea de texto ocupa 2 filas.
 		constraints.weighty = 1.0;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.SOUTH;
