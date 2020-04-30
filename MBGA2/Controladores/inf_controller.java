@@ -18,6 +18,7 @@ public class inf_controller {
 	}
 	//estoy probando github
 	//prueba2
+	//prueba3
 	public Aeropuerto getAero() {
 		return aero;
 	}
