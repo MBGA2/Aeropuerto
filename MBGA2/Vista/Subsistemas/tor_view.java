@@ -1,4 +1,4 @@
-package Vista.Auxiliares;
+package Vista.Subsistemas;
 
 
 import javax.swing.JFrame;

@@ -12,14 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import Controladores.NotifyData;
 import Controladores.main_controller;
 import Observer.Observer;
-import Utils.atm.SimpleDigitalClock;
-import Vista.Auxiliares.atm_view;
-import Vista.Auxiliares.inf_view;
-import Vista.Auxiliares.seg_view;
-import Vista.Auxiliares.tor_view;
+import Utils.NotifyData;
+import Utils.SimpleDigitalClock;
+import Vista.Subsistemas.atm_view;
+import Vista.Subsistemas.inf_view;
+import Vista.Subsistemas.seg_view;
+import Vista.Subsistemas.tor_view;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

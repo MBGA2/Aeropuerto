@@ -1,7 +1,8 @@
 package Observer;
 import java.util.ArrayList;
 import java.util.List;
-import Controladores.NotifyData;
+
+import Utils.NotifyData;
 
 public class Observable {
 	

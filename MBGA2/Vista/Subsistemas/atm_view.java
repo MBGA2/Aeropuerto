@@ -1,4 +1,4 @@
-package Vista.Auxiliares;
+package Vista.Subsistemas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,12 +23,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import Controladores.NTYPE;
-import Controladores.NotifyData;
 import Controladores.atm_controller;
 import DAOs.atm_dao;
 import Datos.Flight;
 import Observer.Observer;
+import Utils.NTYPE;
+import Utils.NotifyData;
 
 @SuppressWarnings("serial")
 public class atm_view extends JFrame implements Observer {
