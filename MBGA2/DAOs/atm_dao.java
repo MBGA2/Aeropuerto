@@ -147,10 +147,24 @@ public class atm_dao {
 							Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY()-c.getPosX()-c.getPosY())), b.getPosX(), b.getPosY()));
 		} else { // 2+ Escala
 			int dist = 0;
+			c = new InfoCity("",0,0);
 			for(InfoCity aux : this.path.getCities()) 
-	//			if (this.path.getDirect().get(flight.getSource()).contains(aux.getName()) &&) {
-					
-	//			}
+				if (this.path.getDirect().get(flight.getSource()).contains(aux.getName()) && aux.getPosX() > dist) {
+					dist = aux.getPosX();
+					c = aux;
+				}
+			d = c;
+			while (!this.path.getDirect().get(d.getName()).contains(flight.getDestination())) {
+				dist = 0;
+				for(InfoCity aux : this.path.getCities()) 
+					if (this.path.getDirect().get(c.getName()).contains(aux.getName()) && aux.getPosX() > dist) {
+						dist = aux.getPosX();
+						d = aux;
+					}
+				c.setName(c.getName()+","+d.getName());
+				c.setPosX(c.getPosX()+d.getPosX());
+				c.setPosY(c.getPosY()+d.getPosY());
+			}
 			flight.setPath(new Path(flight.getDestination(), c.getName(), 
 					this.calculateTimeFlight(
 							Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY()-c.getPosX()-c.getPosY())), b.getPosX(), b.getPosY()));
