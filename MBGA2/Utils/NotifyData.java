@@ -11,6 +11,7 @@ public class NotifyData {
 	private Object data;	//to who
 	private Object data2;
 	private List<Flight> l;
+	
 	public NotifyData(NTYPE n, Object data) {
 		super();
 		this.n = n;
