@@ -1,26 +1,23 @@
 package Controladores;
 
 
-import DAOs.inf_dao;
+import javax.swing.table.DefaultTableModel;
+
 import Main.Aeropuerto;
 import Observer.Observer;
-import Utils.NTYPE;
-import Utils.NotifyData;
+import SA.inf_SA;
 
-public class inf_controller {
+public class inf_controller{
 	private Aeropuerto aero;
-	private inf_dao dao;
+	private inf_SA SA;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
 	public inf_controller(Aeropuerto aero) {
 		this.aero = aero;
-		this.setDao(new inf_dao(this.aero));
+		this.SA = new inf_SA();
 
 	}
-	//estoy probando github
-	//prueba2
-	//jaja
 
 	public Aeropuerto getAero() {
 		return aero;
@@ -28,15 +25,6 @@ public class inf_controller {
 
 	public void setAero(Aeropuerto aero) {
 		this.aero = aero;
-	}
-
-
-	public inf_dao getDao() {
-		return dao;
-	}
-
-	public void setDao(inf_dao dao) {
-		this.dao = dao;
 	}
 
 	public void addModelObserver(Observer o) {
@@ -47,16 +35,17 @@ public class inf_controller {
 	}
 
 	public void addAll() {
-		aero.notifyAllO(new NotifyData(NTYPE.INF_ADD, this.aero.getFligths()));
+		this.SA.addAllFlights(this.aero.getFligths());
 	}
 
-	public void search() {
-		aero.notifyAllO(new NotifyData(NTYPE.INF_S_DEP, this.aero.getFligths()));
-		aero.notifyAllO(new NotifyData(NTYPE.INF_S_ARR, this.aero.getFligths()));
+	public void search(String search) {
+		this.SA.searchInArrivals(search, this.aero.getFligths());
+		this.SA.searchInDepartures(search, this.aero.getFligths());
 	}
 
 
-	public void addNewF(boolean b) {
-		
+	public void addTables(DefaultTableModel model, DefaultTableModel model2) {
+		this.SA.setModelArrivals(model2);
+		this.SA.setModelDepartures(model);
 	}
 }
