@@ -17,8 +17,12 @@ import javax.swing.JLayeredPane;
 import javax.swing.border.LineBorder;
 
 import Controladores.tor_controller;
+import Observer.Observer;
+import Utils.NotifyData;
 
 import java.awt.event.ActionListener;
+
+
 import java.awt.event.ActionEvent;
 
 public class tor_view extends JFrame {
@@ -39,6 +43,8 @@ public class tor_view extends JFrame {
 	 * Create the frame.
 	 */
 	public tor_view(tor_controller cont) {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -141,4 +147,5 @@ public class tor_view extends JFrame {
 	public JPanel getMainPanel() {
 		return contentPane;
 	}
+
 }

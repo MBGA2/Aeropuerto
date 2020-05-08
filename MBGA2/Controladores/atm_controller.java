@@ -55,7 +55,7 @@ public class atm_controller {
 		
 	}
 	
-	public void planeDamaged(Flight f) {
+	public void planeDamaged(Flight f) { 
 		boolean flag = false;
 		if (!f.getPlane_state().equalsIgnoreCase("Crashed") && !f.getPlane_state().equalsIgnoreCase("Waiting")){
 			f.setPlane_state("Damaged");	
