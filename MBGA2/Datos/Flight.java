@@ -56,8 +56,13 @@ public class Flight extends Observable{
 				//this.state = FlightState.Waiting_gate;
 			}
 		} else {
-			if (realDate.compareTo(arrival_time) == -1 && realDate.compareTo(dateAux3) == 1) {
-					this.Flight_state = "Landing";			
+			if (realDate.compareTo(arrival_time) == -1) {
+				if (realDate.compareTo(dateAux3) == 1) {
+					this.Flight_state = "Landing";
+				}
+				else {
+					this.Flight_state = "On_Going";
+				}
 			}else if (realDate.compareTo(arrival_time) == 1) {
 				if (realDate.compareTo(dateAux4) == -1) {
 					this.Flight_state = "Disbounding";
