@@ -8,8 +8,9 @@ import Main.Aeropuerto;
 import Main.conexion;
 import Observer.Observer;
 import Utils.GeneratePlaneInfo;
+import Utils.NotifyData;
 
-public class main_controller {
+public class main_controller implements Observer{
 
 	private Aeropuerto aero;
 	private adu_controller adu;
@@ -93,24 +94,21 @@ public class main_controller {
 
 	public void init() throws ClassNotFoundException, SQLException {
 		// load data procces and view acctivation
-		generateFlight();
 		seg.loadData();
 
 	}
 
-	public void generateFlight() throws ClassNotFoundException, SQLException {
-		this.calendar = new Timestamp(first.getTime() + 30 * MIN);
-		/*
-		int i = 0;
+	public void generateFlight(int n) throws ClassNotFoundException, SQLException {
+		this.calendar = this.aero.getTime();
 		
-		while (i < 50) {
+		int i = 0;	
+		while (i < n) {
 			newFligth();
 			newFligthArr();
 
 			calendar = new Timestamp(calendar.getTime() + rand.nextInt(20) * MIN); //
 			i++;
-		}*/
-		
+		}	
 		readFlight();
 	}
 
@@ -203,11 +201,9 @@ public class main_controller {
 			arrival_time = new Timestamp(this.aero.getLastArr().getTime()+ rand.nextInt(20) * MIN);
 			departure_time = new Timestamp(arrival_time.getTime() - path(source));
 			boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
-		
 		}
 		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
 		String ID =  info.randomID();
-		//calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
 		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
 		PreparedStatement ps = c.conectar().prepareStatement(sql);
 		ps.setString(1, destination);
@@ -226,15 +222,15 @@ public class main_controller {
 		f.setSource(source);
 		f.setDeparture_time(departure_time);
 		f.setDestination(destination);
-		f.setGate("bruh");
-		f.setFlight_state("xd");
-		f.setPlane_state("XD");
+		f.setGate("NO_GATE");
+		f.setFlight_state("Esperando");
+		f.setPlane_state("Correcto");
 		f.setID(ID);
 		f.setCompany(company);
 		f.setRealDate(this.first);
 		this.aero.getFligths().add(f);
 	}
-
+	
 	public int path(String dest) {
 		for (int i = 0; i < this.info.getPaths().size(); i++) {
 			if (this.info.getPaths().get(i).getDestination().equalsIgnoreCase(dest)) {
@@ -288,6 +284,32 @@ public class main_controller {
 		ps.close();
 		c.desconectar();
 		
+	}
+
+	public void deleteAll() throws ClassNotFoundException, SQLException {
+		String sql = "delete from vuelos";
+		PreparedStatement ps = c.conectar().prepareStatement(sql);
+		ps.execute();
+		ps.close();
+		c.desconectar();
+		this.aero.getFligths().clear();
+	}
+
+	@Override
+	public void update(NotifyData n) {
+		switch (n.getN()) {
+		
+		case REFRESH:
+			try {
+				check();
+				this.inf.addAll();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			break;
+		}
 	}
 
 	
