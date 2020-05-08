@@ -1,20 +1,22 @@
 package Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import Controladores.main_controller;
-import Observer.Observer;
-import Utils.NotifyData;
 import Utils.SimpleDigitalClock;
 import Vista.Subsistemas.atm_view;
 import Vista.Subsistemas.inf_view;
@@ -26,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class MainView extends JFrame implements Observer{
+public class MainView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -57,6 +59,8 @@ public class MainView extends JFrame implements Observer{
 	private main_controller ctrl;
 
 	private atm_view atm_view;
+
+	private JLabel picLabel;
 
 	
 
@@ -142,6 +146,21 @@ public class MainView extends JFrame implements Observer{
 	private void visualizar() {
 		this.setVisible(true);
 	}
+	private void init(String num) {
+		int n = Integer.parseInt(num);
+		try {
+			this.ctrl.generateFlight(n);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		};	
+	}
+private void del() {
+		try {
+			this.ctrl.deleteAll();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	private void createTopPanel() {
 	
 		mainPanel_1 = new JPanel();
@@ -149,7 +168,21 @@ public class MainView extends JFrame implements Observer{
 		
 		subPanel = new JPanel();
 		clock1 = new SimpleDigitalClock(this.ctrl);
-
+		JButton btnGeneral = new JButton("");
+		btnGeneral.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/infoLogo.png")).getImage().getScaledInstance( 200, 200,  java.awt.Image.SCALE_SMOOTH )));
+		btnGeneral.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		btnGeneral.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Subsistema
+				//test();
+				centerPanel.removeAll();
+				centerPanel.add(picLabel);
+				centerPanel.repaint();
+				visualizar();
+			
+			}
+			
+		});
 	
 		btnInfo = new JButton("");
 		btnInfo.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/infoLogo.png")).getImage().getScaledInstance( 200, 200,  java.awt.Image.SCALE_SMOOTH )));
@@ -159,7 +192,7 @@ public class MainView extends JFrame implements Observer{
 				//Subsistema
 				//test();
 				centerPanel.removeAll();
-				ctrl.getInf().addAll();
+				//ctrl.getInf().addAll();
 				centerPanel.add(INFOpanel);
 				centerPanel.repaint();
 				visualizar();
@@ -219,7 +252,7 @@ public class MainView extends JFrame implements Observer{
 			}
 			
 		});
-		
+		subPanel.add(btnGeneral);
 	    subPanel.add(btnInfo);
 	    subPanel.add(btnAduanas);
 	    subPanel.add(btnSeguridad);
@@ -228,9 +261,8 @@ public class MainView extends JFrame implements Observer{
 		subPanel.add(clock1);
 		mainPanel_1.add(subPanel,BorderLayout.CENTER);
 		this.centerPanel = new JPanel();
-		JLabel picLabel = new JLabel(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/MBGA.png")).getImage().getScaledInstance( 400, 400,  java.awt.Image.SCALE_SMOOTH )));
+		picLabel = new JLabel(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/MBGA.png")).getImage().getScaledInstance( 400, 400,  java.awt.Image.SCALE_SMOOTH )));
 		this.centerPanel.add(picLabel);
-		//test();
 		mainPanel.add(this.centerPanel);
 		mainPanel.add(mainPanel_1, BorderLayout.NORTH);
 	}
@@ -239,7 +271,7 @@ public class MainView extends JFrame implements Observer{
 	private void createStatusBar() {
 		this.statusBar = new JPanel();
 		this.statusInfo = new JLabel("Make Barajas Great Again, tu aeropuerto de confianza");
-		statusInfo.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
+		statusInfo.setFont(new Font("Arial Unicode MS", Font.PLAIN, 30));
 		this.statusBar.add(statusInfo);
 		JButton btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(new ActionListener() {
@@ -249,12 +281,43 @@ public class MainView extends JFrame implements Observer{
 		});
 		
 		btnSalir.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
+		
+		JPanel deladd = new JPanel();
+		JLabel numVuelos = new JLabel("Crear vuelos =>");
+		numVuelos.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
+		deladd.add(numVuelos, BorderLayout.WEST);
+		JTextField searchBar = new JTextField();
+		searchBar.setPreferredSize(new Dimension(100, 100));
+		searchBar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
+		deladd.add(searchBar);
+		searchBar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					init(searchBar.getText());
+					int input = JOptionPane.showConfirmDialog(null,
+			                "Vuelos añadidos", "", JOptionPane.DEFAULT_OPTION);
+				}
+			}
+		});
+		JButton delF = new JButton("Borrar todos los vuelos");
+		delF.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		delF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				del();
+				int input = JOptionPane.showConfirmDialog(null,
+		                "Vuelos borrados", "", JOptionPane.DEFAULT_OPTION);
+			}
+			
+		});
+		statusBar.add(deladd);
+		statusBar.add(delF);
 		statusBar.add(btnSalir);
 		mainPanel.add(statusBar, BorderLayout.SOUTH);
 	}
 
 	public void quit() {
-		int option = JOptionPane.showOptionDialog(null,"Â¿Seguro que quieres salir?", "Salir",
+		int option = JOptionPane.showOptionDialog(null,"¿Seguro que quieres salir?", "Salir",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 		if (option == 0) {
 			main_controller.quit();
@@ -264,20 +327,5 @@ public class MainView extends JFrame implements Observer{
 		return this.ctrl;
 	}
 
-	@Override
-	public void update(NotifyData n) {
-		switch (n.getN()) {
-		
-		case REFRESH:
-			try {
-				this.ctrl.check();
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-			this.inf_view.refresh();
-			break;
-		default:
-			break;
-		}
-	}
+	
 }

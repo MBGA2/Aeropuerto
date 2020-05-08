@@ -1,24 +1,20 @@
 package DAOs;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
 import Datos.Flight;
-import Main.Aeropuerto;
 
 public class inf_dao {
-	private Aeropuerto aero;
 	public static final long MIN = 60 * 1000; // in milli-seconds.
 
-	public inf_dao(Aeropuerto aero) {
-		this.aero = aero;
+	public inf_dao() {
 	}
 
 	@SuppressWarnings("deprecation")
-	public String parseDate(Timestamp date) {
+	private String parseDate(Timestamp date) {
 		if (date == null) {
 			return "";
 		}
@@ -32,21 +28,6 @@ public class inf_dao {
 		}
 
 		return h + ":" + m;
-	}
-
-
-
-
-	public void refreshDate(DefaultTableModel model, DefaultTableModel model2, Boolean flag)
-			throws ClassNotFoundException, SQLException {
-		// aux.add(Calendar.MINUTE, 1);
-
-		if (flag) {
-			model.setRowCount(0);
-			model2.setRowCount(0);
-			buscarVuelosTableModel(model, model2, this.aero.getFligths());
-			model.fireTableDataChanged();
-		}
 	}
 
 
@@ -77,10 +58,10 @@ public class inf_dao {
 
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getSource().equalsIgnoreCase("Madrid")) {
-				if (!this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("On_Going")) {
+				//if (!this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("On_Going")) {
 					Object[] fila = constructRow(l.get(i));
 					model.addRow(fila);
-				}
+				//}
 			}
 				 else {
 				Object[] fila = constructArrRow(l.get(i));

@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -16,43 +16,38 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import Controladores.inf_controller;
-import DAOs.inf_dao;
-import Datos.Flight;
-import Observer.Observer;
-import Utils.NotifyData;
 import Vista.MainView;
 
-public class inf_view implements Observer {
-	private Boolean flag;
+public class inf_view {
 	private JPanel mainInfo;
 	private JPanel search;
 	private JTable miTabla;
 	private JScrollPane miBarra;
 	private JTable miTabla2;
 	private JScrollPane miBarra2;
-	private inf_dao dao;
-	private inf_controller cont;
 	private DefaultTableModel model;
 	private DefaultTableModel model2;
 	private JTextField searchBar;
 	private Object token;
 	private int selectedCol;
+	private inf_controller inf_controller;
 
-	public inf_view(inf_controller inf_controller) {
-		inf_controller.addModelObserver(this);
-		//inf_controller.aero
-		cont = inf_controller;
-		flag = false;
+	public inf_view(inf_controller i) {
+		this.inf_controller = i;
 		
 		this.setMainInfo(new JPanel());
 		mainInfo.setLayout(new BorderLayout());
-		salidas(inf_controller);
-		llegadas(inf_controller);
-		busqueda(inf_controller);
+		salidas();
+		llegadas();
+		busqueda();
 		JLabel arrivals = new JLabel(new ImageIcon(new ImageIcon(MainView.class.getResource("/Iconos/arrivals.png"))
 				.getImage().getScaledInstance(200, 50, java.awt.Image.SCALE_SMOOTH)));
 		JLabel departures = new JLabel(new ImageIcon(new ImageIcon(MainView.class.getResource("/Iconos/departures.png"))
@@ -69,9 +64,10 @@ public class inf_view implements Observer {
 		mainInfo.add(subPanel2, BorderLayout.NORTH);
 		mainInfo.add(subPanel, BorderLayout.CENTER);
 		mainInfo.add(search, BorderLayout.SOUTH);
+		this.inf_controller.addTables(model,model2);
 	}
 
-	private void busqueda(inf_controller inf_controller) {
+	private void busqueda() {
 		search = new JPanel();
 		JLabel statusInfo = new JLabel("Busqueda de vuelos =>");
 		statusInfo.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
@@ -84,11 +80,10 @@ public class inf_view implements Observer {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					flag = false;
 					model.setRowCount(0);
 					model2.setRowCount(0);
 					token = searchBar.getText();
-					inf_controller.search();
+					inf_controller.search((String) token);
 					if (model.getRowCount() == 0) {
 						int option = JOptionPane.showOptionDialog(null,
 								"No existe ningun vuelo: '" + searchBar.getText() + "' Mostrar todos los vuelos?",
@@ -96,7 +91,6 @@ public class inf_view implements Observer {
 								null);
 						if (option == 0) {
 							
-							flag = true;
 							inf_controller.addAll();
 						}
 					}
@@ -106,7 +100,7 @@ public class inf_view implements Observer {
 	}
 
 	@SuppressWarnings("serial")
-	private void llegadas(inf_controller inf_controller) {
+	private void llegadas() {
 		miBarra2 = new JScrollPane();
 		miBarra2.setPreferredSize(new Dimension(900, 600));
 		model2 = new DefaultTableModel() {
@@ -133,7 +127,6 @@ public class inf_view implements Observer {
 		bw.setBackground(Color.BLACK);
 		miTabla2.getColumnModel().getColumn(4).setCellRenderer(bw);
 		miTabla2.getTableHeader().setReorderingAllowed(false);
-		this.dao = inf_controller.getDao();
 		miTabla2.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,14 +134,18 @@ public class inf_view implements Observer {
 				selectedCol = miTabla2.columnAtPoint(evt.getPoint());
 				if (row >= 0 && selectedCol >= 0) {
 					token = miTabla2.getValueAt(row, selectedCol);
-					flag = false;
-					inf_controller.search();
+					inf_controller.search((String) token);
 				}
 			}
 		});
+		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(miTabla2.getModel());
+		miTabla2.setRowSorter(sorter);
+		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
+		sorter.setSortKeys(sortKeys);
 	}
 
-	private void salidas(inf_controller inf_controller) {
+	private void salidas() {
 		miBarra = new JScrollPane();
 		miBarra.setPreferredSize(new Dimension(900, 600));
 		
@@ -181,7 +178,6 @@ public class inf_view implements Observer {
 		bw.setBackground(Color.BLACK);
 		miTabla.getColumnModel().getColumn(7).setCellRenderer(bw);
 		miTabla.getTableHeader().setReorderingAllowed(false);
-		this.dao = inf_controller.getDao();
 		miTabla.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,26 +185,11 @@ public class inf_view implements Observer {
 				selectedCol = miTabla.columnAtPoint(evt.getPoint());
 				if (row >= 0 && selectedCol >= 0) {
 					token = miTabla.getValueAt(row, selectedCol);
-					flag = false;
-					inf_controller.search();
+					inf_controller.search((String) token);
 				}
 			}
 		});
 	}
-
-	public void refresh() {
-		try {
-			dao.refreshDate(model, model2, flag);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.fireTableDataChanged();
-		model2.fireTableDataChanged();
-		
-	}
-
 	public JPanel getMainInfo() {
 		return mainInfo;
 	}
@@ -222,34 +203,7 @@ public class inf_view implements Observer {
 	}
 
 	public inf_controller getInfCont() {
-		return this.cont;
+		return this.inf_controller;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void update(NotifyData n) {
-		switch (n.getN()) {
-		case INF_ADD:
-			flag = true;
-			model.setRowCount(0);
-			model2.setRowCount(0);
-			dao.buscarVuelosTableModel(model,model2, (List<Flight>) n.getData());
-			model.fireTableDataChanged();
-			break;
-		
-		case INF_S_ARR:
-			model2.setRowCount(0);
-			dao.StringArrVuelosTableModel(model2, token, (List<Flight>) n.getData());
-			model2.fireTableDataChanged();
-			break;
-		case INF_S_DEP:
-			model.setRowCount(0);
-			dao.StringVuelosTableModel(model, token,(List<Flight>) n.getData());
-			model.fireTableDataChanged();
-			break;
-			
-		default:
-			break;
-		}
-	}
 }

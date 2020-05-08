@@ -26,8 +26,8 @@ public class Main {
 				try {
 					MainView vista = new MainView(ctrl);
 					aero.setVista(vista);
-					aero.addObserver(vista);
-					ctrl.init();
+					aero.addObserver(ctrl);
+					//ctrl.init();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
