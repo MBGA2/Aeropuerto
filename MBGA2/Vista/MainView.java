@@ -1,19 +1,16 @@
 package Vista;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import Controladores.main_controller;
@@ -75,7 +72,9 @@ public class MainView extends JFrame{
 	 * @throws ClassNotFoundException 
 	 */
 	public MainView(main_controller ctrl)  {
+		
 		super("MBGA");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainView.class.getResource("/Iconos/MBGA.PNG")));
 		this.ctrl = ctrl;
 		this.initGUI();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -136,6 +135,7 @@ public class MainView extends JFrame{
 				}
 			}
 		);
+
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		this.setContentPane(mainPanel);
@@ -169,7 +169,7 @@ private void del() {
 		subPanel = new JPanel();
 		clock1 = new SimpleDigitalClock(this.ctrl);
 		JButton btnGeneral = new JButton("");
-		btnGeneral.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/infoLogo.png")).getImage().getScaledInstance( 200, 200,  java.awt.Image.SCALE_SMOOTH )));
+		btnGeneral.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/inicio.png")).getImage().getScaledInstance( 200, 200,  java.awt.Image.SCALE_SMOOTH )));
 		btnGeneral.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		btnGeneral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -252,6 +252,29 @@ private void del() {
 			}
 			
 		});
+		
+		
+		JPanel masmenos = new JPanel(new BorderLayout());
+		JButton mas = new JButton("");
+		mas.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/mas.png")).getImage().getScaledInstance( 50, 50,  java.awt.Image.SCALE_SMOOTH )));
+		mas.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		mas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clock1.setModifier(60+clock1.getModifier());
+			}
+			
+		});
+		JButton menos = new JButton("");
+		menos.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/menos.png")).getImage().getScaledInstance( 50, 50,  java.awt.Image.SCALE_SMOOTH )));
+		menos.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		menos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clock1.setModifier(clock1.getModifier()-60);
+			}
+			
+		});
+		masmenos.add(mas,BorderLayout.NORTH);
+		masmenos.add(menos,BorderLayout.SOUTH);
 		subPanel.add(btnGeneral);
 	    subPanel.add(btnInfo);
 	    subPanel.add(btnAduanas);
@@ -259,6 +282,7 @@ private void del() {
 	    subPanel.add(btnAtm);
 		subPanel.add(btnControl);
 		subPanel.add(clock1);
+		subPanel.add(masmenos);
 		mainPanel_1.add(subPanel,BorderLayout.CENTER);
 		this.centerPanel = new JPanel();
 		picLabel = new JLabel(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/MBGA.png")).getImage().getScaledInstance( 400, 400,  java.awt.Image.SCALE_SMOOTH )));
@@ -273,45 +297,43 @@ private void del() {
 		this.statusInfo = new JLabel("Make Barajas Great Again, tu aeropuerto de confianza");
 		statusInfo.setFont(new Font("Arial Unicode MS", Font.PLAIN, 30));
 		this.statusBar.add(statusInfo);
-		JButton btnSalir = new JButton("SALIR");
+		JButton btnSalir = new JButton("");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				quit();
 			}
 		});
 		
-		btnSalir.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
-		
-		JPanel deladd = new JPanel();
-		JLabel numVuelos = new JLabel("Crear vuelos =>");
-		numVuelos.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
-		deladd.add(numVuelos, BorderLayout.WEST);
-		JTextField searchBar = new JTextField();
-		searchBar.setPreferredSize(new Dimension(100, 100));
-		searchBar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));
-		deladd.add(searchBar);
-		searchBar.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					init(searchBar.getText());
-					int input = JOptionPane.showConfirmDialog(null,
-			                "Vuelos añadidos", "", JOptionPane.DEFAULT_OPTION);
-				}
-			}
-		});
-		JButton delF = new JButton("Borrar todos los vuelos");
-		delF.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
-		delF.addActionListener(new ActionListener() {
+		btnSalir.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/salir.png")).getImage().getScaledInstance( 200, 80,  java.awt.Image.SCALE_SMOOTH )));
+		btnSalir.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));		
+		JButton btnBorrar = new JButton("");
+		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				del();
-				int input = JOptionPane.showConfirmDialog(null,
+				JOptionPane.showConfirmDialog(null,
 		                "Vuelos borrados", "", JOptionPane.DEFAULT_OPTION);
 			}
-			
 		});
-		statusBar.add(deladd);
-		statusBar.add(delF);
+		btnBorrar.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/borrar.png")).getImage().getScaledInstance( 200, 80,  java.awt.Image.SCALE_SMOOTH )));
+		btnBorrar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));		
+		
+		JButton btnAnadir = new JButton("");
+		btnAnadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String n = JOptionPane.showInputDialog("Inserta un numero de vuelos");
+				init(n);
+				JOptionPane.showConfirmDialog(null,
+		                "Vuelos anadidos", "", JOptionPane.DEFAULT_OPTION);
+			}
+		});
+		btnAnadir.setIcon(new ImageIcon( new ImageIcon(MainView.class.getResource("/Iconos/anadir.png")).getImage().getScaledInstance( 200, 80,  java.awt.Image.SCALE_SMOOTH )));
+		btnAnadir.setFont(new Font("Arial Unicode MS", Font.PLAIN, 50));		
+		
+		
+		
+		
+		statusBar.add(btnAnadir);
+		statusBar.add(btnBorrar);
 		statusBar.add(btnSalir);
 		mainPanel.add(statusBar, BorderLayout.SOUTH);
 	}
