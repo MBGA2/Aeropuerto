@@ -22,7 +22,6 @@ public class Aeropuerto extends Observable{
 	public static final long MIN = 60 * 1000;
 
 	public Aeropuerto(String nombre) {
-		//this.addObserver(new Observer());
 		this.nombre = nombre;
 		this.setFligths(new ArrayList<Flight>());
 		this.camaras = new listCam();

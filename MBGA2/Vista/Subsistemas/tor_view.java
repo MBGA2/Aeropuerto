@@ -17,8 +17,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.border.LineBorder;
 
 import Controladores.tor_controller;
-import Observer.Observer;
-import Utils.NotifyData;
 
 import java.awt.event.ActionListener;
 
