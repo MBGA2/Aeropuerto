@@ -141,10 +141,10 @@ public class tor_dao implements Observer {
 			
 						
 			for (Flight todelay : this.aero.getFligths()) {	
-				if( todelay.getDeparture_time().after(flightdelay.getDeparture_time()) &&  (flightdelay.getGate() == todelay.getGate() ) )		{
+				if( todelay.getDeparture_time().after(flightdelay.getDeparture_time()) &&  (flightdelay.getGate().equalsIgnoreCase(todelay.getGate())))		{
 					try {
 					
-						todelay.setFlight_state(FlightState.Delayed.toString());
+						todelay.setFlight_state("Delayed");
 						Timestamp newBoardingTime = new Timestamp (todelay.getBoarding_time().getTime() + delayMinutes);
 						todelay.setBoarding_time(newBoardingTime);
 						Timestamp newDEparturTime = new Timestamp (todelay.getDeparture_time().getTime() + delayMinutes);
@@ -174,7 +174,7 @@ public class tor_dao implements Observer {
 		}
 		else if(data.getN() == NTYPE.TOR_CRASH) {
 			flightdelay  = (Flight) data.getData();
-			flightdelay.setFlight_state(FlightState.Cancelled.toString());
+			flightdelay.setFlight_state("Cancelled");
 		}
 		
 		
