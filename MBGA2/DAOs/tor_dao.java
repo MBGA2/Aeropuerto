@@ -78,7 +78,6 @@ public class tor_dao implements Observer {
 		addGates();
 		/*model.setRowCount(1);
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {
-
 			Object[] fila = new Object[9];
 			fila[0] = i;
 			fila[1] = this.aero.getFligths().get(i).getDestination();
@@ -89,10 +88,8 @@ public class tor_dao implements Observer {
 			fila[6] = parseDate(this.aero.getFligths().get(i).getBoarding_time());
 			fila[7] = this.aero.getFligths().get(i).getPlane().getCompany();
 			fila[8] = this.aero.getFligths().get(i).getState().toString();
-
 			if (fila[5].toString().toLowerCase().contains(filled.toLowerCase())) {
 				
-
 				model.addRow(fila);
 			}
 		}*/
@@ -105,7 +102,6 @@ public class tor_dao implements Observer {
 	
 		Object[] fila = new Object[10];
 		while( i < this.aero.getFligths().size() && !ok) {
-
 			if (this.aero.getFligths().get(i).getNumVuelo().toString().toLowerCase().contains(filled.toLowerCase())) {
 				
 				this.aero.getFligths().get(i).getPlane().setId_plane(matricula);
@@ -185,5 +181,3 @@ public class tor_dao implements Observer {
 
 
 }
-
-

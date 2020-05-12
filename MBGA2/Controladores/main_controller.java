@@ -93,11 +93,12 @@ public class main_controller implements Observer{
 	}
 
 	public void init() throws ClassNotFoundException, SQLException {
-		// load data procces and view acctivation
+		readFlight();
 		seg.loadData();
 
 	}
 
+	
 	public void generateFlight(int n) throws ClassNotFoundException, SQLException {
 		this.calendar = this.aero.getTime();
 		

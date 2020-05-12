@@ -1,6 +1,5 @@
 package Observer;
 
-import java.sql.SQLException;
 
 import Utils.NotifyData;
 

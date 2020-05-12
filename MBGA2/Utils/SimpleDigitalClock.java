@@ -20,6 +20,7 @@ public class SimpleDigitalClock extends JPanel {
     private static final long serialVersionUID = 1L;
     String stringTime;
         int hour, minute, second;  
+        int modifier;
         Timestamp rite;
         int increase = 0;
         String aHour = "";  
@@ -34,12 +35,16 @@ public class SimpleDigitalClock extends JPanel {
         public int Number(int a, int b) {  
             return (a <= b) ? a : b;  
         }  
+        public void setModifier(int s) {
+        	modifier = s;
+        }
         public SimpleDigitalClock(main_controller cont) {  
         	rite = cont.getAeropuerto().getTime();
+        	modifier = 1;
             Timer t = new Timer(1000, new ActionListener() {  
                 public void actionPerformed(ActionEvent e) {  
                 	//rite = new Date(rite.getTime()+1000+60000);
-                	cont.getAeropuerto().setTime(new Timestamp(cont.getAeropuerto().getTime().getTime()+1000*60*3));
+                	cont.getAeropuerto().setTime(new Timestamp(cont.getAeropuerto().getTime().getTime()+1000*modifier));
                 	rite = cont.getAeropuerto().getTime();
                 	cont.getAeropuerto().notifyAllO(new NotifyData(NTYPE.REFRESH,rite));
                 	repaint();  
@@ -82,5 +87,8 @@ public class SimpleDigitalClock extends JPanel {
         @Override  
         public Dimension getPreferredSize() {  
             return new Dimension(200, 200);  
-        }  
+        }
+		public int getModifier() {
+			return this.modifier;
+		}  
     }  
