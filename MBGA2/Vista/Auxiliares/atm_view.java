@@ -23,12 +23,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import Controladores.NTYPE;
-import Controladores.NotifyData;
 import Controladores.atm_controller;
 import DAOs.atm_dao;
 import Datos.Flight;
 import Observer.Observer;
+import Utils.NTYPE;
+import Utils.NotifyData;
 
 @SuppressWarnings("serial")
 public class atm_view extends JFrame implements Observer {
@@ -86,7 +86,7 @@ public class atm_view extends JFrame implements Observer {
 				return rowColours.get(row);
 			}
 
-			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compania", "Estado", "Alerta",
+			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compañia", "Estado", "Alerta",
 					"Retraso" };
 
 			@Override
@@ -106,10 +106,10 @@ public class atm_view extends JFrame implements Observer {
 		this.getContentPane().add(this.panel);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0; // El �rea de texto empieza en la columna cero.
-		constraints.gridy = 0; // El �rea de texto empieza en la fila cero
-		constraints.gridwidth = 1; // El �rea de texto ocupa dos columnas.
-		constraints.gridheight = 1; // El �rea de texto ocupa 2 filas.
+		constraints.gridx = 0; // El área de texto empieza en la columna cero.
+		constraints.gridy = 0; // El área de texto empieza en la fila cero
+		constraints.gridwidth = 1; // El área de texto ocupa dos columnas.
+		constraints.gridheight = 1; // El área de texto ocupa 2 filas.
 		constraints.weighty = 1.0;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.SOUTH;
