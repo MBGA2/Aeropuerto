@@ -9,18 +9,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLayeredPane;
-import javax.swing.border.LineBorder;
 
 import Controladores.tor_controller;
-import DAOs.atm_dao;
 import DAOs.tor_dao;
-import Observer.Observer;
-import Utils.NotifyData;
 
 import java.awt.event.ActionListener;
 
