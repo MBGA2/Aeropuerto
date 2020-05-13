@@ -98,8 +98,9 @@ public class atm_controller {
 	
 	public void planeDelay(long d, Flight f) {
 		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
-			if (!f.getPlane_state().equalsIgnoreCase("Damaged"))
+			if (!f.getPlane_state().equalsIgnoreCase("Damaged")) {
 				f.setPlane_state("Delayed");
+				f.setRetarded_value(5);}
 			f.setBoarding_time(new Timestamp(d));
 			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
 		} else {
