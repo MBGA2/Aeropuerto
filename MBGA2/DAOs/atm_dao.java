@@ -1,8 +1,12 @@
 package DAOs;
 
-//Bruh
 
 import Main.Aeropuerto;
+import Utils.atm.GeneratePath;
+import Utils.atm.InfoCity;
+import Utils.atm.Path;
+
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,9 +16,11 @@ public class atm_dao {
 
 	private Aeropuerto airport;
 	private Date current;
+	private GeneratePath path;
 
 	public atm_dao(Aeropuerto airport) {
 		this.airport = airport;
+		this.path = new GeneratePath();
 	}
 
 	public boolean flightFinished(Flight flight) {
@@ -105,6 +111,7 @@ public class atm_dao {
 	public Aeropuerto getAirport() {
 		return this.airport;
 	}
+	
 	/*
 	public void changeFlight(Flight flight) {
 		if ((current.after(flight.getDeparture_time()) || current.equals(flight.getDeparture_time()))
@@ -113,4 +120,60 @@ public class atm_dao {
 			this.airport.notifyAllO(new NotifyData(NTYPE.ATM_REFRESH, flight));
 		}
 	}*/
+	
+	
+	/*Estas 2 funciones son para añadir donde se haga el path
+	 * Mover tambien el GeneratePath del Constructor*/
+	public void calculatePath(Flight flight) {
+		InfoCity a = null,b = null,c = null, d = null;
+		String stopovers = "";
+		for(InfoCity aux : this.path.getCities()) 
+			if (flight.getDestination().equalsIgnoreCase(aux.getName()))
+				a = aux;
+			else if (flight.getSource().equalsIgnoreCase(aux.getName()))
+				b = aux;
+		
+		if (this.path.getDirect().get(flight.getSource()).contains(flight.getDestination())) { //Vuelo Directo
+			flight.setPath(new Path(flight.getDestination(), "Direct", 
+					this.calculateTimeFlight(
+							Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY())), b.getPosX(), b.getPosY()));
+		} else if (Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY()) <= 10){ // 1 Escala
+			for(InfoCity aux : this.path.getCities()) 
+				if (this.path.getDirect().get(flight.getSource()).contains(aux.getName()) 
+						&& this.path.getDirect().get(aux.getName()).contains(flight.getDestination()))
+					c = aux;
+			flight.setPath(new Path(flight.getDestination(), c.getName(), 
+					this.calculateTimeFlight(
+							Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY()-c.getPosX()-c.getPosY())), b.getPosX(), b.getPosY()));
+		} else { // 2+ Escala
+			int dist = 0;
+			c = new InfoCity("",0,0);
+			for(InfoCity aux : this.path.getCities()) 
+				if (this.path.getDirect().get(flight.getSource()).contains(aux.getName()) && aux.getPosX() > dist) {
+					dist = aux.getPosX();
+					c = aux;
+				}
+			d = c;
+			while (!this.path.getDirect().get(d.getName()).contains(flight.getDestination())) {
+				dist = 0;
+				for(InfoCity aux : this.path.getCities()) 
+					if (this.path.getDirect().get(c.getName()).contains(aux.getName()) && aux.getPosX() > dist) {
+						dist = aux.getPosX();
+						d = aux;
+					}
+				c.setName(c.getName()+","+d.getName());
+				c.setPosX(c.getPosX()+d.getPosX());
+				c.setPosY(c.getPosY()+d.getPosY());
+			}
+			flight.setPath(new Path(flight.getDestination(), c.getName(), 
+					this.calculateTimeFlight(
+							Math.abs(a.getPosX()-b.getPosX()+a.getPosY()-b.getPosY()-c.getPosX()-c.getPosY())), b.getPosX(), b.getPosY()));
+		} 
+		
+	}
+	/*Placeholder*/
+	public int calculateTimeFlight(int diff) {
+		return diff * 1000000;
+	}
+	
 }
