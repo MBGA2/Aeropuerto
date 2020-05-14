@@ -19,7 +19,6 @@ import Datos.Flight;
 
 public class atm_dao {
 
-	private Aeropuerto airport;
 	private Date current;
 	private GeneratePath path;
 
@@ -30,7 +29,7 @@ public class atm_dao {
 	public void planeCrash(Flight f) {
 		if (!f.getPlane_state().equalsIgnoreCase("Crashed")){
 			f.setPlane_state("Crashed");
-			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_CRASH, f));
+			
 			//Enviar Sar
 //			warnSAR();
 			
@@ -42,7 +41,7 @@ public class atm_dao {
 			f.setPlane_state("Delayed");
 			f.setRetarded_value(d);
 //			f.setBoarding_time(new Timestamp(d));
-			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
+			
 		}
 	}
 	
@@ -131,9 +130,6 @@ public class atm_dao {
 		return fila;
 	}
 
-	public Aeropuerto getAirport() {
-		return this.airport;
-	}
 	
 	/*
 	public void changeFlight(Flight flight) {
