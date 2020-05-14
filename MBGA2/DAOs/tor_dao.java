@@ -4,15 +4,11 @@ package DAOs;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.table.DefaultTableModel;
 
 import Datos.Flight;
-import Datos.FlightState;
 import Main.Aeropuerto;
 import Main.conexion;
 import Observer.Observer;
@@ -32,6 +28,7 @@ public class tor_dao implements Observer {
 		this.aero = aero;
 	}
 
+	@SuppressWarnings("deprecation")
 	public String parseDate(Date date) {
 		String h = Integer.toString(date.getHours());
 		String m = Integer.toString(date.getMinutes());
