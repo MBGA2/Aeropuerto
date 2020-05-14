@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class GeneratePath {
 	private ArrayList<InfoCity> cities;
 	private HashMap<String,ArrayList<String>> direct;
+	static int CASMAX = 10;
 	
 	public GeneratePath() {
 		this.cities = new ArrayList<InfoCity>();
@@ -72,7 +73,7 @@ public class GeneratePath {
 			ArrayList<String> aux = new ArrayList<String>();
 			for(InfoCity cityAux : this.cities) 
 				if (!city.getName().equalsIgnoreCase(cityAux.getName()) && 
-						(Math.abs(city.getPosX() - cityAux.getPosX() + city.getPosY() - cityAux.getPosY()) <= 5)) 
+						(Math.abs(city.getPosX() - cityAux.getPosX() + city.getPosY() - cityAux.getPosY()) <= CASMAX)) 
 					aux.add(cityAux.getName());
 			if (aux.isEmpty())
 				aux.add("None");

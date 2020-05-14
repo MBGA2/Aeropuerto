@@ -8,6 +8,7 @@ import Datos.Flight;
 import Datos.seg.listCam;
 import Observer.Observable;
 import Utils.GeneratePlaneInfo;
+import Utils.atm.Map;
 import Vista.MainView;
 
 public class Aeropuerto extends Observable{
@@ -17,6 +18,7 @@ public class Aeropuerto extends Observable{
 	private Timestamp time;
 	private listCam camaras;
 	private GeneratePlaneInfo gen;
+	private Map map;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
@@ -26,6 +28,7 @@ public class Aeropuerto extends Observable{
 		this.camaras = new listCam();
 		this.time = new Timestamp(System.currentTimeMillis());
 		this.gen = new GeneratePlaneInfo();
+		this.map = new Map();
 	}
 	public Timestamp getLastDep() {
 		Timestamp t = null;
@@ -80,5 +83,8 @@ public Timestamp getLastArr() {
 	}
 	public listCam getCamaras() {
 		return camaras;
+	}
+	public Map getMap() {
+		return map;
 	}
 }
