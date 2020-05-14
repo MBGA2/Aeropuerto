@@ -3,9 +3,9 @@ package Controladores;
 import java.sql.*;
 import java.util.Random;
 
+import BD.conexion;
 import Datos.Flight;
 import Main.Aeropuerto;
-import Main.conexion;
 import Observer.Observer;
 import Utils.GeneratePlaneInfo;
 import Utils.NotifyData;
