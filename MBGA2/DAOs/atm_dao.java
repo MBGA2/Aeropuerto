@@ -8,8 +8,6 @@ import Utils.atm.GeneratePath;
 import Utils.atm.InfoCity;
 import Utils.atm.Path;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +39,6 @@ public class atm_dao {
 		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
 			f.setPlane_state("Delayed");
 			f.setRetarded_value(d);
-//			f.setBoarding_time(new Timestamp(d));
 			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
 		}
 	}
