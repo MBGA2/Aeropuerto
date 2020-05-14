@@ -10,6 +10,7 @@ import Datos.Flight;
 public class atm_SA {
 	private atm_dao dao;
 	private DefaultTableModel onGoing;
+	private int delay;
 	public atm_SA() {
 		this.dao = new atm_dao();
 	}
@@ -33,10 +34,10 @@ public class atm_SA {
 	public Flight planeDelayed(String text, List<Flight> fligths) {
 		Flight fli = null;
 		this.onGoing.setRowCount(0);
-		int d = calcularDelay();
+		this.setDelay(calcularDelay());
 		for(Flight f : fligths) 
 			if (f.getID().equalsIgnoreCase(text)) {
-				this.dao.planeDelay(d,f);
+				this.dao.planeDelay(this.delay,f);
 				fli = f;
 			}
 		this.onGoing.fireTableDataChanged();
@@ -71,6 +72,12 @@ public class atm_SA {
 //	}
 	private int calcularDelay () {	
 		return (int) (Math.random()*5+5);
+	}
+	public int getDelay() {
+		return delay;
+	}
+	public void setDelay(int delay) {
+		this.delay = delay;
 	}
 	
 }
