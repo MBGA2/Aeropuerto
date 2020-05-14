@@ -2,12 +2,17 @@ package DAOs;
 
 
 import Main.Aeropuerto;
+import Utils.NTYPE;
+import Utils.NotifyData;
 import Utils.atm.GeneratePath;
 import Utils.atm.InfoCity;
 import Utils.atm.Path;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 
 import Datos.Flight;
@@ -18,11 +23,29 @@ public class atm_dao {
 	private Date current;
 	private GeneratePath path;
 
-	public atm_dao(Aeropuerto airport) {
-		this.airport = airport;
+	public atm_dao() {
 		this.path = new GeneratePath();
 	}
-
+	
+	public void planeCrash(Flight f) {
+		if (!f.getPlane_state().equalsIgnoreCase("Crashed")){
+			f.setPlane_state("Crashed");
+			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_CRASH, f));
+			//Enviar Sar
+//			warnSAR();
+			
+		}
+		
+	}
+	public void planeDelay(int d, Flight f) {
+		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
+			f.setPlane_state("Delayed");
+			f.setRetardedValue(d);
+//			f.setBoarding_time(new Timestamp(d));
+			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
+		}
+	}
+	
 	public boolean flightFinished(Flight flight) {
 		/*
 		 * if (current.getDate() > flight.getArrival_time().getDate()) { return true;
@@ -56,28 +79,28 @@ public class atm_dao {
 	 * }
 	 */
 
-	public void refreshFlights(DefaultTableModel model) {
-		// int i = 0;
-		// aux.add(Calendar.MINUTE, 15);
-		for (Flight flight : this.airport.getFligths()) {
-			if (flight.getPlane_state().equalsIgnoreCase("On_Going")) {
-				// flightSpace(flight);
-				if (flightFinished(flight)) {
-					flight.setPlane_state("Waiting");
-				}
-			}
-		}
-	}
+//	public void refreshFlights(DefaultTableModel model) {
+//		// int i = 0;
+//		// aux.add(Calendar.MINUTE, 15);
+//		for (Flight flight : this.airport.getFligths()) {
+//			if (flight.getPlane_state().equalsIgnoreCase("On_Going")) {
+//				// flightSpace(flight);
+//				if (flightFinished(flight)) {
+//					flight.setPlane_state("Waiting");
+//				}
+//			}
+//		}
+//	}
 
-	public void tableFill(DefaultTableModel table) {
-		for (int i = 0; i < this.airport.getFligths().size(); i++) {
-			if (this.airport.getFligths().get(i).getFlight_state().equalsIgnoreCase("On_Going")) {
+	public void tableFill(DefaultTableModel table, List<Flight> fligths) {
+		for (int i = 0; i < fligths.size(); i++) {
+			if (fligths.get(i).getFlight_state().equalsIgnoreCase("On_Going")) {
 				//Flight f = this.airport.getFligths().get(i);
 				/*if ((f.getDeparture_time().before(this.airport.getTime())
 						|| f.getDeparture_time().equals(this.airport.getTime()))
 						&& f.getPlane_state().equalsIgnoreCase("Waiting"))
 					f.setPlane_state("On_Going");*/
-				Object[] fila = constructRow(this.airport.getFligths().get(i));
+				Object[] fila = constructRow(fligths.get(i));
 				table.addRow(fila);
 			}
 		}
@@ -120,6 +143,8 @@ public class atm_dao {
 			this.airport.notifyAllO(new NotifyData(NTYPE.ATM_REFRESH, flight));
 		}
 	}*/
+	
+	//Reescribir calcular path para la llamada inicial teniendo en cuenta las demas
 	
 	
 	/*Estas 2 funciones son para añadir donde se haga el path

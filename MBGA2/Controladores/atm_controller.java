@@ -1,111 +1,42 @@
 package Controladores;
 
-import java.sql.Timestamp;
-
-import DAOs.atm_dao;
+import javax.swing.table.DefaultTableModel;
 import Main.Aeropuerto;
 import Observer.Observer;
+import SA.atm_SA;
 import Utils.NTYPE;
 import Utils.NotifyData;
 import Datos.Flight;
 
 public class atm_controller {
 	private Aeropuerto airport;
-	private atm_dao dao;
+	private atm_SA sa;
 	
 	public atm_controller(Aeropuerto airport) {
 		this.airport = airport;
-		this.setDao(new atm_dao(this.airport));
-	}
-
-	public atm_dao getDao() {
-		return dao;
-	}
-
-	public void setDao(atm_dao dao) {
-		this.dao = dao;
-	}
-/*
-	public void addFlight(Flight flight) {
-		for (Path aux: atm.getPaths()) {
-			if (aux.getDestination().equalsIgnoreCase(flight.getDestination())){
-				flight.setPath(aux);
-				if (!this.airport.getTime().before(flight.getDeparture_time()))
-					flight.setPlane_state("On_Going");
-				flight.setCurrentSpace(flight.getPath().getStopover().split(",")[0]);
-				flight.setArrival_time(new Date(flight.getDeparture_time().getTime() + flight.getPath().getDuration()));
-				break;
-			}
-		}
-		this.airport.getOn_going().add(flight);
-	}*/
-	
-	public void planeCrash(Flight f) {
-		boolean flag = false;
-		if (!f.getPlane_state().equalsIgnoreCase("Crashed") && !f.getPlane_state().equalsIgnoreCase("Waiting")){
-			f.setPlane_state("Crashed");
-			flag = true;
-		}
-		if (flag) {
-			//Enviar Sar
-			warnSAR();
-			
-		}else 
-			System.out.println("No se encuentra ese avion en vuelo");
-		
+		this.sa = new atm_SA();
 	}
 	
-	public void planeDamaged(Flight f) { 
-		boolean flag = false;
-		if (!f.getPlane_state().equalsIgnoreCase("Crashed") && !f.getPlane_state().equalsIgnoreCase("Waiting")){
-			f.setPlane_state("Damaged");	
-			//f.setState(FlightState.Delayed);
-			flag = true;
-			delayFlights(f);
-		}
-		if (flag) {
-			// Random a ver si se estrella
-			// Notify Delay
-			// Mirar si hay mas Delays
-			
-			;
-		}else 
-			System.out.println("El avion ya esta estrellado fiera");
-		
-	}
+//	public void planeDamaged(Flight f) { 
+//		boolean flag = false;
+//		if (!f.getPlane_state().equalsIgnoreCase("Crashed") && !f.getPlane_state().equalsIgnoreCase("Waiting")){
+//			f.setPlane_state("Damaged");	
+//			//f.setState(FlightState.Delayed);
+//			flag = true;
+//			delayFlights(f);
+//		}
+//		if (flag) {
+//			// Random a ver si se estrella
+//			// Notify Delay
+//			// Mirar si hay mas Delays
+//			
+//			;
+//		}else 
+//			System.out.println("El avion ya esta estrellado fiera");
+//		
+//	}
 	
-	public void delayFlights(Flight f) {
-		/*
-		long delay = calcularDelay();
-		Collections.sort(this.airport.getOn_going(), new SortByDate());
-		for (Flight aux : this.airport.getOn_going()) {
-			//if (aux.getPath().equals(f.getPath()) && f.getArrival_time().getTime() <= aux.getArrival_time().getTime()) {
-			if (aux.getPath().equals(f.getPath()) && (f.getArrival_time().before(aux.getArrival_time()) || f.getArrival_time().equals(aux.getArrival_time()))) {
-				if((int) ((Math.random()*10+1)) == 10)
-					this.airport.notifyAllO(new NotifyData(NTYPE.ATM_DELAY, new Delay(aux,delay+(long) ((int) ((Math.random()*10+1))*60*1000))));
-				else
-					this.airport.notifyAllO(new NotifyData(NTYPE.ATM_DELAY, new Delay(aux,delay)));
-				if (f.getGoing())
-					this.airport.notifyAllO(new NotifyData(NTYPE.INF_CRASH, aux));
-			}
-		}*/
-	}
 	
-	@SuppressWarnings("unused")
-	private long calcularDelay () {	
-		return (long) ((int) ((Math.random()*51+10)*1000*60));
-	}
-	
-	public void planeDelay(long d, Flight f) {
-		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
-			if (!f.getPlane_state().equalsIgnoreCase("Damaged"))
-				f.setPlane_state("Delayed");
-			f.setBoarding_time(new Timestamp(d));
-			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
-		} else {
-			System.out.println("El avion esta estrellado");
-		}
-	}
 	
 	/*
 	public void planeLanded(Flight flight) {
@@ -134,6 +65,24 @@ public class atm_controller {
 		for (int i = 0; i <this.airport.getFligths().size();i++) {
 			airport.getFligths().get(i).addObserver(o);
 		}
+	}
+
+	public void crashPlane(String text) {
+		Flight f = this.sa.planeCrashed(text,this.airport.getFligths());
+		this.airport.notifyAllO(new NotifyData(NTYPE.ATM_CRASH, f));
+	}
+
+	public void delayPlane(String text) {
+		Flight f = this.sa.planeDelayed(text,this.airport.getFligths());
+		this.airport.notifyAllO(new NotifyData(NTYPE.ATM_DAMAGED, f, null));
+	}
+
+	public void addModels(DefaultTableModel tableModel) {
+		this.sa.setOnGoing(tableModel);
+	}
+
+	public void addAll() {
+		this.sa.addFlights(this.airport.getFligths());	
 	}
 
 }

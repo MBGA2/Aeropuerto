@@ -304,6 +304,7 @@ public class main_controller implements Observer{
 			try {
 				check();
 				this.inf.addAll();
+				this.atm.addAll();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
