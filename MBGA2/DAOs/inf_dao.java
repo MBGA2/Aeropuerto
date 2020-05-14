@@ -41,7 +41,7 @@ public class inf_dao {
 		fila[5] = parseDate(f.getBoarding_time());
 		fila[6] = f.getCompany();
 		fila[7] = f.getFlight_state();
-		if(f.getPlane_state().equalsIgnoreCase("Damaged")) {
+		if(f.getPlane_state().equalsIgnoreCase("Delayed")) {
 		fila[8] = "estimated " +  parseDate(new Timestamp(f.getDeparture_time().getTime() + f.getRetarded_value() * MIN));
 		}
 		if(f.getPlane_state().equalsIgnoreCase("Crashed")) {
@@ -57,7 +57,7 @@ public class inf_dao {
 		fila[2] = f.getID();
 		fila[3] = f.getCompany();
 		fila[4] = f.getFlight_state();
-		if(f.getPlane_state().equalsIgnoreCase("Damaged")) {
+		if(f.getPlane_state().equalsIgnoreCase("Delayed")) {
 		fila[5] = "estimated " +  parseDate(new Timestamp(f.getArrival_time().getTime() + f.getRetarded_value() * MIN));
 		}
 		if(f.getPlane_state().equalsIgnoreCase("Crashed")) {
