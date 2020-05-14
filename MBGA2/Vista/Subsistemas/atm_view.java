@@ -24,14 +24,9 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import Controladores.atm_controller;
-import DAOs.atm_dao;
-import Datos.Flight;
-import Observer.Observer;
-import Utils.NTYPE;
-import Utils.NotifyData;
 
 @SuppressWarnings("serial")
-public class atm_view extends JFrame implements Observer {
+public class atm_view extends JFrame{
 
 	private JPanel panel;
 	private JButton searchPlane;
@@ -43,8 +38,7 @@ public class atm_view extends JFrame implements Observer {
 	private JTable dataTable;
 	private DefaultTableModel tableModel;
 	private JScrollPane table;
-	private atm_controller atm;
-	private atm_dao dao;
+	private atm_controller atm_ctrl;
 
 	private JButton crashButton;
 	private JTextField crashField;
@@ -52,10 +46,7 @@ public class atm_view extends JFrame implements Observer {
 	private JTextField delayField;
 
 	public atm_view(atm_controller atm_controller) {
-		this.atm = atm_controller;
-		this.atm.addModelObserver(this);
-
-		this.dao = atm.getDao();
+		this.atm_ctrl = atm_controller;
 
 		this.panel = new JPanel();
 		this.panel.setLayout(new GridBagLayout());
@@ -86,7 +77,7 @@ public class atm_view extends JFrame implements Observer {
 				return rowColours.get(row);
 			}
 
-			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compañia", "Estado", "Alerta",
+			String[] planeInfo = { "ID", "Destino", "Salida", "Llegada", "Escala", "Compaï¿½ia", "Estado", "Alerta",
 					"Retraso" };
 
 			@Override
@@ -106,10 +97,10 @@ public class atm_view extends JFrame implements Observer {
 		this.getContentPane().add(this.panel);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0; // El área de texto empieza en la columna cero.
-		constraints.gridy = 0; // El área de texto empieza en la fila cero
-		constraints.gridwidth = 1; // El área de texto ocupa dos columnas.
-		constraints.gridheight = 1; // El área de texto ocupa 2 filas.
+		constraints.gridx = 0; // El ï¿½rea de texto empieza en la columna cero.
+		constraints.gridy = 0; // El ï¿½rea de texto empieza en la fila cero
+		constraints.gridwidth = 1; // El ï¿½rea de texto ocupa dos columnas.
+		constraints.gridheight = 1; // El ï¿½rea de texto ocupa 2 filas.
 		constraints.weighty = 1.0;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.SOUTH;
@@ -186,7 +177,8 @@ public class atm_view extends JFrame implements Observer {
 		constraints.gridheight = 1;
 		this.panel.add(this.delayField, constraints);
 
-		this.dao.tableFill(tableModel);
+//		this.dao.tableFill(tableModel);
+		this.atm_ctrl.addModels(tableModel);
 
 		this.dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
@@ -212,9 +204,10 @@ public class atm_view extends JFrame implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (Flight f : dao.getAirport().getFligths())
-					if (f.getID().equalsIgnoreCase(crashField.getText()))
-						dao.getAirport().notifyAllO(new NotifyData(NTYPE.ATM_CRASH, f));
+//				for (Flight f : dao.getAirport().getFligths())
+//					if (f.getID().equalsIgnoreCase(crashField.getText()))
+//						dao.getAirport().notifyAllO(new NotifyData(NTYPE.ATM_CRASH, f));
+				atm_ctrl.crashPlane(crashField.getText());
 			}
 
 		});
@@ -224,9 +217,10 @@ public class atm_view extends JFrame implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				for (Flight f : dao.getAirport().getFligths())
-					if (f.getID().equalsIgnoreCase(delayField.getText()))
-						dao.getAirport().notifyAllO(new NotifyData(NTYPE.ATM_DAMAGED, f));
+//				for (Flight f : dao.getAirport().getFligths())
+//					if (f.getID().equalsIgnoreCase(delayField.getText()))
+//						dao.getAirport().notifyAllO(new NotifyData(NTYPE.ATM_DAMAGED, f));
+				atm_ctrl.delayPlane(delayField.getText());
 			}
 
 		});
@@ -243,32 +237,32 @@ public class atm_view extends JFrame implements Observer {
 		return this.panel;
 	}
 
-	private void tableRefresh() {
-		this.tableModel.setRowCount(0);
-		this.dao.tableFill(this.tableModel);
-		this.tableModel.fireTableDataChanged();
-	}
+//	private void tableRefresh() {
+//		this.tableModel.setRowCount(0);
+//		this.dao.tableFill(this.tableModel);
+//		this.tableModel.fireTableDataChanged();
+//	}
 
-	@Override
-	public void update(NotifyData n) {
-		switch (n.getN()) {
-		case ATM_REFRESH:
-			//this.atm.addFlight((Flight) n.getData());
-			this.tableRefresh();
-			break;
-		case ATM_CRASH:
-			this.atm.planeCrash((Flight) n.getData());
-			this.tableRefresh();
-			break;
-		case ATM_DAMAGED:
-			this.atm.planeDamaged((Flight) n.getData());
-			this.tableRefresh();
-			break;
-		case REFRESH:
-			this.tableRefresh();
-			break;
-		default:
-			break;
-		}
-	}
+//	@Override
+//	public void update(NotifyData n) {
+//		switch (n.getN()) {
+//		case ATM_REFRESH:
+//			//this.atm.addFlight((Flight) n.getData());
+//			this.tableRefresh();
+//			break;
+//		case ATM_CRASH:
+//			this.atm.planeCrash((Flight) n.getData());
+//			this.tableRefresh();
+//			break;
+//		case ATM_DAMAGED:
+//			this.atm.planeDamaged((Flight) n.getData());
+//			this.tableRefresh();
+//			break;
+//		case REFRESH:
+//			this.tableRefresh();
+//			break;
+//		default:
+//			break;
+//		}
+//	}
 }
