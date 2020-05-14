@@ -29,4 +29,11 @@ public class NumberFlights {
 				// for recorriendo el resto de casillas y aumentarlas 5 minutos
 			}
 	}
+	public int flightsOnTime(Timestamp ini) {
+		int n = 0;
+		for (InfoPlaneOnMap f : this.infoFlights) 
+			if (f.getInitialD().before(ini) && (new Timestamp(ini.getTime() + 30 * 60 * 1000)).after(ini))
+				n++;
+		return n;
+	}
 }
