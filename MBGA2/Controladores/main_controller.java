@@ -108,6 +108,7 @@ public class main_controller implements Observer{
 			newFligthArr();
 
 			calendar = new Timestamp(calendar.getTime() + rand.nextInt(20) * MIN); //
+			//calendar = new Timestamp(calendar.getTime() + rand.nextInt(20000));
 			i++;
 		}	
 		readFlight();
@@ -153,7 +154,7 @@ public class main_controller implements Observer{
 		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
 		Timestamp arrival_time = new Timestamp(calendar.getTime() + path(destination));
 		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
-		calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
+		//calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
 		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
 		PreparedStatement ps = c.conectar().prepareStatement(sql);
 		ps.setString(1, destination);
@@ -250,19 +251,19 @@ public class main_controller implements Observer{
 				changeFlightState(newF,this.aero.getFligths().get(i).getID());
 			}
 			
-			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Storing")) {
-				Timestamp t = new Timestamp(this.aero.getFligths().get(i).getArrival_time().getTime() + 30*MIN);
-				if (t.after(this.aero.getTime())) {
-					removeFromDateBase(this.aero.getFligths().get(i).getID());
-					this.aero.getFligths().remove(i);
-					add1Flight(false);
-				}
-			}
 			if(this.aero.getFligths().get(i).getSource().equalsIgnoreCase("Madrid")) {
 				if(this.aero.getFligths().get(i).getArrival_time().before(this.aero.getTime())){
 					removeFromDateBase(this.aero.getFligths().get(i).getID());
 					this.aero.getFligths().remove(i);
 					add1Flight(true);
+				}
+			}
+			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Storing")) {
+				Timestamp t = new Timestamp(this.aero.getFligths().get(i).getArrival_time().getTime() + 15*MIN);
+				if (t.after(this.aero.getTime())) {
+					removeFromDateBase(this.aero.getFligths().get(i).getID());
+					this.aero.getFligths().remove(i);
+					add1Flight(false);
 				}
 			}
 		}

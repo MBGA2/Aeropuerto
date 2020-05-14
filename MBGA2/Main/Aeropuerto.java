@@ -14,7 +14,6 @@ public class Aeropuerto extends Observable{
 	protected String nombre;
 	protected MainView vista;
 	private List<Flight> fligths;
-	private List<String> sar;
 	private Timestamp time;
 	private listCam camaras;
 	private GeneratePlaneInfo gen;
@@ -25,7 +24,6 @@ public class Aeropuerto extends Observable{
 		this.nombre = nombre;
 		this.setFligths(new ArrayList<Flight>());
 		this.camaras = new listCam();
-		this.setSar(new ArrayList<String>());
 		this.time = new Timestamp(System.currentTimeMillis());
 		this.gen = new GeneratePlaneInfo();
 	}
@@ -82,14 +80,5 @@ public Timestamp getLastArr() {
 	}
 	public listCam getCamaras() {
 		return camaras;
-	}
-
-
-	public List<String> getSar() {
-		return sar;
-	}
-
-	public void setSar(List<String> sar) {
-		this.sar = sar;
 	}
 }

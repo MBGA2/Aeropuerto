@@ -10,6 +10,7 @@ public class Flight extends Observable{
 	private String source;
 	private Timestamp departure_time;
 	private Timestamp arrival_time;
+	private int retarded_value;
 	private Timestamp boarding_time;
 	private Timestamp realDate;
 	private String gate;
@@ -73,6 +74,9 @@ public class Flight extends Observable{
 			else {
 				//this.state = FlightState.Waiting_gate;
 			}
+		}
+		if(!this.Flight_state.equalsIgnoreCase("Correcto")) {
+			new Timestamp(realDate.getTime() - retarded_value * MIN);
 		}
 		return this.Flight_state;
 	}
@@ -174,6 +178,14 @@ public class Flight extends Observable{
 
 	public void setCompany(String company) {
 		this.company = company;
+	}
+
+	public int getRetarded_value() {
+		return retarded_value;
+	}
+
+	public void setRetarded_value(int retarded_value) {
+		this.retarded_value = retarded_value;
 	}
 
 

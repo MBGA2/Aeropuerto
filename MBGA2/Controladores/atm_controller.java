@@ -37,7 +37,6 @@ public class atm_controller {
 //	}
 	
 	
-	
 	/*
 	public void planeLanded(Flight flight) {
 		boolean flag = false;

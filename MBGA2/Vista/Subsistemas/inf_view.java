@@ -116,9 +116,10 @@ public class inf_view {
 		model2.addColumn("ID");
 		model2.addColumn("Compania");
 		model2.addColumn("Estado");
+		model2.addColumn("Incidencias");
 		DefaultTableCellRenderer d = new DefaultTableCellRenderer();
 		d.setHorizontalAlignment(JLabel.CENTER);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 6; i++) {
 			miTabla2.getColumnModel().getColumn(i).setCellRenderer(d);
 		}
 		DefaultTableCellRenderer bw = new DefaultTableCellRenderer();
@@ -165,11 +166,12 @@ public class inf_view {
 		model.addColumn("Puerta");
 		model.addColumn("ID");
 		model.addColumn("Embarque");
-		model.addColumn("Compaï¿½ia");
+		model.addColumn("Compañia");
 		model.addColumn("Estado");
+		model.addColumn("Incidencias");
 		DefaultTableCellRenderer d = new DefaultTableCellRenderer();
 		d.setHorizontalAlignment(JLabel.CENTER);
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 9; i++) {
 			miTabla.getColumnModel().getColumn(i).setCellRenderer(d);
 		}
 		DefaultTableCellRenderer bw = new DefaultTableCellRenderer();

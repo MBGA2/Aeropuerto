@@ -40,7 +40,7 @@ public class atm_dao {
 	public void planeDelay(int d, Flight f) {
 		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
 			f.setPlane_state("Delayed");
-			f.setRetardedValue(d);
+			f.setRetarded_value(d);
 //			f.setBoarding_time(new Timestamp(d));
 			this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,d));
 		}
