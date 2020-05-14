@@ -8,9 +8,9 @@ import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
+import BD.conexion;
 import Datos.Flight;
 import Main.Aeropuerto;
-import Main.conexion;
 import Observer.Observer;
 import Utils.NTYPE;
 import Utils.NotifyData;

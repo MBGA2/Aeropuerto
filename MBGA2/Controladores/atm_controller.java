@@ -68,12 +68,12 @@ public class atm_controller {
 
 	public void crashPlane(String text) {
 		Flight f = this.sa.planeCrashed(text,this.airport.getFligths());
-		this.airport.notifyAllO(new NotifyData(NTYPE.ATM_CRASH, f));
+		this.airport.notifyAllO(new NotifyData(NTYPE.TOR_CRASH, f));
 	}
 
 	public void delayPlane(String text) {
 		Flight f = this.sa.planeDelayed(text,this.airport.getFligths());
-		this.airport.notifyAllO(new NotifyData(NTYPE.ATM_DAMAGED, f, null));
+		this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f,this.sa.getDelay()));
 	}
 
 	public void addModels(DefaultTableModel tableModel) {

@@ -32,6 +32,9 @@ public class Flight extends Observable{
 		Timestamp dateAux = new Timestamp(realDate.getTime() + 5 * MIN);
 		Timestamp dateAux3 = new Timestamp(arrival_time.getTime() - 15 * MIN);
 		Timestamp dateAux4 = new Timestamp(arrival_time.getTime() + 15 * MIN);
+		if(!this.plane_state.equalsIgnoreCase("Correcto")) {
+			realDate = new Timestamp(realDate.getTime() - retarded_value * MIN);
+		}
 		if (this.source.equalsIgnoreCase("Madrid")) {
 
 			if (realDate.compareTo(boarding_time) == 1 && realDate.compareTo(departure_time) == -1) {
@@ -75,9 +78,7 @@ public class Flight extends Observable{
 				//this.state = FlightState.Waiting_gate;
 			}
 		}
-		if(!this.Flight_state.equalsIgnoreCase("Correcto")) {
-			new Timestamp(realDate.getTime() - retarded_value * MIN);
-		}
+		
 		return this.Flight_state;
 	}
 

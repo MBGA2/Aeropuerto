@@ -19,6 +19,7 @@ import Vista.Subsistemas.atm_view;
 import Vista.Subsistemas.inf_view;
 import Vista.Subsistemas.seg_view;
 import Vista.Subsistemas.tor_view;
+import Vista.Subsistemas.map_view;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -59,6 +60,10 @@ public class MainView extends JFrame{
 
 	private JLabel picLabel;
 
+	private map_view map_view;
+
+	private JPanel MAPpanel;
+
 	
 
 
@@ -83,6 +88,8 @@ public class MainView extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.inf_view = new inf_view(this.ctrl.getInf());
 		this.INFOpanel = inf_view.getMainInfo();
+		this.map_view = new map_view();
+		this.MAPpanel = map_view.getMainInfo();
 		this.atm_view = new atm_view(this.ctrl.getAtm());
 		this.ATMpanel = atm_view.getMainPanel();
 		this.SEGpanel = new seg_view(this.ctrl.getSeg()).getMainPanel();
@@ -173,10 +180,9 @@ private void del() {
 		btnGeneral.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		btnGeneral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Subsistema
-				//test();
 				centerPanel.removeAll();
-				centerPanel.add(picLabel);
+				//centerPanel.add(picLabel);
+				centerPanel.add(MAPpanel);
 				centerPanel.repaint();
 				visualizar();
 			
