@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import Controladores.main_controller;
-import Utils.SimpleDigitalClock;
 import Vista.Subsistemas.atm_view;
 import Vista.Subsistemas.inf_view;
 import Vista.Subsistemas.seg_view;
@@ -88,7 +87,7 @@ public class MainView extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.inf_view = new inf_view(this.ctrl.getInf());
 		this.INFOpanel = inf_view.getMainInfo();
-		this.map_view = new map_view();
+		this.map_view = new map_view(this.ctrl.getMap());
 		this.MAPpanel = map_view.getMainInfo();
 		this.atm_view = new atm_view(this.ctrl.getAtm());
 		this.ATMpanel = atm_view.getMainPanel();
@@ -198,7 +197,7 @@ private void del() {
 				//Subsistema
 				//test();
 				centerPanel.removeAll();
-				//ctrl.getInf().addAll();
+				ctrl.getInf().resetFlag();
 				centerPanel.add(INFOpanel);
 				centerPanel.repaint();
 				visualizar();

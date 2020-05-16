@@ -1,4 +1,4 @@
-package Utils;
+package Vista;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,12 +10,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JViewport;
 
-import Vista.MainView;
-
 
 public class ImageViewport extends JViewport {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public ImageViewport() {
     }
 
@@ -25,10 +27,9 @@ public class ImageViewport extends JViewport {
 		try {
 			background = ImageIO.read(MainView.class.getResource("/Iconos/map.jpg"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		background = resize(background,1400,750);
+		background = resize(background,1353,703);
         super.paintComponent(g);
         if (background != null) {
             Rectangle bounds = getViewRect();

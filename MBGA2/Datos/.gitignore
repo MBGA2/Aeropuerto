@@ -2,3 +2,7 @@
 /FlightState.class
 /Plane.class
 /PlaneState.class
+/GeneratePlaneInfo.class
+/GeneratePath.class
+/Path.class
+/InfoCity.class

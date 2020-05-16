@@ -1,6 +1,7 @@
 package Controladores;
 
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import Main.Aeropuerto;
 import Observer.Observer;
 import SA.map_SA;
@@ -31,7 +32,15 @@ public class map_controller {
 			aero.getFligths().get(i).addObserver(o);
 		}
 	}
-	public void addTable(JTable table) {
-		this.SA.setF(table);
+	public void refresh() {
+		this.SA.fill(this.aero.getMap(),this.aero.getTime());
+	}
+	public void addTable(DefaultTableModel tableModel) {
+		this.SA.setF(tableModel);
+	}
+
+	public void infoCell(int row, int col) {
+		this.SA.infoC(row,col,this.aero.getMap(),this.aero.getTime());
+		
 	}
 }

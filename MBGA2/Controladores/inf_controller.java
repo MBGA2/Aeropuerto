@@ -42,8 +42,10 @@ public class inf_controller{
 		this.SA.searchInArrivals(search, this.aero.getFligths());
 		this.SA.searchInDepartures(search, this.aero.getFligths());
 	}
-
-
+	public void resetFlag() {
+		this.SA.setFlag(true);
+	}
+	
 	public void addTables(DefaultTableModel model, DefaultTableModel model2) {
 		this.SA.setModelArrivals(model2);
 		this.SA.setModelDepartures(model);

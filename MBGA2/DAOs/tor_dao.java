@@ -8,7 +8,7 @@ import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
-import BD.conexion;
+import BD.conexionBD;
 import Datos.Flight;
 import Main.Aeropuerto;
 import Observer.Observer;
@@ -18,7 +18,7 @@ import Utils.NotifyData;
 
 public class tor_dao implements Observer {
 	
-	private conexion c;
+	private conexionBD c;
 	private Aeropuerto aero;
 	public static final long MIN = 60 * 1000;
 	private String [] gates = {"A1", "A2" , "A3", "A4" , "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5", "E1", "E2", "E3", "E4", "E5"};
@@ -48,7 +48,7 @@ public class tor_dao implements Observer {
 				String puerta = gates[(int) (Math.random()*(gates.length))];
 				vuelo.setGate(puerta);				
 				try {										
-					c = new conexion();
+					c = new conexionBD();
 					String sql = "UPDATE vuelos\r\n" + 
 							"SET gate = '"+ puerta +"'\r\n" + 			
 							"where id_p like '" + vuelo.getID() + "'";		
@@ -59,7 +59,6 @@ public class tor_dao implements Observer {
 					ps.close();
 					c.desconectar();
 				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					//System.out.println("No se puede añadir a la bbdd en el id: " + vuelo.getID());
 				}
@@ -145,7 +144,7 @@ public class tor_dao implements Observer {
 						Timestamp newArrivalTime = new Timestamp (todelay.getArrival_time().getTime() + delayMinutes);
 						todelay.setArrival_time(new Timestamp (todelay.getArrival_time().getTime() + delayMinutes));
 						
-						c = new conexion();
+						c = new conexionBD();
 						String sql = "UPDATE vuelos\r\n" + 
 								"SET boarding_time = '"+ newBoardingTime +"'\r\n" + 
 								"SET departure_time = '"+ newDEparturTime +"'\r\n" + 

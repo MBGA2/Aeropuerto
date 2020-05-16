@@ -90,8 +90,7 @@ public class inf_view {
 								"Busqueda de vuelo", JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, null, null,
 								null);
 						if (option == 0) {
-							
-							inf_controller.addAll();
+							inf_controller.resetFlag();
 						}
 					}
 				}
