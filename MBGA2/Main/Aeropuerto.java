@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Datos.Flight;
+import Datos.GeneratePath;
+import Datos.GeneratePlaneInfo;
+import Datos.map.Mapm;
 import Datos.seg.listCam;
 import Observer.Observable;
-import Utils.GeneratePlaneInfo;
-import Utils.atm.Map;
 import Vista.MainView;
 
 public class Aeropuerto extends Observable{
 	protected String nombre;
 	protected MainView vista;
 	private List<Flight> fligths;
+	private GeneratePath path;
 	private Timestamp time;
 	private listCam camaras;
 	private GeneratePlaneInfo gen;
-	private Map map;
+	private Mapm map;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
@@ -26,9 +28,10 @@ public class Aeropuerto extends Observable{
 		this.nombre = nombre;
 		this.setFligths(new ArrayList<Flight>());
 		this.camaras = new listCam();
+		this.path = new GeneratePath();
 		this.time = new Timestamp(System.currentTimeMillis());
 		this.gen = new GeneratePlaneInfo();
-		this.map = new Map();
+		this.map = new Mapm();
 	}
 	public Timestamp getLastDep() {
 		Timestamp t = null;
@@ -84,7 +87,13 @@ public Timestamp getLastArr() {
 	public listCam getCamaras() {
 		return camaras;
 	}
-	public Map getMap() {
+	public Mapm getMap() {
 		return map;
+	}
+	public GeneratePath getPath() {
+		return path;
+	}
+	public void setPath(GeneratePath path) {
+		this.path = path;
 	}
 }
