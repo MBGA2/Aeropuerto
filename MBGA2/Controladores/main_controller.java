@@ -3,14 +3,16 @@ package Controladores;
 import java.sql.*;
 import java.util.Random;
 
-import BD.conexion;
+import BD.conexionBD;
 import Datos.Flight;
+import Datos.GeneratePlaneInfo;
+import Datos.InfoCity;
+import Datos.Path;
 import Main.Aeropuerto;
 import Observer.Observer;
-import Utils.GeneratePlaneInfo;
 import Utils.NotifyData;
 
-public class main_controller implements Observer{
+public class main_controller implements Observer {
 
 	private Aeropuerto aero;
 	private adu_controller adu;
@@ -18,10 +20,11 @@ public class main_controller implements Observer{
 	private inf_controller inf;
 	private tor_controller tor;
 	private seg_controller seg;
+	private map_controller map;
 	private Timestamp calendar;
 	private Timestamp first;
 	private Random rand;
-	private conexion c;
+	private conexionBD c;
 	private GeneratePlaneInfo info;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
@@ -30,14 +33,368 @@ public class main_controller implements Observer{
 		this.first = aero.getTime();
 		info = aero.getGen();
 		rand = new Random();
-		c = new conexion();
+		c = new conexionBD();
 		this.aero = aero;
 		this.seg = new seg_controller(this.aero);
 		this.atm = new atm_controller(this.aero);
 		this.adu = new adu_controller(this.aero);
 		this.inf = new inf_controller(this.aero);
 		this.tor = new tor_controller(this.aero);
+		this.map = new map_controller(this.aero);
 
+	}
+
+	public void init() throws ClassNotFoundException, SQLException {
+		// readFlight();
+		seg.loadData();
+
+	}
+
+	public void generateFlight(int n) throws ClassNotFoundException, SQLException {
+		this.calendar = this.aero.getTime();
+
+		int i = 0;
+		while (i < n) {
+			newFligth();
+			// newFligthArr();
+
+			calendar = new Timestamp(calendar.getTime() + rand.nextInt(20) * MIN); //
+			i++;
+		}
+		// readFlight();
+	}
+
+	private void readFlightFromDatabase() throws ClassNotFoundException, SQLException {
+		String sql = "SELECT * FROM vuelos order by departure_time";
+		PreparedStatement ps = c.conectar().prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Flight f = new Flight();
+			f.setArrival_time(rs.getTimestamp("arrival_time"));
+			f.setBoarding_time(rs.getTimestamp("boarding_time"));
+			f.setSource(rs.getString("source"));
+			f.setDeparture_time(rs.getTimestamp("departure_time"));
+			f.setDestination(rs.getString("destination"));
+			f.setGate(rs.getString("gate"));
+			f.setFlight_state(rs.getString("flight_state"));
+			f.setPlane_state(rs.getString("plane_state"));
+			f.setID(rs.getString("id_p"));
+			f.setCompany(rs.getString("company"));
+			f.setRealDate(this.first);
+			if (f.getGate() == null) {
+				f.setGate("No_gate");
+			}
+			if (f.getFlight_state() == null) {
+				f.setFlight_state("Esperando");
+			}
+			if (f.getPlane_state() == null) {
+				f.setPlane_state("Correcto");
+			}
+			this.aero.getFligths().add(f);
+		}
+		ps.close();
+		ps = null;
+		c.desconectar();
+
+	}
+
+	public void newFligth() throws ClassNotFoundException, SQLException {
+		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
+		Timestamp departure_time = calendar;
+		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
+		Path p = calculatePath("Madrid", destination, departure_time);
+		Timestamp arrival_time = new Timestamp(calendar.getTime() + p.getDuration() * MIN);
+		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
+		// calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
+		/*
+		 * String sql =
+		 * "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)"
+		 * ; PreparedStatement ps = c.conectar().prepareStatement(sql); ps.setString(1,
+		 * destination); ps.setString(2, "Madrid"); ps.setTimestamp(3, departure_time);
+		 * ps.setTimestamp(4, arrival_time); ps.setString(5, company);
+		 * ps.setTimestamp(6, boarding_time); ps.setString(7, info.randomID());
+		 * ps.execute(); ps.close(); c.desconectar();
+		 */
+		Flight f = new Flight();
+		f.setArrival_time(arrival_time);
+		f.setBoarding_time(boarding_time);
+		f.setSource("Madrid");
+		f.setDeparture_time(departure_time);
+		f.setDestination(destination);
+		f.setID(info.randomID());
+		f.setCompany(company);
+		f.setRealDate(this.first);
+		f.setPath(p);
+		f.setGate("No_gate");
+		f.setFlight_state("Esperando");
+		f.setPlane_state("Correcto");
+		this.aero.getFligths().add(f);
+		fillMap(f);
+	}
+
+	public void newFligthArr() throws ClassNotFoundException, SQLException {
+		String source = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
+		// Timestamp departure_time = new Timestamp(calendar.getTime() - path(source));
+		// Timestamp boarding_time = new Timestamp(departure_time.getTime() -
+		// (rand.nextInt(15) + 15) * MIN);
+		Timestamp arrival_time = calendar;
+		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
+		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
+		PreparedStatement ps = c.conectar().prepareStatement(sql);
+		ps.setString(1, "Madrid");
+		ps.setString(2, source);
+		// ps.setTimestamp(3, departure_time);
+		ps.setTimestamp(4, arrival_time);
+		ps.setString(5, company);
+		// ps.setTimestamp(6, boarding_time);
+		ps.setString(7, info.randomID());
+		ps.execute();
+		ps.close();
+		c.desconectar();
+	}
+
+	public void add1Flight(Boolean going) throws ClassNotFoundException, SQLException {
+
+		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
+		String source = "Madrid";
+		Timestamp departure_time = new Timestamp(this.aero.getLastDep().getTime() + rand.nextInt(20) * MIN);
+		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
+		Path p = calculatePath("Madrid", destination, departure_time);
+		Timestamp arrival_time = new Timestamp(calendar.getTime() + p.getDuration() * MIN);
+		// path(destination));
+		if (!going) {
+			destination = "Madrid";
+			source = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
+			// arrival_time = new Timestamp(this.aero.getLastArr().getTime()+
+			// rand.nextInt(20) * MIN);
+			// departure_time = new Timestamp(arrival_time.getTime() - path(source));
+			boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
+		}
+		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
+		String ID = info.randomID();
+		/*
+		 * String sql =
+		 * "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)"
+		 * ; PreparedStatement ps = c.conectar().prepareStatement(sql); ps.setString(1,
+		 * destination); ps.setString(2, source); ps.setTimestamp(3, departure_time); //
+		 * ps.setTimestamp(4, arrival_time); ps.setString(5, company);
+		 * ps.setTimestamp(6, boarding_time); ps.setString(7, ID); ps.execute();
+		 * ps.close(); c.desconectar();
+		 */Flight f = new Flight();
+		f.setArrival_time(arrival_time);
+		f.setBoarding_time(boarding_time);
+		f.setSource(source);
+		f.setDeparture_time(departure_time);
+		f.setDestination(destination);
+		f.setGate("NO_GATE");
+		f.setFlight_state("Esperando");
+		f.setPlane_state("Correcto");
+		f.setID(ID);
+		f.setCompany(company);
+		f.setPath(p);
+		f.setRealDate(this.aero.getTime());
+		this.aero.getFligths().add(f);
+		fillMap(f);
+	}
+
+	public void check() throws ClassNotFoundException, SQLException {
+		for (int i = 0; i < this.aero.getFligths().size(); i++) {
+			this.aero.getFligths().get(i).setRealDate(aero.getTime());
+			String fAux = this.aero.getFligths().get(i).getFlight_state();
+			String newF = this.aero.getFligths().get(i).checkState();
+			if (!newF.equalsIgnoreCase(fAux)) {
+				changeFlightState(newF, this.aero.getFligths().get(i).getID());
+			}
+
+			if (this.aero.getFligths().get(i).getSource().equalsIgnoreCase("Madrid")) {
+				if (this.aero.getFligths().get(i).getArrival_time().before(this.aero.getTime())) {
+					removeFromDateBase(this.aero.getFligths().get(i).getID());
+					this.aero.getFligths().remove(i);
+					add1Flight(true);
+				}
+			}
+			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Storing")) {
+				Timestamp t = new Timestamp(this.aero.getFligths().get(i).getArrival_time().getTime() + 15 * MIN);
+				if (t.after(this.aero.getTime())) {
+					removeFromDateBase(this.aero.getFligths().get(i).getID());
+					this.aero.getFligths().remove(i);
+					add1Flight(false);
+				}
+			}
+		}
+	}
+
+	public void changeFlightState(String newF, String id) throws ClassNotFoundException, SQLException {
+		/*
+		 * String sql = "UPDATE Vuelos\r\n" + "SET Flight_state = '"+newF+"'\r\n" +
+		 * "where id_p like '" + id + "'"; PreparedStatement ps =
+		 * c.conectar().prepareStatement(sql); ps.execute(); ps.close();
+		 * c.desconectar();
+		 */
+	}
+
+	public void removeFromDateBase(String id) throws ClassNotFoundException, SQLException {
+		/*
+		 * String sql = "delete from vuelos where id_p like '" + id + "'";
+		 * PreparedStatement ps = c.conectar().prepareStatement(sql); ps.execute();
+		 * ps.close(); c.desconectar();
+		 */
+	}
+
+	public void deleteAll() throws ClassNotFoundException, SQLException {
+		/*
+		 * String sql = "delete from vuelos"; PreparedStatement ps =
+		 * c.conectar().prepareStatement(sql); ps.execute(); ps.close();
+		 * c.desconectar(); this.aero.getFligths().clear();
+		 */
+	}
+
+	public void fillMap(Flight f) {
+		InfoCity destInfo = null, sourceInfo = null, stopInfo = null;
+		int j = 0, maxFlightsBox = 20;
+
+		// Busco el valor de las ciudades origen, destino y escala
+		for (InfoCity aux : this.aero.getPath().getCities())
+			if (aux.getName().equalsIgnoreCase(f.getDestination()))
+				destInfo = aux;
+			else if (aux.getName().equalsIgnoreCase(f.getSource()))
+				sourceInfo = aux;
+			else if (aux.getName().equalsIgnoreCase(f.getPath().getStopover()))
+				stopInfo = aux;
+
+		int xSource = sourceInfo.getPosX(), ySource = sourceInfo.getPosY(), xDest = destInfo.getPosX(),
+				yDest = destInfo.getPosY(), ti = 30 * 60 * 1000;
+		Timestamp t = f.getDeparture_time();
+
+		if (stopInfo != null) {
+			int xStop = stopInfo.getPosX(), yStop = stopInfo.getPosY();
+
+			while (xSource != xStop && ySource != yStop) {
+				if (xSource < xStop && this.aero.getMap().checkFlightsInMap(xSource + 1, ySource,
+						new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+					this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+							new Timestamp(t.getTime() + (ti * (j + 1))));
+					xSource++;
+					j++;
+				} else if (xSource > xStop && this.aero.getMap().checkFlightsInMap(xSource - 1, ySource,
+						new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+					this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+							new Timestamp(t.getTime() + (ti * (j + 1))));
+					xSource--;
+					j++;
+				}
+				if (ySource < yStop && this.aero.getMap().checkFlightsInMap(xSource, ySource + 1,
+						new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+					this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+							new Timestamp(t.getTime() + (ti * (j + 1))));
+					ySource++;
+				} else if (ySource > yStop && this.aero.getMap().checkFlightsInMap(xSource, ySource - 1,
+						new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+					this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+							new Timestamp(t.getTime() + (ti * (j + 1))));
+					ySource--;
+				}
+				j++;
+			}
+			// Recorro de origen a escala y de escala a destino si hay escala
+
+		}
+		while (xSource != xDest || ySource != yDest) {
+			if (xSource < xDest && this.aero.getMap().checkFlightsInMap(xSource + 1, ySource,
+					new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+				this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+						new Timestamp(t.getTime() + (ti * (j + 1))));
+				xSource++;
+				j++;
+			} else if (xSource > xDest && this.aero.getMap().checkFlightsInMap(xSource - 1, ySource,
+					new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+				this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+						new Timestamp(t.getTime() + (ti * (j + 1))));
+				xSource--;
+				j++;
+			}
+			if (ySource < yDest && this.aero.getMap().checkFlightsInMap(xSource, ySource + 1,
+					new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+				this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+						new Timestamp(t.getTime() + (ti * (j + 1))));
+				ySource++;
+			} else if (ySource > yDest && this.aero.getMap().checkFlightsInMap(xSource, ySource - 1,
+					new Timestamp(t.getTime() + (ti * j))) < maxFlightsBox) {
+				this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+						new Timestamp(t.getTime() + (ti * (j + 1))));
+				ySource--;
+			}
+			j++;
+		}
+
+	}
+
+	public Path calculatePath(String source, String dest, Timestamp ini) {
+
+		String stop = "none";
+		int n = 0, xS = 0, yS = 0;
+
+		InfoCity destInfo = null;
+
+		for (InfoCity cityDest : this.aero.getPath().getCities())
+			if (cityDest.getName().equalsIgnoreCase(dest))
+				destInfo = cityDest;
+		for (InfoCity citySource : this.aero.getPath().getCities())
+			if (source.equalsIgnoreCase(citySource.getName())) {
+				xS = citySource.getPosX();
+				yS = citySource.getPosY();
+				if (this.aero.getPath().getDirect().get(source).contains(dest)) {
+					stop = "Direct";
+					n = Math.abs(citySource.getPosX() - destInfo.getPosX())
+							+ Math.abs(citySource.getPosY() - destInfo.getPosY());
+				} else if (!dest.equalsIgnoreCase("Reikiavik") || !dest.equalsIgnoreCase("Oslo")) {
+					int dist = 0;
+					for (InfoCity cityStop : this.aero.getPath().getCities()) {
+						if (this.aero.getPath().getDirect().get(source).contains(cityStop.getName())
+								&& (Math.abs(cityStop.getPosX())) > dist) {
+							dist = cityStop.getPosX();
+							stop = cityStop.getName();
+							n = Math.abs(citySource.getPosX() - cityStop.getPosX())
+									+ Math.abs((citySource.getPosY() - cityStop.getPosY()))
+									+ Math.abs(cityStop.getPosX() - destInfo.getPosX())
+									+ Math.abs((cityStop.getPosY() - destInfo.getPosY()));
+						}
+					}
+				} else {
+					int dist = 0;
+					for (InfoCity cityStop : this.aero.getPath().getCities()) {
+						if (this.aero.getPath().getDirect().get(source).contains(cityStop.getName())
+								&& (Math.abs(cityStop.getPosY())) > dist) {
+							dist = cityStop.getPosY();
+							stop = cityStop.getName();
+							n = Math.abs(citySource.getPosX() - cityStop.getPosX())
+									+ Math.abs((citySource.getPosY() - cityStop.getPosY()))
+									+ Math.abs(cityStop.getPosX() - destInfo.getPosX())
+									+ Math.abs((cityStop.getPosY() - destInfo.getPosY()));
+						}
+					}
+				}
+			}
+		return new Path(dest, stop, 30 * n, xS, yS);
+	}
+
+	@Override
+	public void update(NotifyData n) {
+		switch (n.getN()) {
+
+		case REFRESH:
+			try {
+				check();
+				this.inf.addAll();
+				this.atm.addAll();
+				this.map.refresh();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			break;
+		}
 	}
 
 	public static void quit() {
@@ -92,229 +449,8 @@ public class main_controller implements Observer{
 		aero.addObserver(o);
 	}
 
-	public void init() throws ClassNotFoundException, SQLException {
-		readFlight();
-		seg.loadData();
-
+	public map_controller getMap() {
+		return this.map;
 	}
-
-	
-	public void generateFlight(int n) throws ClassNotFoundException, SQLException {
-		this.calendar = this.aero.getTime();
-		
-		int i = 0;	
-		while (i < n) {
-			newFligth();
-			newFligthArr();
-
-			calendar = new Timestamp(calendar.getTime() + rand.nextInt(20) * MIN); //
-			//calendar = new Timestamp(calendar.getTime() + rand.nextInt(20000));
-			i++;
-		}	
-		readFlight();
-	}
-
-	private void readFlight() throws ClassNotFoundException, SQLException {
-		String sql = "SELECT * FROM vuelos order by departure_time";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			Flight f = new Flight();
-			f.setArrival_time(rs.getTimestamp("arrival_time"));
-			f.setBoarding_time(rs.getTimestamp("boarding_time"));
-			f.setSource(rs.getString("source"));
-			f.setDeparture_time(rs.getTimestamp("departure_time"));
-			f.setDestination(rs.getString("destination"));
-			f.setGate(rs.getString("gate"));
-			f.setFlight_state(rs.getString("flight_state"));
-			f.setPlane_state(rs.getString("plane_state"));
-			f.setID(rs.getString("id_p"));
-			f.setCompany(rs.getString("company"));
-			f.setRealDate(this.first);
-			if (f.getGate() == null) {
-				f.setGate("No_gate");
-			}
-			if (f.getFlight_state() == null) {
-				f.setFlight_state("Esperando");
-			}
-			if (f.getPlane_state() == null) {
-				f.setPlane_state("Correcto");
-			}
-			this.aero.getFligths().add(f);
-		}
-		ps.close();
-		ps = null;
-		c.desconectar();
-
-	}
-
-	public void newFligth() throws ClassNotFoundException, SQLException {
-		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
-		Timestamp departure_time = calendar;
-		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
-		Timestamp arrival_time = new Timestamp(calendar.getTime() + path(destination));
-		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
-		//calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
-		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.setString(1, destination);
-		ps.setString(2, "Madrid");
-		ps.setTimestamp(3, departure_time);
-		ps.setTimestamp(4, arrival_time);
-		ps.setString(5, company);
-		ps.setTimestamp(6, boarding_time);
-		ps.setString(7, info.randomID());
-		ps.execute();
-		ps.close();
-		c.desconectar();
-
-	}
-
-	public void newFligthArr() throws ClassNotFoundException, SQLException {
-		String source = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
-		Timestamp departure_time = new Timestamp(calendar.getTime() - path(source));
-		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
-		Timestamp arrival_time = calendar;
-		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
-		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.setString(1, "Madrid");
-		ps.setString(2, source);
-		ps.setTimestamp(3, departure_time);
-		ps.setTimestamp(4, arrival_time);
-		ps.setString(5, company);
-		ps.setTimestamp(6, boarding_time);
-		ps.setString(7, info.randomID());
-		ps.execute();
-		ps.close();
-		c.desconectar();
-	}
-
-	public void add1Flight(Boolean going) throws ClassNotFoundException, SQLException {
-
-		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
-		String source = "Madrid";
-		Timestamp departure_time = new Timestamp(this.aero.getLastDep().getTime()+ rand.nextInt(20) * MIN);
-		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
-		Timestamp arrival_time = new Timestamp(departure_time.getTime() + path(destination));
-		if (!going) {
-			destination = "Madrid";
-			source = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
-			arrival_time = new Timestamp(this.aero.getLastArr().getTime()+ rand.nextInt(20) * MIN);
-			departure_time = new Timestamp(arrival_time.getTime() - path(source));
-			boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
-		}
-		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
-		String ID =  info.randomID();
-		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p) values(?,?,?,?,?,?,?)";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.setString(1, destination);
-		ps.setString(2, source);
-		ps.setTimestamp(3, departure_time);
-		ps.setTimestamp(4, arrival_time);
-		ps.setString(5, company);
-		ps.setTimestamp(6, boarding_time);
-		ps.setString(7, ID);
-		ps.execute();
-		ps.close();
-		c.desconectar();
-		Flight f = new Flight();
-		f.setArrival_time(arrival_time);
-		f.setBoarding_time(boarding_time);
-		f.setSource(source);
-		f.setDeparture_time(departure_time);
-		f.setDestination(destination);
-		f.setGate("NO_GATE");
-		f.setFlight_state("Esperando");
-		f.setPlane_state("Correcto");
-		f.setID(ID);
-		f.setCompany(company);
-		f.setRealDate(this.first);
-		this.aero.getFligths().add(f);
-	}
-	
-	public int path(String dest) {
-		for (int i = 0; i < this.info.getPaths().size(); i++) {
-			if (this.info.getPaths().get(i).getDestination().equalsIgnoreCase(dest)) {
-				return this.info.getPaths().get(i).getDuration();
-			}
-		}
-		return 0;
-	}
-
-	public void check() throws ClassNotFoundException, SQLException {
-		for (int i = 0; i < this.aero.getFligths().size(); i++) {
-			this.aero.getFligths().get(i).setRealDate(aero.getTime());
-			String fAux = this.aero.getFligths().get(i).getFlight_state();
-			String newF = this.aero.getFligths().get(i).checkState();
-			if(!newF.equalsIgnoreCase(fAux)) {
-				changeFlightState(newF,this.aero.getFligths().get(i).getID());
-			}
-			
-			if(this.aero.getFligths().get(i).getSource().equalsIgnoreCase("Madrid")) {
-				if(this.aero.getFligths().get(i).getArrival_time().before(this.aero.getTime())){
-					removeFromDateBase(this.aero.getFligths().get(i).getID());
-					this.aero.getFligths().remove(i);
-					add1Flight(true);
-				}
-			}
-			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Storing")) {
-				Timestamp t = new Timestamp(this.aero.getFligths().get(i).getArrival_time().getTime() + 15*MIN);
-				if (t.after(this.aero.getTime())) {
-					removeFromDateBase(this.aero.getFligths().get(i).getID());
-					this.aero.getFligths().remove(i);
-					add1Flight(false);
-				}
-			}
-		}
-	}
-	public void changeFlightState(String newF,String id) throws ClassNotFoundException, SQLException {
-		String sql = "UPDATE Vuelos\r\n" + 
-				"SET Flight_state = '"+newF+"'\r\n" + 
-				"where id_p like '" + id + "'";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.execute();
-		ps.close();
-		c.desconectar();
-		
-	}
-
-	public void removeFromDateBase(String id) throws ClassNotFoundException, SQLException {
-		String sql = "delete from vuelos where id_p like '" + id + "'";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.execute();
-		ps.close();
-		c.desconectar();
-		
-	}
-
-	public void deleteAll() throws ClassNotFoundException, SQLException {
-		String sql = "delete from vuelos";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.execute();
-		ps.close();
-		c.desconectar();
-		this.aero.getFligths().clear();
-	}
-
-	@Override
-	public void update(NotifyData n) {
-		switch (n.getN()) {
-		
-		case REFRESH:
-			try {
-				check();
-				this.inf.addAll();
-				this.atm.addAll();
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-			break;
-		default:
-			break;
-		}
-	}
-
-	
 
 }
