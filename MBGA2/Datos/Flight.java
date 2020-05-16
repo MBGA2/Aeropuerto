@@ -3,7 +3,6 @@ package Datos;
 import java.sql.Timestamp;
 
 import Observer.Observable;
-import Utils.atm.Path;
 
 public class Flight extends Observable{
 	private String destination;
