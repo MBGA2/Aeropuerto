@@ -46,7 +46,7 @@ public Timestamp getLastArr() {
 	Timestamp t = null;
 	for (int i = 0; i < this.fligths.size();i++) {
 		if(this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
-			t = this.fligths.get(i).getArrival_time();
+			t = this.fligths.get(i).getDeparture_time();
 		}
 	}
 	return t;
@@ -89,6 +89,9 @@ public Timestamp getLastArr() {
 	}
 	public Mapm getMap() {
 		return map;
+	}
+	public void setMap() {
+		this.map = new Mapm();
 	}
 	public GeneratePath getPath() {
 		return path;
