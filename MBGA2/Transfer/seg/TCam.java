@@ -2,7 +2,7 @@ package Transfer.seg;
 
 import Datos.seg.camState;
 
-public class TCam{
+public class TCam implements Transfer{
 
 	public TCam(String id_cam, camState camStat, boolean r) {
 		//super();
@@ -29,7 +29,7 @@ public class TCam{
 	this.onRepairs = (unArray[2].equals("1")) ? true : false;
 		
 	}
-	
+
 	private String id_cam;
 	private camState camStat;
 	private boolean onRepairs;
