@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import Observer.Observable;
 
-public class Flight extends Observable{
+public class Flight extends Observable implements Comparable<Flight> {
 	private String destination;
 	private String source;
 	private Timestamp departure_time;
@@ -62,6 +62,9 @@ public class Flight extends Observable{
 			if (realDate.compareTo(arrival_time) == -1) {
 				if (realDate.compareTo(dateAux3) == 1) {
 					this.Flight_state = "Landing";
+				}
+				else if(realDate.compareTo(departure_time) == -1){
+					this.Flight_state = "Waiting";
 				}
 				else {
 					this.Flight_state = "On_Going";
@@ -188,5 +191,29 @@ public class Flight extends Observable{
 		this.retarded_value = retarded_value;
 	}
 
+
+
+	@Override
+	public int compareTo(Flight o) {
+		if (this.getSource().equalsIgnoreCase("Madrid")) {
+			if(o.getSource().equalsIgnoreCase("Madrid") && this.getDeparture_time().after(o.getDeparture_time())) {
+				return 1;
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			if(o.getSource().equalsIgnoreCase("Madrid")) {
+				return 1;
+			}
+				else if (this.getArrival_time().after(o.getArrival_time())) {
+					return 1;		
+				}
+				else {
+					return -1;
+			}
+		}
+	}
 
 }

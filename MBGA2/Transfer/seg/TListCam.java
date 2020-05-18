@@ -3,13 +3,13 @@ package Transfer.seg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TListCam {
+public class TListCam implements Transfer{
 	
-	private List <TCam> listCam;
+	private List <TCam> listCam = new ArrayList<TCam>();
 	
 	public TListCam()
 	{
-		listCam = new ArrayList<TCam>();
+		//listCam = new ArrayList<TCam>();
 	}
 
 	public List<TCam> getListCam() {
@@ -31,7 +31,7 @@ public class TListCam {
 	
 	public int getSize()
 	{
-		return listCam.size();
+		return listCam != null?listCam.size() : -1;
 	}
 	
 	public List<String> toStringTable()

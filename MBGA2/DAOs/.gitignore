@@ -4,3 +4,9 @@
 /seg_camlist_dao.class
 /tor_dao.class
 /map_dao.class
+/CamDAO.class
+/CamListDAO.class
+/DAO.class
+/seg_CamDAO.class
+/seg_dao_cam.class
+/seg_dao_camlist.class

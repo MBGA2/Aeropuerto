@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -16,12 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import Controladores.inf_controller;
 import Vista.MainView;
@@ -137,12 +131,12 @@ public class inf_view {
 					inf_controller.search((String) token);
 				}
 			}
-		});
+		});/*
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(miTabla2.getModel());
 		miTabla2.setRowSorter(sorter);
 		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
 		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
-		sorter.setSortKeys(sortKeys);
+		sorter.setSortKeys(sortKeys);*/
 	}
 
 	private void salidas() {

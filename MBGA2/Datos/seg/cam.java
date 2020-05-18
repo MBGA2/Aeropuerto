@@ -44,7 +44,17 @@ public class cam {
 	public void setState(camState camStat) {
 		this.camStat = camStat;
 	}
+	/*
+	public String toString()
+	{
+		
+	}*/
+	
 	public String toString() {	
 		return id_cam + " " + camStat + " " + onRepairs;
+	}
+
+	public boolean equals(cam c) {
+		return this.id_cam.equals(c.id_cam) && this.onRepairs == c.onRepairs && this.camStat == c.camStat;
 	}
 }
