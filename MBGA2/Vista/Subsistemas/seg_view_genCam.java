@@ -218,7 +218,7 @@ public void compIn(){
     
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
          String sese = null;
-		seg_view_framecamsingle camAmp = new seg_view_framecamsingle(sese); 
+		new seg_view_framecamsingle(sese); 
     }//GEN-LAST:event_jPanel2MouseClicked
 
 
