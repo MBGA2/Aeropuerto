@@ -36,4 +36,13 @@ public class NumberFlights {
 				n++;
 		return n;
 	}
+	public List<Flight> fl(Timestamp ini) {
+		List<Flight> aux = new ArrayList<Flight>();
+		for (InfoPlaneOnMap f : this.infoFlights) {
+			if (f.getInitialD().before(ini) && f.getLastD().after(ini)) {
+				aux.add(f.getFlight());
+			}
+		}
+		return aux;	
+	}
 }
