@@ -46,7 +46,7 @@ public class main_controller implements Observer {
 
 	public void init() throws ClassNotFoundException, SQLException {
 		// readFlight();
-		seg.loadData();
+		seg.init();
 
 	}
 

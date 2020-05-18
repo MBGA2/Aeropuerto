@@ -26,7 +26,6 @@ public class tor_view extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 	private tor_dao dao;
 	private tor_controller tor;
 	/**
