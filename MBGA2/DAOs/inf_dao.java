@@ -1,6 +1,7 @@
 package DAOs;
 
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -73,7 +74,7 @@ public class inf_dao {
 	}
 
 	public void buscarVuelosTableModel(DefaultTableModel model, DefaultTableModel model2, List<Flight> l) {
-
+		Collections.sort(l);;
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getSource().equalsIgnoreCase("Madrid")) {
 				if (!l.get(i).getFlight_state().equalsIgnoreCase("On_Going")) {
