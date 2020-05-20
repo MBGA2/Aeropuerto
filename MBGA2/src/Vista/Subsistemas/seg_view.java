@@ -30,9 +30,8 @@ import Utils.NotifyData;
 import java.awt.Dimension;
 
 
-public class seg_view extends JPanel implements Observer{
+public class seg_view implements Observer{
 	
-	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
 	//private JPanel panelPop;
@@ -80,7 +79,6 @@ public class seg_view extends JPanel implements Observer{
 	
 		this.genView = new JButton("Vista general de camaras");
 	
-		this.setVisible(false);
 		//listCam lCam = new listCam();
 		//Deprecated url method
 		
@@ -195,7 +193,6 @@ public class seg_view extends JPanel implements Observer{
 		this.dataTable = new JTable(this.tableModel);
 		this.table = new JScrollPane(this.dataTable);
 		//table.
-		this.add(this.panel);
 		
 		
 	//	this.listCams.setBounds(200, 200, 150, 40);// x,y,ancho,alto

@@ -2,7 +2,6 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -63,6 +62,8 @@ public class MainView extends JFrame{
 
 	private JPanel MAPpanel;
 
+	private seg_view seg_view;
+
 	
 
 
@@ -91,7 +92,8 @@ public class MainView extends JFrame{
 		this.MAPpanel = map_view.getMainInfo();
 		this.atm_view = new atm_view(this.ctrl.getAtm());
 		this.ATMpanel = atm_view.getMainPanel();
-		this.SEGpanel = new seg_view(this.ctrl.getSeg()).getMainPanel();
+		this.seg_view = new seg_view(this.ctrl.getSeg());
+		this.SEGpanel = seg_view.getMainPanel();
 		this.TORpanel = new tor_view(this.ctrl.getTor()).getMainPanel();
 		//this.clock1 = new SimpleDigitalClock(); 
 

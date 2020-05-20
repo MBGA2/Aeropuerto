@@ -21,7 +21,7 @@ import Utils.NotifyData;
 
 public class seg_controller {
 
-	public static final String nombreArch = "Datos/seg/listaCamaras.txt";//rev
+	public static final String nombreArch = "src/Datos/seg/listaCamaras.txt";//rev
 	private Aeropuerto data;
 	private DaoFactoryImp f = DaoFactoryImp.getInstance();;
 	
