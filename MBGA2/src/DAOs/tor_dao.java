@@ -58,7 +58,7 @@ public class tor_dao implements Observer {
 					ps.execute();
 					ps.close();
 					c.desconectar();
-				} catch (ClassNotFoundException | SQLException e) {
+				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
 					//System.out.println("No se puede añadir a la bbdd en el id: " + vuelo.getID());
 				}
@@ -157,8 +157,11 @@ public class tor_dao implements Observer {
 						c.desconectar();
 						
 					
-					} catch (ClassNotFoundException | SQLException e) {
+					} catch (SQLException e) {
 						System.out.println("Error de conexion en la BBDD");
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}

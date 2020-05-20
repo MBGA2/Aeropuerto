@@ -3,6 +3,8 @@ package Controladores;
 import java.sql.*;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import BD.conexionBD;
 import Datos.Flight;
 import Datos.GeneratePlaneInfo;
@@ -26,14 +28,23 @@ public class main_controller implements Observer {
 	private Random rand;
 	private conexionBD c;
 	private GeneratePlaneInfo info;
+	private Boolean connected;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
-	public main_controller(Aeropuerto aero) {
+	public main_controller(Aeropuerto aero) throws ClassNotFoundException {
 		this.first = aero.getTime();
 		info = aero.getGen();
 		rand = new Random();
 		c = new conexionBD();
+		if(c.conectar() == null) {
+			connected = false;
+			JOptionPane.showConfirmDialog(null,
+	                "No estas conectado a la BD, los resultados no se guardaran", "", JOptionPane.DEFAULT_OPTION);
+		}
+		else {
+			connected = true;
+		}
 		this.aero = aero;
 		this.seg = new seg_controller(this.aero);
 		this.atm = new atm_controller(this.aero);
@@ -46,7 +57,9 @@ public class main_controller implements Observer {
 
 	public void init() throws ClassNotFoundException, SQLException {
 		seg.init();
+		if(connected) {
 		readFlightFromDatabase();
+		}
 	}
 
 	public void generateFlight(int n) throws ClassNotFoundException, SQLException {
@@ -101,7 +114,7 @@ public class main_controller implements Observer {
 		Timestamp arrival_time = new Timestamp(departure_time.getTime() + p.getDuration() * MIN);
 		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
 		// calendar = new Timestamp(calendar.getTime() + rand.nextInt(5) * MIN);
-		
+		if(connected) {
 		  String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p,flight_state,plane_state) values(?,?,?,?,?,?,?,?,?)"; 
 		  PreparedStatement ps = c.conectar().prepareStatement(sql); 
 		  ps.setString(1, destination); 
@@ -116,7 +129,7 @@ public class main_controller implements Observer {
 		  ps.execute(); 
 		  ps.close(); 
 		  c.desconectar();
-		 
+		} 
 		Flight f = new Flight();
 		f.setArrival_time(arrival_time);
 		f.setBoarding_time(boarding_time);
@@ -141,6 +154,7 @@ public class main_controller implements Observer {
 		Path p = calculatePath(source, "Madrid", departure_time);
 		Timestamp arrival_time = new Timestamp(departure_time.getTime() + p.getDuration() * MIN);
 		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
+		if(connected) {
 		String sql = "insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p,flight_state,plane_state) values(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = c.conectar().prepareStatement(sql);
 		ps.setString(1, "Madrid");
@@ -156,6 +170,7 @@ public class main_controller implements Observer {
 		ps.execute();
 		ps.close();
 		c.desconectar();
+		}
 		Flight f = new Flight();
 		f.setArrival_time(arrival_time);
 		f.setBoarding_time(boarding_time);
@@ -191,7 +206,7 @@ public class main_controller implements Observer {
 		}
 		String company = info.getCompanies().get(rand.nextInt(info.getCompanies().size()));
 		String ID = info.randomID();
-		
+		if(connected) {
 		String sql ="insert into vuelos(destination,source,departure_time,arrival_time,company,boarding_time,id_p,flight_state,plane_state) values(?,?,?,?,?,?,?,?,?)"; 
 		PreparedStatement ps = c.conectar().prepareStatement(sql); 
 		ps.setString(1,	destination); 
@@ -206,6 +221,7 @@ public class main_controller implements Observer {
 		ps.execute();
 		ps.close(); 
 		c.desconectar();
+		}
 		Flight f = new Flight();
 		f.setArrival_time(arrival_time);
 		f.setBoarding_time(boarding_time);
@@ -251,33 +267,33 @@ public class main_controller implements Observer {
 	}
 
 	private void changeFlightState(String newF, String id) throws ClassNotFoundException, SQLException {
-		
+		if(connected) {
 		  String sql = "UPDATE Vuelos\r\n" + "SET Flight_state = '"+newF+"'\r\n" + "where id_p like '" + id + "'"; 
 		  PreparedStatement ps =c.conectar().prepareStatement(sql); 
 		  ps.execute(); 
 		  ps.close();
 		  c.desconectar();
-		 
+		}
 	}
 
 	private void removeFromDateBase(String id) throws ClassNotFoundException, SQLException {
-		
+		if(connected) {
 		 String sql = "delete from vuelos where id_p like '" + id + "'";
 		 PreparedStatement ps = c.conectar().prepareStatement(sql); 
 		 ps.execute();
 		 ps.close(); 
 		 c.desconectar();
-		 
+		}
 	}
 
 	public void deleteAll() throws ClassNotFoundException, SQLException {
-		
+		if(connected) {
 		 String sql = "delete from vuelos"; 
 		 PreparedStatement ps = c.conectar().prepareStatement(sql); 
 		 ps.execute(); 
 		 ps.close();
 		 c.desconectar(); 
-		 
+		} 
 		this.aero.getFligths().clear();
 		this.aero.setMap();
 	}
