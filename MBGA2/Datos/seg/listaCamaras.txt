@@ -1,6 +1,0 @@
-Cargo 0 0
-Embarques1 0 0
-Embarques2 0 0
-SalEmerg 0 0
-Aduanas 0 1
-Almacenes 1 0
