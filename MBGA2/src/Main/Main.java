@@ -2,12 +2,9 @@ package Main;
 
 import java.awt.EventQueue;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
-import BD.conexionBD;
 import Controladores.main_controller;
 import Vista.MainView;
 
