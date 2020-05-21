@@ -18,16 +18,26 @@ public class NumberFlights {
 		this.infoFlights.add(new InfoPlaneOnMap(ini,last,f));
 	}
 	public void removeFlight(Flight f) {
-		for (InfoPlaneOnMap aux : infoFlights) 
-			if (aux.getFlight().getID().equalsIgnoreCase(f.getID()))
-					this.infoFlights.remove(aux);
-	}
-	public void delayFlight(Flight f, int d) {
-		for(InfoPlaneOnMap aux : infoFlights)
-			if(aux.getFlight().getID().equalsIgnoreCase(f.getID())) {
-				aux.setLastD(new Timestamp(aux.getLastD().getTime() + d * 60 * 1000));
-				// for recorriendo el resto de casillas y aumentarlas 5 minutos
+		InfoPlaneOnMap temp = null;
+		for (InfoPlaneOnMap aux : this.infoFlights) 
+			if (aux.getFlight().getID().equalsIgnoreCase(f.getID())) {
+					temp = aux;
+					break;
 			}
+		
+		if (temp != null)
+			this.infoFlights.remove(temp);
+	}
+	public void delayFlight(Flight f, int d, boolean first) {
+		InfoPlaneOnMap temp = null;
+		for(InfoPlaneOnMap aux : infoFlights)
+			if(aux.getFlight().getID().equalsIgnoreCase(f.getID())) 
+				temp = aux;
+		if (temp != null) {
+			temp.setLastD(new Timestamp(temp.getLastD().getTime() + d * 60 * 1000));
+			if (!first)
+				temp.setInitialD(new Timestamp(temp.getInitialD().getTime() + d * 60 * 1000));
+		}
 	}
 	public int flightsOnTime(Timestamp ini) {
 		int n = 0;
@@ -38,11 +48,9 @@ public class NumberFlights {
 	}
 	public List<Flight> fl(Timestamp ini) {
 		List<Flight> aux = new ArrayList<Flight>();
-		for (InfoPlaneOnMap f : this.infoFlights) {
-			if (f.getInitialD().before(ini) && f.getLastD().after(ini)) {
+		for (InfoPlaneOnMap f : this.infoFlights) 
+			if (f.getInitialD().before(ini) && f.getLastD().after(ini)) 
 				aux.add(f.getFlight());
-			}
-		}
 		return aux;	
 	}
 }

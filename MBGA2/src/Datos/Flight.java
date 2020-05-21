@@ -23,7 +23,15 @@ public class Flight extends Observable implements Comparable<Flight> {
 	
 
 	public Flight() {
-		
+	}
+
+	public Flight(String source, String company, String id, String state, Timestamp time) {
+		this.source = source;
+		this.company = company;
+		this.ID = id;
+		this.Flight_state = state;
+		this.plane_state = state;
+		this.realDate = time;
 	}
 
 	public String checkState() {

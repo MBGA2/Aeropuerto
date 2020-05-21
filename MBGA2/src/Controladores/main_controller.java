@@ -303,7 +303,7 @@ public class main_controller implements Observer {
 	private Path calculatePath(String source, String dest, Timestamp ini) {
 
 		String stop = "none";
-		int n = 0, xS = 0, yS = 0;
+		int n = 0;
 
 		InfoCity destInfo = null;
 
@@ -312,8 +312,6 @@ public class main_controller implements Observer {
 				destInfo = cityDest;
 		for (InfoCity citySource : this.aero.getPath().getCities())
 			if (source.equalsIgnoreCase(citySource.getName())) {
-				xS = citySource.getPosX();
-				yS = citySource.getPosY();
 				if (this.aero.getPath().getDirect().get(source).contains(dest)) {
 					stop = "Direct";
 					n = Math.abs(citySource.getPosX() - destInfo.getPosX())
@@ -346,7 +344,7 @@ public class main_controller implements Observer {
 					}
 				}
 			}
-		return new Path(dest, stop, 30 * n, xS, yS);
+		return new Path(dest, stop, rand.nextInt((30 - 25) + 1) + 25 * n);
 	}
 
 	@Override

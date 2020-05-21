@@ -7,6 +7,7 @@ import java.util.List;
 import Datos.Flight;
 import Datos.GeneratePath;
 import Datos.GeneratePlaneInfo;
+import Datos.Path;
 import Datos.map.Mapm;
 import Datos.seg.listCam;
 import Observer.Observable;
@@ -16,6 +17,7 @@ public class Aeropuerto extends Observable{
 	protected String nombre;
 	protected MainView vista;
 	private List<Flight> fligths;
+	private List<Flight> sar;
 	private GeneratePath path;
 	private Timestamp time;
 	private listCam camaras;
@@ -32,6 +34,7 @@ public class Aeropuerto extends Observable{
 		this.time = new Timestamp(System.currentTimeMillis());
 		this.gen = new GeneratePlaneInfo();
 		this.map = new Mapm();
+		this.setSar(this.setSAR());
 	}
 	public Timestamp getLastDep() {
 		Timestamp t = null;
@@ -42,14 +45,23 @@ public class Aeropuerto extends Observable{
 		}
 		return t;
 	}
-public Timestamp getLastArr() {
-	Timestamp t = null;
-	for (int i = 0; i < this.fligths.size();i++) {
-		if(this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
-			t = this.fligths.get(i).getDeparture_time();
-		}
+	private ArrayList<Flight> setSAR() {
+		ArrayList<Flight> aux = new ArrayList<Flight>();
+		aux.add(new Flight("Madrid","SAR","sar1","Waiting", this.getTime()));
+		aux.add(new Flight("Madrid","SAR","sar2","Waiting", this.getTime()));
+		aux.add(new Flight("Madrid","SAR","sar3","Waiting", this.getTime()));
+		aux.add(new Flight("Madrid","SAR","sar4","Waiting", this.getTime()));
+		aux.add(new Flight("Madrid","SAR","sar5","Waiting", this.getTime()));
+		return aux;
 	}
-	return t;
+	public Timestamp getLastArr() {
+		Timestamp t = null;
+		for (int i = 0; i < this.fligths.size();i++) {
+			if(this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
+				t = this.fligths.get(i).getDeparture_time();
+			}
+		}
+		return t;
 	}
 	public GeneratePlaneInfo getGen() {
 		return gen;
@@ -98,5 +110,11 @@ public Timestamp getLastArr() {
 	}
 	public void setPath(GeneratePath path) {
 		this.path = path;
+	}
+	public List<Flight> getSar() {
+		return sar;
+	}
+	public void setSar(List<Flight> sar) {
+		this.sar = sar;
 	}
 }

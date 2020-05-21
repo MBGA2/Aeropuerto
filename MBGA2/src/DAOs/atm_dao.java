@@ -19,20 +19,15 @@ public class atm_dao {
 	}
 	
 	public void planeCrash(Flight f) {
-		if (!f.getPlane_state().equalsIgnoreCase("Crashed")){
+		if (!f.getPlane_state().equalsIgnoreCase("Crashed"))
 			f.setPlane_state("Crashed");
-			
-			//Enviar Sar
-//			warnSAR();
-			
-		}
-		
 	}
 	public void planeDelay(int d, Flight f) {
-		if(!f.getPlane_state().equalsIgnoreCase("Crashed")) {
+		if(!f.getPlane_state().equalsIgnoreCase("Crashed") && !f.getPlane_state().equalsIgnoreCase("Delayed")) {
 			f.setPlane_state("Delayed");
 			f.setRetarded_value(d);
-		}
+		} else if (!f.getPlane_state().equalsIgnoreCase("Crashed"))
+			f.setRetarded_value(d+f.getRetarded_value());
 	}
 	
 	public boolean flightFinished(Flight flight) {
@@ -107,12 +102,12 @@ public class atm_dao {
 		fila[5] = f.getCompany();
 		fila[6] = f.getPlane_state();
 		if (f.getPlane_state().equalsIgnoreCase("Crashed")) {
-			fila[7] = "Estrellado";
-			fila[8] = "Pa Siempre";
+			fila[7] = "Accidente";
+			fila[8] = "";
 		} else if (f.getPlane_state().equalsIgnoreCase("Damaged")
 				|| (f.getPlane_state().equalsIgnoreCase("Delayed"))) {
 			fila[7] = "Retrasado";
-			fila[8] = "5 Minutos por ahora";
+			fila[8] = Integer.toString(f.getRetarded_value()) + " minutos";
 		} else {
 			fila[7] = "";
 			fila[8] = "";

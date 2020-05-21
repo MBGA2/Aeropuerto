@@ -20,6 +20,12 @@ public class atm_SA {
 	public void setOnGoing(DefaultTableModel onGoing) {
 		this.onGoing = onGoing;
 	}
+	public boolean planeNotCrashed(String text, List<Flight> fligths) {
+		for(Flight f : fligths) 
+			if (f.getID().equalsIgnoreCase(text))
+				return true;
+		return false;
+	}
 	public Flight planeCrashed(String a, List<Flight> fligths) {
 		Flight fli = null;
 		this.onGoing.setRowCount(0);
@@ -34,7 +40,7 @@ public class atm_SA {
 	public Flight planeDelayed(String text, List<Flight> fligths) {
 		Flight fli = null;
 		this.onGoing.setRowCount(0);
-		this.setDelay(calcularDelay());
+		this.setDelay(this.calcularDelay());
 		for(Flight f : fligths) 
 			if (f.getID().equalsIgnoreCase(text)) {
 				this.dao.planeDelay(this.delay,f);
@@ -79,5 +85,6 @@ public class atm_SA {
 	public void setDelay(int delay) {
 		this.delay = delay;
 	}
+	
 	
 }

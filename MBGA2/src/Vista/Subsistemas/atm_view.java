@@ -178,7 +178,7 @@ public class atm_view extends JFrame{
 		this.panel.add(this.delayField, constraints);
 
 //		this.dao.tableFill(tableModel);
-		this.atm_ctrl.addModels(tableModel);
+		this.atm_ctrl.addModels(this.tableModel);
 
 		this.dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override

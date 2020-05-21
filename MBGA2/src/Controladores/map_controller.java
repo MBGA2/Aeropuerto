@@ -83,6 +83,7 @@ public class map_controller {
 				}
 				j++;
 			}
+			
 			// Recorro de origen a escala y de escala a destino si hay escala
 
 		}
@@ -113,6 +114,8 @@ public class map_controller {
 			}
 			j++;
 		}
+		this.aero.getMap().addFlightInMap(f, xSource, ySource, new Timestamp(t.getTime() + (ti * j)),
+				new Timestamp(t.getTime() + (ti * (j + 1))));
 
 	}
 	public void refresh() {
