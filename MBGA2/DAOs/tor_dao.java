@@ -159,6 +159,7 @@ public class tor_dao implements Observer {
 						c.desconectar();
 					} catch (ClassNotFoundException | SQLException e) {
 						System.out.println("Error de conexion en la BBDD");
+						
 					}
 				}
 			}
