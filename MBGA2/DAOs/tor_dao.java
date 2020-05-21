@@ -26,6 +26,8 @@ public class tor_dao implements Observer {
 
 	public tor_dao(Aeropuerto aero) {
 		this.aero = aero;
+		this.aero.addObserver(this);
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -126,6 +128,7 @@ public class tor_dao implements Observer {
 		
 		Flight flightdelay  = new Flight();		
 		int  delayMinutes ;
+		System.out.println("hay una nueva notificacion"+ data.getData());
 		
 		if(data.getN() == NTYPE.TOR_DELAY ) {
 			flightdelay  = (Flight) data.getData();
@@ -155,8 +158,6 @@ public class tor_dao implements Observer {
 						ps.execute();
 						ps.close();
 						c.desconectar();
-						
-					
 					} catch (ClassNotFoundException | SQLException e) {
 						System.out.println("Error de conexion en la BBDD");
 					}
@@ -168,10 +169,32 @@ public class tor_dao implements Observer {
 			flightdelay  = (Flight) data.getData();
 			flightdelay.setFlight_state("Cancelled");
 		}
+			
+	}
+
+	public void showdelayFlights(DefaultTableModel tableModel) {
 		
-		
-		
-		
+		tableModel.setRowCount(1);
+	
+		Object[] fila = new Object[8];
+		for(int i = 0; i < this.aero.getFligths().size();i++) {
+			
+			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Delayed") || this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Cancelled") ) {
+				//"#", "Destino", "Hora Salida", "Hora Llegada", "Puerta", "ID", "Compania", "Estado"
+				
+				fila[0] = i;
+				fila[1] = this.aero.getFligths().get(i).getDestination();
+				fila[2] = parseDate(this.aero.getFligths().get(i).getDeparture_time());
+				fila[3] = parseDate(this.aero.getFligths().get(i).getArrival_time());
+				fila[4] = this.aero.getFligths().get(i).getGate();
+				fila[5] = this.aero.getFligths().get(i).getID();
+				fila[6] = this.aero.getFligths().get(i).getCompany();
+				fila[7] = parseDate(this.aero.getFligths().get(i).getBoarding_time());	
+				
+				tableModel.addRow(fila);
+			}	
+			
+		}
 		
 	}
 
