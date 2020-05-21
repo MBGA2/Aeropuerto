@@ -128,7 +128,6 @@ public class tor_dao implements Observer {
 		
 		Flight flightdelay  = new Flight();		
 		int  delayMinutes ;
-		System.out.println("hay una nueva notificacion"+ data.getData());
 		
 		if(data.getN() == NTYPE.TOR_DELAY ) {
 			flightdelay  = (Flight) data.getData();
