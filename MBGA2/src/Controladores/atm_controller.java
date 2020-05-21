@@ -60,9 +60,6 @@ public class atm_controller {
 	}
 	*/
 	
-	public void warnSAR() {
-		//Timer Rescate, cuando acaba el avion se quita de lista de flights
-	}
 
 	public void addModelObserver(Observer o) {
 		airport.addObserver(o);
@@ -149,12 +146,13 @@ public class atm_controller {
 		this.airport.notifyAllO(new NotifyData(NTYPE.TOR_DELAY, f, this.sa.getDelay()));
 	}
 
-	public void addModels(DefaultTableModel tableModel) {
+	public void addModels(DefaultTableModel tableModel,DefaultTableModel tableSar) {
 		this.sa.setOnGoing(tableModel);
+		this.sa.setSar(tableSar);
 	}
 
 	public void addAll() {
 		this.sa.addFlights(this.airport.getFligths());	
+		this.sa.fillSar(this.airport.getSar());
 	}
-
 }

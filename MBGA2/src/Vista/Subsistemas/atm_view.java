@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -34,10 +35,12 @@ public class atm_view extends JFrame{
 	private JButton searchAuthority;
 	private JTextField fieldPlane;
 	private JTextField fieldPath;
-	private JTextField fieldAuthority;
 	private JTable dataTable;
+	private JTable sarTable;
 	private DefaultTableModel tableModel;
+	private DefaultTableModel tableSar;
 	private JScrollPane table;
+	private JDialog dialog;
 	private atm_controller atm_ctrl;
 
 	private JButton crashButton;
@@ -53,16 +56,33 @@ public class atm_view extends JFrame{
 
 		this.searchPlane = new JButton("Buscar Avion");
 		this.searchPath = new JButton("Buscar Ruta");
-		this.searchAuthority = new JButton("Buscar SAR");
+		this.searchAuthority = new JButton("Mostrar SAR");
 		this.fieldPlane = new JTextField(20);
 		this.fieldPath = new JTextField(20);
-		this.fieldAuthority = new JTextField(20);
 
 		this.crashButton = new JButton("Estrellar Avion");
 		this.crashField = new JTextField(20);
 		this.delayButton = new JButton("Retrasar Avion");
 		this.delayField = new JTextField(20);
+		
+		this.dialog = new JDialog();
 
+		this.tableSar = new DefaultTableModel() {
+
+			String[] planeInfo = { "ID", "Tipo", "Estado", "Avion Rescatado", "Alerta",
+					"Retraso" };
+
+			@Override
+			public int getColumnCount() {
+				return planeInfo.length;
+			}
+
+			@Override
+			public String getColumnName(int index) {
+				return planeInfo[index];
+			}
+		};
+		
 		this.tableModel = new DefaultTableModel() {
 			List<Color> rowColours = Arrays.asList(Color.RED, Color.GREEN, Color.CYAN);
 
@@ -95,6 +115,9 @@ public class atm_view extends JFrame{
 		this.table.setPreferredSize(new Dimension(900, 600));
 		this.table.setViewportView(dataTable);
 		this.getContentPane().add(this.panel);
+		
+		this.sarTable = new JTable(this.tableSar);
+		
 
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 0; // El �rea de texto empieza en la columna cero.
@@ -127,10 +150,10 @@ public class atm_view extends JFrame{
 		constraints.gridy = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.panel.add(this.fieldPath, constraints);
-		constraints.weighty = 1.0;
-		constraints.gridy = 2;
-		constraints.anchor = GridBagConstraints.NORTH;
-		this.panel.add(this.fieldAuthority, constraints);
+//		constraints.weighty = 1.0;
+//		constraints.gridy = 2;
+//		constraints.anchor = GridBagConstraints.NORTH;
+//		this.panel.add(this.fieldAuthority, constraints);
 
 		constraints.weighty = 1.0;
 		constraints.gridx = 2;
@@ -178,7 +201,7 @@ public class atm_view extends JFrame{
 		this.panel.add(this.delayField, constraints);
 
 //		this.dao.tableFill(tableModel);
-		this.atm_ctrl.addModels(this.tableModel);
+		this.atm_ctrl.addModels(this.tableModel,this.tableSar);
 
 		this.dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
@@ -196,6 +219,19 @@ public class atm_view extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+			}
+
+		});
+		
+		this.searchAuthority.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dialog.setVisible(true);
+				dialog.setTitle("Lista de aviones de salvamento");
+				dialog.setContentPane(sarTable);
+				dialog.setSize(500, 200);
+				dialog.setLocation(500,500);
 			}
 
 		});

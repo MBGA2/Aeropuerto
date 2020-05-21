@@ -10,6 +10,7 @@ import Datos.Flight;
 public class atm_SA {
 	private atm_dao dao;
 	private DefaultTableModel onGoing;
+	private DefaultTableModel sar;
 	private int delay;
 	public atm_SA() {
 		this.dao = new atm_dao();
@@ -19,6 +20,11 @@ public class atm_SA {
 	}
 	public void setOnGoing(DefaultTableModel onGoing) {
 		this.onGoing = onGoing;
+	}
+	public void fillSar(List<Flight> sar) {
+		this.sar.setRowCount(0);
+		this.dao.tableSarFill(this.sar,sar);
+		this.sar.fireTableDataChanged();
 	}
 	public boolean planeNotCrashed(String text, List<Flight> fligths) {
 		for(Flight f : fligths) 
@@ -84,6 +90,12 @@ public class atm_SA {
 	}
 	public void setDelay(int delay) {
 		this.delay = delay;
+	}
+	public DefaultTableModel getSar() {
+		return sar;
+	}
+	public void setSar(DefaultTableModel sar) {
+		this.sar = sar;
 	}
 	
 	

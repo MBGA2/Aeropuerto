@@ -115,5 +115,34 @@ public class atm_dao {
 		return fila;
 	}
 
+	public void tableSarFill(DefaultTableModel sarTable, List<Flight> sar) {
+		for (int i = 0; i < sar.size(); i++) {
+			Object[] fila = constructRowSar(sar.get(i));
+			sarTable.addRow(fila);
+		}
+	}
 	
+	public Object[] constructRowSar(Flight f) {
+		Object[] fila = new Object[9];
+		fila[0] = f.getID();
+		fila[1] = f.getCompany();
+		fila[2] = f.getPlane_state();
+		if(f.getPlane_state().equalsIgnoreCase("On_Going"))
+			fila[3] = f.getPath().getStopover();
+		else
+			fila[3] = "";
+		if (f.getPlane_state().equalsIgnoreCase("Crashed")) {
+			fila[4] = "Accidente";
+			fila[5] = "";
+		} else if (f.getPlane_state().equalsIgnoreCase("Damaged")
+				|| (f.getPlane_state().equalsIgnoreCase("Delayed"))) {
+			fila[4] = "Retrasado";
+			fila[5] = Integer.toString(f.getRetarded_value()) + " minutos";
+		} else {
+			fila[4] = "";
+			fila[5] = "";
+		}
+		return fila;
+	}
+
 }
