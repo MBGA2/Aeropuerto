@@ -13,13 +13,6 @@ public class Main {
 
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, UnknownHostException, IOException {
-		//c.desconectar();
-		/*conexion c = new conexion();
-		String sql = "set autocommit on";
-		PreparedStatement ps = c.conectar().prepareStatement(sql);
-		ps.execute();
-		ps.close();
-		c.desconectar();*/
 		Aeropuerto aero = new Aeropuerto("MBGA");
 		main_controller ctrl = new main_controller(aero);
 		

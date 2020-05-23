@@ -12,10 +12,11 @@ import Datos.seg.listCam;
 import Observer.Observable;
 import Vista.MainView;
 
-public class Aeropuerto extends Observable{
+public class Aeropuerto extends Observable {
 	protected String nombre;
 	protected MainView vista;
 	private List<Flight> fligths;
+	private List<Flight> sar;
 	private GeneratePath path;
 	private Timestamp time;
 	private listCam camaras;
@@ -32,25 +33,39 @@ public class Aeropuerto extends Observable{
 		this.time = new Timestamp(System.currentTimeMillis());
 		this.gen = new GeneratePlaneInfo();
 		this.map = new Mapm();
+		this.setSar(this.setSAR());
 	}
+
 	public Timestamp getLastDep() {
 		Timestamp t = null;
-		for (int i = 0; i < this.fligths.size();i++) {
-			if(this.fligths.get(i).getSource().equalsIgnoreCase("Madrid")) {
+		for (int i = 0; i < this.fligths.size(); i++) {
+			if (this.fligths.get(i).getSource().equalsIgnoreCase("Madrid")) {
 				t = this.fligths.get(i).getDeparture_time();
 			}
 		}
 		return t;
 	}
-public Timestamp getLastArr() {
-	Timestamp t = null;
-	for (int i = 0; i < this.fligths.size();i++) {
-		if(this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
-			t = this.fligths.get(i).getDeparture_time();
+
+	private ArrayList<Flight> setSAR() {
+		ArrayList<Flight> aux = new ArrayList<Flight>();
+		aux.add(new Flight("Madrid", "SAR", "ISSAR1-ES", "Waiting", this.getTime()));
+		aux.add(new Flight("Madrid", "SAR", "ISSAR2-ES", "Waiting", this.getTime()));
+		aux.add(new Flight("Madrid", "SAR", "FRSAR1-ES", "Waiting", this.getTime()));
+		aux.add(new Flight("Madrid", "SAR", "GES5SS-ES", "Waiting", this.getTime()));
+		aux.add(new Flight("Madrid", "SAR", "RSN77K-ES", "Waiting", this.getTime()));
+		return aux;
+	}
+
+	public Timestamp getLastArr() {
+		Timestamp t = null;
+		for (int i = 0; i < this.fligths.size(); i++) {
+			if (this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
+				t = this.fligths.get(i).getDeparture_time();
+			}
 		}
+		return t;
 	}
-	return t;
-	}
+
 	public GeneratePlaneInfo getGen() {
 		return gen;
 	}
@@ -67,8 +82,6 @@ public Timestamp getLastArr() {
 		this.time = time;
 	}
 
-
-
 	public void setVista(MainView vista) {
 		this.vista = vista;
 	}
@@ -84,19 +97,32 @@ public Timestamp getLastArr() {
 	public void setFligths(List<Flight> fligths) {
 		this.fligths = fligths;
 	}
+
 	public listCam getCamaras() {
 		return camaras;
 	}
+
 	public Mapm getMap() {
 		return map;
 	}
+
 	public void setMap() {
 		this.map = new Mapm();
 	}
+
 	public GeneratePath getPath() {
 		return path;
 	}
+
 	public void setPath(GeneratePath path) {
 		this.path = path;
+	}
+
+	public List<Flight> getSar() {
+		return sar;
+	}
+
+	public void setSar(List<Flight> sar) {
+		this.sar = sar;
 	}
 }

@@ -55,33 +55,26 @@ public class map_dao {
 				numComing++;
 			}
 		}
-		if(numGoing == 0) {
-			if(numComing == 1) {
+		if (numGoing == 0) {
+			if (numComing == 1) {
 				s = "/Iconos/coming.png";
-			}
-			else {
+			} else {
 				s = "/Iconos/comingMul.png";
 			}
-		}
-		else if (numGoing == 1) {
-			if(numComing == 0) {
+		} else if (numGoing == 1) {
+			if (numComing == 0) {
 				s = "/Iconos/going.png";
-			}
-			else if(numComing == 1) {
+			} else if (numComing == 1) {
 				s = "/Iconos/both.png";
-			}
-			else {
+			} else {
 				s = "/Iconos/bothMul2.png";
 			}
-		}
-		else {
-			if(numComing == 0) {
+		} else {
+			if (numComing == 0) {
 				s = "/Iconos/goingMul.png";
-			}
-			else if(numComing == 1) {
+			} else if (numComing == 1) {
 				s = "/Iconos/bothMul1.png";
-			}
-			else {
+			} else {
 				s = "/Iconos/bothMul.png";
 			}
 		}

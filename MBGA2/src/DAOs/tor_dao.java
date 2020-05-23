@@ -26,6 +26,8 @@ public class tor_dao implements Observer {
 
 	public tor_dao(Aeropuerto aero) {
 		this.aero = aero;
+		this.aero.addObserver(this);
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -42,13 +44,23 @@ public class tor_dao implements Observer {
 	}
 	
 	public void addGates() {
+		c = new conexionBD();
+		Boolean connected = true;
+		try {
+			if(c.conectar() == null) {
+				connected = false;
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		for (Flight vuelo : this.aero.getFligths() ) {		
 			
 			//if(vuelo.getDestination().equalsIgnoreCase("Madrid")) { // si son departures SALIDAS
 				String puerta = gates[(int) (Math.random()*(gates.length))];
 				vuelo.setGate(puerta);				
 				try {										
-					c = new conexionBD();
+					if (connected) {
 					String sql = "UPDATE vuelos\r\n" + 
 							"SET gate = '"+ puerta +"'\r\n" + 			
 							"where id_p like '" + vuelo.getID() + "'";		
@@ -57,8 +69,9 @@ public class tor_dao implements Observer {
 					ps = c.conectar().prepareStatement(sql);
 					ps.execute();
 					ps.close();
-					c.desconectar();
-				} catch (SQLException | ClassNotFoundException e) {
+					
+					}
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 					//System.out.println("No se puede añadir a la bbdd en el id: " + vuelo.getID());
 				}
@@ -155,13 +168,9 @@ public class tor_dao implements Observer {
 						ps.execute();
 						ps.close();
 						c.desconectar();
-						
-					
-					} catch (SQLException e) {
+					} catch (ClassNotFoundException | SQLException e) {
 						System.out.println("Error de conexion en la BBDD");
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						
 					}
 				}
 			}
@@ -171,10 +180,32 @@ public class tor_dao implements Observer {
 			flightdelay  = (Flight) data.getData();
 			flightdelay.setFlight_state("Cancelled");
 		}
+			
+	}
+
+	public void showdelayFlights(DefaultTableModel tableModel) {
 		
-		
-		
-		
+		tableModel.setRowCount(1);
+	
+		Object[] fila = new Object[8];
+		for(int i = 0; i < this.aero.getFligths().size();i++) {
+			
+			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Delayed") || this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Cancelled") ) {
+				//"#", "Destino", "Hora Salida", "Hora Llegada", "Puerta", "ID", "Compania", "Estado"
+				
+				fila[0] = i;
+				fila[1] = this.aero.getFligths().get(i).getDestination();
+				fila[2] = parseDate(this.aero.getFligths().get(i).getDeparture_time());
+				fila[3] = parseDate(this.aero.getFligths().get(i).getArrival_time());
+				fila[4] = this.aero.getFligths().get(i).getGate();
+				fila[5] = this.aero.getFligths().get(i).getID();
+				fila[6] = this.aero.getFligths().get(i).getCompany();
+				fila[7] = parseDate(this.aero.getFligths().get(i).getBoarding_time());	
+				
+				tableModel.addRow(fila);
+			}	
+			
+		}
 		
 	}
 

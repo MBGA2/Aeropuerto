@@ -1,11 +1,12 @@
 package Controladores;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import Datos.Flight;
-import Datos.InfoCity;
+import Datos.*;
+import Datos.map.*;
 import Main.Aeropuerto;
 import Observer.Observer;
 import SA.map_SA;
@@ -40,7 +41,6 @@ public class map_controller {
 		InfoCity destInfo = null, sourceInfo = null, stopInfo = null;
 		int j = 0, maxFlightsBox = 20;
 
-		// Busco el valor de las ciudades origen, destino y escala
 		for (InfoCity aux : this.aero.getPath().getCities())
 			if (aux.getName().equalsIgnoreCase(f.getDestination()))
 				destInfo = aux;
@@ -83,7 +83,6 @@ public class map_controller {
 				}
 				j++;
 			}
-			// Recorro de origen a escala y de escala a destino si hay escala
 
 		}
 		while (xSource != xDest || ySource != yDest) {
@@ -125,5 +124,37 @@ public class map_controller {
 	public void infoCell(int row, int col) {
 		this.SA.infoC(row,col,this.aero.getMap(),this.aero.getTime());
 		
+	}
+
+	public String rescued() {
+		String s = null;
+		Flight delete = null;
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 20; j++) {
+				if (this.aero.getMap().getInfoMap().containsKey(j + "," + i)) {
+					NumberFlights num = this.aero.getMap().getInfoMap().get(j + "," + i);
+					List<Flight> f = num.fl(this.aero.getTime());
+					Boolean isCrashed = false;
+					Boolean isSar = false;
+					int where = 0;
+					for(int k = 0; k <  f.size(); k++) {				
+						if(f.get(k).getPlane_state().equalsIgnoreCase("Crashed")) {
+							where = k;
+							delete = f.get(k);
+							isCrashed = true;
+						}
+						if(f.get(k).getCompany().equalsIgnoreCase("SAR")) {
+							isSar = true;
+						}
+						if(isCrashed && isSar) {
+							num.removeFlight(f.get(where));
+							this.aero.getMap().getInfoMap().put(j + "," + i, num);
+							return delete.getID();
+						}
+					}
+				}
+			}
+		}
+		return s;
 	}
 }

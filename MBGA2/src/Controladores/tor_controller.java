@@ -1,22 +1,27 @@
 package Controladores;
 
-import DAOs.tor_dao;
 import Main.Aeropuerto;
+import SA.tor_SA;
 
 public class tor_controller {
-	private Aeropuerto aero;
-	private tor_dao dao;
-	public tor_controller(Aeropuerto aero) {
-		this.aero = aero;
-		this.setDao(new tor_dao(this.aero));
+	private Aeropuerto airport;
+	private tor_SA sa;
+
+	public tor_controller(Aeropuerto airport) {
+		this.airport = airport;
+		this.sa = new tor_SA(this.airport);
 	}
-	public tor_dao getDao() {
-		return dao;
+
+	public tor_SA getSA() {
+		return this.sa;
 	}
-	public void setDao(tor_dao dao) {
-		this.dao = dao;
+
+	public Aeropuerto getAirport() {
+		return airport;
+	}
+
+	public void setAirport(Aeropuerto airport) {
+		this.airport = airport;
 	}
 
 }
-
-

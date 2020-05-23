@@ -5,30 +5,22 @@ import java.util.List;
 
 import Transfer.seg.Transfer;
 
-/**
- * Singleton
- * @author BlueDragon
- *
- */
-public class DaoFactoryImp{
-	
+public class DaoFactoryImp {
+
 	private static final DaoFactoryImp INSTANCE = new DaoFactoryImp();
 	private List<DaoFactory> l = new ArrayList<DaoFactory>();
-	
-	private DaoFactoryImp()
-	{
-		
+
+	private DaoFactoryImp() {
+
 	}
-	
-	public static DaoFactoryImp getInstance()
-	{
+
+	public static DaoFactoryImp getInstance() {
 		return INSTANCE;
 	}
-	
-	public DaoFactory parse(Transfer t)
-	{
-		for(DaoFactory f: l)
-			if(f.parseCroncrete(t) != null)
+
+	public DaoFactory parse(Transfer t) {
+		for (DaoFactory f : l)
+			if (f.parseCroncrete(t) != null)
 				return f;
 		return null;
 	}
@@ -36,8 +28,5 @@ public class DaoFactoryImp{
 	public void addConcreteFactory(DaoFactory e) {
 		l.add(e);
 	}
-
-	//-------------
-	
 
 }

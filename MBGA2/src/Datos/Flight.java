@@ -20,10 +20,17 @@ public class Flight extends Observable implements Comparable<Flight> {
 	private Path path;
 	public static final long HOUR = 3600 * 1000; // in milli-seconds.
 	public static final long MIN = 60 * 1000; // in milli-seconds.
-	
 
 	public Flight() {
-		
+	}
+
+	public Flight(String source, String company, String id, String state, Timestamp time) {
+		this.source = source;
+		this.company = company;
+		this.ID = id;
+		this.Flight_state = state;
+		this.plane_state = state;
+		this.realDate = time;
 	}
 
 	public String checkState() {
@@ -31,7 +38,7 @@ public class Flight extends Observable implements Comparable<Flight> {
 		Timestamp dateAux = new Timestamp(realDate.getTime() + 5 * MIN);
 		Timestamp dateAux3 = new Timestamp(arrival_time.getTime() - 15 * MIN);
 		Timestamp dateAux4 = new Timestamp(arrival_time.getTime() + 15 * MIN);
-		if(!this.plane_state.equalsIgnoreCase("Correcto")) {
+		if (!this.plane_state.equalsIgnoreCase("Correcto")) {
 			realDate = new Timestamp(realDate.getTime() - retarded_value * MIN);
 		}
 		if (this.source.equalsIgnoreCase("Madrid")) {
@@ -46,41 +53,34 @@ public class Flight extends Observable implements Comparable<Flight> {
 			} else if (realDate.compareTo(departure_time) == 1) {
 				if (dateAux.compareTo(departure_time) == 1) {
 					this.Flight_state = "On_Going";
-				}
-				else {
-				this.Flight_state = "Loaded";
+				} else {
+					this.Flight_state = "Loaded";
 				}
 			} else if (dateAux2.compareTo(departure_time) == 1) {
 				this.Flight_state = "Go_to_gate";
 			}
 
 			else {
-				this.gate = "NO_GATE";
-				//this.state = FlightState.Waiting_gate;
+				this.gate = "No_gate";
 			}
 		} else {
 			if (realDate.compareTo(arrival_time) == -1) {
 				if (realDate.compareTo(dateAux3) == 1) {
 					this.Flight_state = "Landing";
-				}
-				else if(realDate.compareTo(departure_time) == -1){
+				} else if (realDate.compareTo(departure_time) == -1) {
 					this.Flight_state = "Waiting";
-				}
-				else {
+				} else {
 					this.Flight_state = "On_Going";
 				}
-			}else if (realDate.compareTo(arrival_time) == 1) {
+			} else if (realDate.compareTo(arrival_time) == 1) {
 				if (realDate.compareTo(dateAux4) == -1) {
 					this.Flight_state = "Disbounding";
 				} else {
 					this.Flight_state = "Storing";
 				}
 			}
-			else {
-				//this.state = FlightState.Waiting_gate;
-			}
 		}
-		
+
 		return this.Flight_state;
 	}
 
@@ -115,7 +115,7 @@ public class Flight extends Observable implements Comparable<Flight> {
 	public void setBoarding_time(Timestamp boarding_time) {
 		this.boarding_time = boarding_time;
 	}
-	
+
 	public Timestamp getRealDate() {
 		return realDate;
 	}
@@ -131,9 +131,6 @@ public class Flight extends Observable implements Comparable<Flight> {
 	public void setGate(String gate) {
 		this.gate = gate;
 	}
-
-	
-
 
 	public String getSource() {
 		return source;
@@ -191,27 +188,21 @@ public class Flight extends Observable implements Comparable<Flight> {
 		this.retarded_value = retarded_value;
 	}
 
-
-
 	@Override
 	public int compareTo(Flight o) {
 		if (this.getSource().equalsIgnoreCase("Madrid")) {
-			if(o.getSource().equalsIgnoreCase("Madrid") && this.getDeparture_time().after(o.getDeparture_time())) {
+			if (o.getSource().equalsIgnoreCase("Madrid") && this.getDeparture_time().after(o.getDeparture_time())) {
 				return 1;
-			}
-			else {
+			} else {
 				return -1;
 			}
-		}
-		else {
-			if(o.getSource().equalsIgnoreCase("Madrid")) {
+		} else {
+			if (o.getSource().equalsIgnoreCase("Madrid")) {
 				return 1;
-			}
-				else if (this.getArrival_time().after(o.getArrival_time())) {
-					return 1;		
-				}
-				else {
-					return -1;
+			} else if (this.getArrival_time().after(o.getArrival_time())) {
+				return 1;
+			} else {
+				return -1;
 			}
 		}
 	}

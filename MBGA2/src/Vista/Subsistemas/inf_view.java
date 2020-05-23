@@ -7,15 +7,8 @@ import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.*;
 
 import Controladores.inf_controller;
 import Vista.MainView;
@@ -36,7 +29,7 @@ public class inf_view {
 
 	public inf_view(inf_controller i) {
 		this.inf_controller = i;
-		
+
 		this.setMainInfo(new JPanel());
 		mainInfo.setLayout(new BorderLayout());
 		salidas();
@@ -58,7 +51,7 @@ public class inf_view {
 		mainInfo.add(subPanel2, BorderLayout.NORTH);
 		mainInfo.add(subPanel, BorderLayout.CENTER);
 		mainInfo.add(search, BorderLayout.SOUTH);
-		this.inf_controller.addTables(model,model2);
+		this.inf_controller.addTables(model, model2);
 	}
 
 	private void busqueda() {
@@ -97,9 +90,9 @@ public class inf_view {
 		miBarra2 = new JScrollPane();
 		miBarra2.setPreferredSize(new Dimension(900, 600));
 		model2 = new DefaultTableModel() {
-		 public boolean isCellEditable(int row, int column) {
-		       return false;
-		    }
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
 		};
 		miTabla2 = new JTable();
 		miTabla2.setFont(new Font("Test", Font.PLAIN, 18));
@@ -131,25 +124,20 @@ public class inf_view {
 					inf_controller.search((String) token);
 				}
 			}
-		});/*
-		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(miTabla2.getModel());
-		miTabla2.setRowSorter(sorter);
-		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
-		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
-		sorter.setSortKeys(sortKeys);*/
+		});
 	}
 
 	private void salidas() {
 		miBarra = new JScrollPane();
 		miBarra.setPreferredSize(new Dimension(900, 600));
-		
+
 		model = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int row, int column) {
-			       return false;
-			    }
-			};
+				return false;
+			}
+		};
 		miTabla = new JTable();
 		miTabla.setFont(new Font("Test", Font.PLAIN, 18));
 		miTabla.setModel(model);
@@ -185,6 +173,7 @@ public class inf_view {
 			}
 		});
 	}
+
 	public JPanel getMainInfo() {
 		return mainInfo;
 	}

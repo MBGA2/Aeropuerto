@@ -1,13 +1,12 @@
 package Controladores;
 
-
 import javax.swing.table.DefaultTableModel;
 
 import Main.Aeropuerto;
 import Observer.Observer;
 import SA.inf_SA;
 
-public class inf_controller{
+public class inf_controller {
 	private Aeropuerto aero;
 	private inf_SA SA;
 	public static final long HOUR = 3600 * 1000;
@@ -42,10 +41,11 @@ public class inf_controller{
 		this.SA.searchInArrivals(search, this.aero.getFligths());
 		this.SA.searchInDepartures(search, this.aero.getFligths());
 	}
+
 	public void resetFlag() {
 		this.SA.setFlag(true);
 	}
-	
+
 	public void addTables(DefaultTableModel model, DefaultTableModel model2) {
 		this.SA.setModelArrivals(model2);
 		this.SA.setModelDepartures(model);

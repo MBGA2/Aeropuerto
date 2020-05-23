@@ -7,8 +7,8 @@ import Datos.Flight;
 public class NotifyData {
 	
 	
-	private NTYPE n;	//what
-	private Object data;	//to who
+	private NTYPE n;
+	private Object data;	
 	private Object data2;
 	private List<Flight> l;
 	
