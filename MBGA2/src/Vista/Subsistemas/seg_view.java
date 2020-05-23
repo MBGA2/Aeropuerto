@@ -18,10 +18,10 @@ import javax.swing.PopupFactory;
 import javax.swing.table.DefaultTableModel;
 
 import Controladores.seg_controller;
+import Datos.NotifyData;
 import Observer.Observer;
-import Transfer.seg.TCam;
-import Transfer.seg.TListCam;
-import Utils.NotifyData;
+import Transfers.TCam;
+import Transfers.TListCam;
 
 import java.awt.Dimension;
 

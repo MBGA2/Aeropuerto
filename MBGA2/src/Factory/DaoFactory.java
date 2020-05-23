@@ -1,7 +1,7 @@
 package Factory;
 
 import DAOs.DAO;
-import Transfer.seg.Transfer;
+import Transfers.Transfer;
 
 public abstract class DaoFactory {
 	

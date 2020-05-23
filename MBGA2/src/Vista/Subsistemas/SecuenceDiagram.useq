@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.4" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="Main.Main" project="MBGA2" file="/MBGA2/src/Main/Main.java" binary="false" 
+    label="main" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="155" y="0"/>    
+    <execution id="2">      
+      <position height="3152" width="0" x="0" y="83"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="3089" width="0" x="0" y="125"/>    
+    </execution>  
+  </object>  
+  <object id="9" language="java" name="Main.Aeropuerto" project="MBGA2" file="/MBGA2/src/Main/Aeropuerto.java" 
+    binary="false" label="aero" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="1971" width="0" x="0" y="156"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="21" width="0" x="0" y="2200"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="21" width="0" x="0" y="2242"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="0" x="0" y="198"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="0" x="0" y="1332"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="722" width="0" x="0" y="1384"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="21" width="0" x="0" y="1520"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="21" width="0" x="0" y="1656"/>    
+    </execution>    
+    <execution id="31">      
+      <position height="21" width="0" x="0" y="1792"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="21" width="0" x="0" y="1928"/>    
+    </execution>    
+    <execution id="35">      
+      <position height="21" width="0" x="0" y="2064"/>    
+    </execution>  
+  </object>  
+  <object id="36" language="java" name="Datos.seg.listCam" project="MBGA2" file="/MBGA2/src/Datos/seg/listCam.java" 
+    binary="false" label="camaras" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="13">      
+      <position height="21" width="0" x="0" y="271"/>    
+    </execution>  
+  </object>  
+  <object id="37" language="java" name="Datos.GeneratePath" project="MBGA2" file="/MBGA2/src/Datos/GeneratePath.java" 
+    binary="false" label="path" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="15">      
+      <position height="220" width="0" x="0" y="355"/>    
+    </execution>    
+    <execution id="39">      
+      <position height="21" width="0" x="0" y="481"/>    
+    </execution>    
+    <execution id="41">      
+      <position height="21" width="0" x="0" y="533"/>    
+    </execution>  
+  </object>  
+  <object id="42" language="java" name="Datos.GeneratePlaneInfo" project="MBGA2" 
+    file="/MBGA2/src/Datos/GeneratePlaneInfo.java" binary="false" label="gen" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="17">      
+      <position height="356" width="0" x="0" y="596"/>    
+    </execution>    
+    <execution id="44">      
+      <position height="21" width="0" x="0" y="806"/>    
+    </execution>    
+    <execution id="46">      
+      <position height="21" width="0" x="0" y="858"/>    
+    </execution>    
+    <execution id="48">      
+      <position height="21" width="0" x="0" y="910"/>    
+    </execution>  
+  </object>  
+  <object id="49" language="java" name="Datos.map.Mapm" project="MBGA2" file="/MBGA2/src/Datos/map/Mapm.java" 
+    binary="false" label="map1" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="213" width="0" x="0" y="973"/>    
+    </execution>  
+  </object>  
+  <object id="52" language="java" name="Datos.map.NumberFlights" project="MBGA2" 
+    file="/MBGA2/src/Datos/map/NumberFlights.java" binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="51">      
+      <position height="21" width="0" x="0" y="1144"/>    
+    </execution>  
+  </object>  
+  <object id="53" language="java" name="Controladores.main_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/main_controller.java" binary="false" label="ctrl" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="1014" width="0" x="0" y="2179"/>    
+    </execution>  
+  </object>  
+  <object id="70" language="java" name="BD.conexionBD" project="MBGA2" file="/MBGA2/src/BD/conexionBD.java" 
+    binary="false" label="c" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="57">      
+      <position height="21" width="0" x="0" y="2326"/>    
+    </execution>  
+  </object>  
+  <object id="71" language="java" name="Controladores.adu_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/adu_controller.java" binary="false" label="adu" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="63">      
+      <position height="21" width="0" x="0" y="2668"/>    
+    </execution>  
+  </object>  
+  <object id="72" language="java" name="Controladores.seg_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/seg_controller.java" binary="false" label="seg" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="59">      
+      <position height="63" width="0" x="0" y="2458"/>    
+    </execution>  
+  </object>  
+  <object id="75" language="java" name="Controladores.map_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/map_controller.java" binary="false" label="map" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="69">      
+      <position height="105" width="0" x="0" y="3067"/>    
+    </execution>  
+  </object>  
+  <object id="78" language="java" name="Controladores.atm_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/atm_controller.java" binary="false" label="atm" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="61">      
+      <position height="105" width="0" x="0" y="2542"/>    
+    </execution>  
+  </object>  
+  <object id="81" language="java" name="Controladores.inf_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/inf_controller.java" binary="false" label="inf" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="65">      
+      <position height="168" width="0" x="0" y="2710"/>    
+    </execution>  
+  </object>  
+  <object id="84" language="java" name="Controladores.tor_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/tor_controller.java" binary="false" label="tor" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="67">      
+      <position height="105" width="0" x="0" y="2899"/>    
+    </execution>  
+  </object>  
+  <object id="87" language="java" name="SA.seg_SA_imp" project="MBGA2" file="/MBGA2/src/SA/seg_SA_imp.java" 
+    binary="false" label="sa" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="74">      
+      <position height="21" width="0" x="0" y="2479"/>    
+    </execution>  
+  </object>  
+  <object id="88" language="java" name="SA.map_SA" project="MBGA2" file="/MBGA2/src/SA/map_SA.java" binary="false" 
+    label="SA1" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="77">      
+      <position height="63" width="0" x="0" y="3088"/>    
+    </execution>  
+  </object>  
+  <object id="91" language="java" name="SA.atm_SA" project="MBGA2" file="/MBGA2/src/SA/atm_SA.java" binary="false" 
+    label="sa1" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="80">      
+      <position height="63" width="0" x="0" y="2563"/>    
+    </execution>  
+  </object>  
+  <object id="94" language="java" name="SA.inf_SA" project="MBGA2" file="/MBGA2/src/SA/inf_SA.java" binary="false" 
+    label="SA" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="83">      
+      <position height="126" width="0" x="0" y="2731"/>    
+    </execution>    
+    <execution id="98">      
+      <position height="21" width="0" x="0" y="2815"/>    
+    </execution>  
+  </object>  
+  <object id="99" language="java" name="SA.tor_SA" project="MBGA2" file="/MBGA2/src/SA/tor_SA.java" binary="false" 
+    label="sa2" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="86">      
+      <position height="63" width="0" x="0" y="2920"/>    
+    </execution>  
+  </object>  
+  <object id="102" language="java" name="DAOs.map_dao" project="MBGA2" file="/MBGA2/src/DAOs/map_dao.java" 
+    binary="false" label="dao3" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="90">      
+      <position height="21" width="0" x="0" y="3109"/>    
+    </execution>  
+  </object>  
+  <object id="103" language="java" name="DAOs.atm_dao" project="MBGA2" file="/MBGA2/src/DAOs/atm_dao.java" 
+    binary="false" label="dao" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="93">      
+      <position height="21" width="0" x="0" y="2584"/>    
+    </execution>  
+  </object>  
+  <object id="104" language="java" name="DAOs.inf_dao" project="MBGA2" file="/MBGA2/src/DAOs/inf_dao.java" 
+    binary="false" label="dao1" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="96">      
+      <position height="21" width="0" x="0" y="2752"/>    
+    </execution>  
+  </object>  
+  <object id="105" language="java" name="DAOs.tor_dao" project="MBGA2" file="/MBGA2/src/DAOs/tor_dao.java" 
+    binary="false" label="dao2" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="101">      
+      <position height="21" width="0" x="0" y="2941"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="106" interaction-operator="LOOP">    
+    <interaction-operand id="107" constraint="for:i &lt; 20">      
+      <fragment refId="108"/>    
+    </interaction-operand>    
+    <combined-fragment id="108" interaction-operator="LOOP">      
+      <interaction-operand id="109" constraint="for:j &lt; 14">        
+        <fragment refId="50"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <message id="3" operation="main(java.lang.String[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="Aeropuerto(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="main_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="10" operation="setFligths(java.util.List&lt;Datos.Flight&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" operation="listCam()" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="GeneratePath()" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="GeneratePlaneInfo()" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="Mapm()" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="setSar(java.util.List&lt;Datos.Flight&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" operation="setSAR():java.util.ArrayList&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="26" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="32" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="38" operation="cityConstruct():void" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="39"/>  
+  </message>  
+  <message id="40" operation="calculateDirect():void" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="41"/>  
+  </message>  
+  <message id="43" operation="fillDestiny():void" asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="45" operation="fillCompanies():void" asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>  
+  <message id="47" operation="fillGates():void" asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="48"/>  
+  </message>  
+  <message id="50" operation="NumberFlights()" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="51"/>  
+  </message>  
+  <message id="54" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="55" operation="getGen():Datos.GeneratePlaneInfo" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="56" operation="conexionBD()" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="57"/>  
+  </message>  
+  <message id="58" operation="seg_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="59"/>  
+  </message>  
+  <message id="60" operation="atm_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="61"/>  
+  </message>  
+  <message id="62" operation="adu_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="63"/>  
+  </message>  
+  <message id="64" operation="inf_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="65"/>  
+  </message>  
+  <message id="66" operation="tor_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="67"/>  
+  </message>  
+  <message id="68" operation="map_controller(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="69"/>  
+  </message>  
+  <message id="73" operation="seg_SA_imp(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="74"/>  
+  </message>  
+  <message id="76" operation="map_SA()" asynchronous="false">    
+    <end type="SOURCE" refId="69"/>    
+    <end type="TARGET" refId="77"/>  
+  </message>  
+  <message id="79" operation="atm_SA()" asynchronous="false">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="80"/>  
+  </message>  
+  <message id="82" operation="inf_SA()" asynchronous="false">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="83"/>  
+  </message>  
+  <message id="85" operation="tor_SA(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="86"/>  
+  </message>  
+  <message id="89" operation="map_dao()" asynchronous="false">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="90"/>  
+  </message>  
+  <message id="92" operation="atm_dao()" asynchronous="false">    
+    <end type="SOURCE" refId="80"/>    
+    <end type="TARGET" refId="93"/>  
+  </message>  
+  <message id="95" operation="inf_dao()" asynchronous="false">    
+    <end type="SOURCE" refId="83"/>    
+    <end type="TARGET" refId="96"/>  
+  </message>  
+  <message id="97" operation="setFlag(java.lang.Boolean):void" asynchronous="false">    
+    <end type="SOURCE" refId="83"/>    
+    <end type="TARGET" refId="98"/>  
+  </message>  
+  <message id="100" operation="tor_dao(Main.Aeropuerto)" asynchronous="false">    
+    <end type="SOURCE" refId="86"/>    
+    <end type="TARGET" refId="101"/>  
+  </message>
+</sequence-diagram>

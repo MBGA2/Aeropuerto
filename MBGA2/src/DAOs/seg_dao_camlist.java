@@ -3,8 +3,8 @@ package DAOs;
 import Datos.seg.cam;
 import Datos.seg.listCam;
 import Factory.DaoFactoryImp;
-import Transfer.seg.TCam;
-import Transfer.seg.TListCam;
+import Transfers.TCam;
+import Transfers.TListCam;
 
 public class seg_dao_camlist implements DAO {
 

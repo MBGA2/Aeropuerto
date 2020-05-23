@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import Controladores.seg_controller;
 import Datos.seg.camState;
-import Transfer.seg.TCam;
+import Transfers.TCam;
 
 public class seg_CheckCam extends JPanel {
 

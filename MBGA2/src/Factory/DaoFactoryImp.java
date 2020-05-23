@@ -3,7 +3,7 @@ package Factory;
 import java.util.ArrayList;
 import java.util.List;
 
-import Transfer.seg.Transfer;
+import Transfers.Transfer;
 
 public class DaoFactoryImp {
 

@@ -1,7 +1,7 @@
 package Observer;
 
 
-import Utils.NotifyData;
+import Datos.NotifyData;
 
 public interface Observer {
 	

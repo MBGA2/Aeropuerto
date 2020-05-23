@@ -1,15 +1,16 @@
 package Controladores;
 
+import Datos.NTYPE;
+import Datos.NotifyData;
 import Main.Aeropuerto;
 import Observer.Observer;
 import SA.seg_SA;
 import SA.seg_SA_imp;
-import Transfer.seg.TCam;
-import Utils.*;
+import Transfers.TCam;
 
 public class seg_controller {
 
-	public static final String nombreArch = "listaCamaras.txt";// rev
+	public static final String nombreArch = "listaCamaras.txt";
 	private Aeropuerto data;
 	private seg_SA sa;
 

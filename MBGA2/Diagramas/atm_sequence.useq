@@ -1,0 +1,1347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.4" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="Controladores.atm_controller" project="MBGA2" 
+    file="/MBGA2/src/Controladores/atm_controller.java" binary="false" label="atm_controller" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="87" y="0"/>    
+    <execution id="2">      
+      <position height="84" width="0" x="0" y="114"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="21" width="0" x="0" y="156"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="178" width="0" x="0" y="217"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="115" width="0" x="0" y="259"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="1730" width="0" x="0" y="416"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="1667" width="0" x="0" y="458"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="1314" width="0" x="0" y="2161"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="1251" width="0" x="0" y="2203"/>    
+    </execution>    
+    <execution id="35">      
+      <position height="643" width="0" x="0" y="2790"/>    
+    </execution>    
+    <execution id="51">      
+      <position height="21" width="0" x="0" y="3192"/>    
+    </execution>    
+    <execution id="58">      
+      <position height="746" width="0" x="0" y="3482"/>    
+    </execution>    
+    <execution id="60">      
+      <position height="683" width="0" x="0" y="3524"/>    
+    </execution>    
+    <execution id="73">      
+      <position height="1857" width="0" x="0" y="4238"/>    
+    </execution>    
+    <execution id="75">      
+      <position height="1794" width="0" x="0" y="4280"/>    
+    </execution>    
+    <execution id="81">      
+      <position height="1251" width="0" x="0" y="4614"/>    
+    </execution>    
+    <execution id="93">      
+      <position height="643" width="0" x="0" y="5201"/>    
+    </execution>    
+    <execution id="109">      
+      <position height="21" width="0" x="0" y="5603"/>    
+    </execution>    
+    <execution id="116">      
+      <position height="1174" width="0" x="0" y="6104"/>    
+    </execution>    
+    <execution id="118">      
+      <position height="1111" width="0" x="0" y="6146"/>    
+    </execution>    
+    <execution id="124">      
+      <position height="683" width="0" x="0" y="6480"/>    
+    </execution>    
+    <execution id="139">      
+      <position height="3748" width="0" x="0" y="7289"/>    
+    </execution>    
+    <execution id="141">      
+      <position height="3685" width="0" x="0" y="7331"/>    
+    </execution>    
+    <execution id="200">      
+      <position height="388" width="0" x="0" y="11050"/>    
+    </execution>    
+    <execution id="202">      
+      <position height="325" width="0" x="0" y="11092"/>    
+    </execution>    
+    <execution id="211">      
+      <position height="694" width="0" x="0" y="11450"/>    
+    </execution>    
+    <execution id="213">      
+      <position height="631" width="0" x="0" y="11492"/>    
+    </execution>  
+  </object>  
+  <object id="220" language="java" name="SA.atm_SA" project="MBGA2" file="/MBGA2/src/SA/atm_SA.java" binary="false" 
+    label="sa" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="9">      
+      <position height="21" width="0" x="0" y="290"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="0" x="0" y="332"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="735" width="0" x="0" y="489"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="545" width="0" x="0" y="1402"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="256" width="0" x="0" y="2262"/>    
+    </execution>    
+    <execution id="62">      
+      <position height="275" width="0" x="0" y="3555"/>    
+    </execution>    
+    <execution id="70">      
+      <position height="21" width="0" x="0" y="4039"/>    
+    </execution>    
+    <execution id="72">      
+      <position height="21" width="0" x="0" y="4165"/>    
+    </execution>    
+    <execution id="228">      
+      <position height="21" width="0" x="0" y="3639"/>    
+    </execution>    
+    <execution id="230">      
+      <position height="21" width="0" x="0" y="3691"/>    
+    </execution>    
+    <execution id="85">      
+      <position height="256" width="0" x="0" y="4673"/>    
+    </execution>    
+    <execution id="128">      
+      <position height="275" width="0" x="0" y="6511"/>    
+    </execution>    
+    <execution id="136">      
+      <position height="21" width="0" x="0" y="6995"/>    
+    </execution>    
+    <execution id="138">      
+      <position height="21" width="0" x="0" y="7121"/>    
+    </execution>    
+    <execution id="236">      
+      <position height="21" width="0" x="0" y="6595"/>    
+    </execution>    
+    <execution id="238">      
+      <position height="21" width="0" x="0" y="6647"/>    
+    </execution>    
+    <execution id="204">      
+      <position height="147" width="0" x="0" y="11123"/>    
+    </execution>    
+    <execution id="215">      
+      <position height="495" width="0" x="0" y="11523"/>    
+    </execution>  
+  </object>  
+  <object id="257" language="java" name="DAOs.atm_dao" project="MBGA2" file="/MBGA2/src/DAOs/atm_dao.java" 
+    binary="false" label="dao" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="222">      
+      <position height="651" width="0" x="0" y="552"/>    
+    </execution>    
+    <execution id="259">      
+      <position height="517" width="0" x="0" y="665"/>    
+    </execution>    
+    <execution id="224">      
+      <position height="461" width="0" x="0" y="1465"/>    
+    </execution>    
+    <execution id="277">      
+      <position height="355" width="0" x="0" y="1550"/>    
+    </execution>    
+    <execution id="226">      
+      <position height="106" width="0" x="0" y="2391"/>    
+    </execution>    
+    <execution id="232">      
+      <position height="21" width="0" x="0" y="3788"/>    
+    </execution>    
+    <execution id="234">      
+      <position height="106" width="0" x="0" y="4802"/>    
+    </execution>    
+    <execution id="240">      
+      <position height="21" width="0" x="0" y="6744"/>    
+    </execution>    
+    <execution id="246">      
+      <position height="21" width="0" x="0" y="11228"/>    
+    </execution>    
+    <execution id="256">      
+      <position height="21" width="0" x="0" y="11976"/>    
+    </execution>  
+  </object>  
+  <object id="290" language="java" name="Main.Aeropuerto" project="MBGA2" file="/MBGA2/src/Main/Aeropuerto.java" 
+    binary="false" label="airport" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="18">      
+      <position height="21" width="0" x="0" y="1360"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="21" width="0" x="0" y="2083"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="21" width="0" x="0" y="2601"/>    
+    </execution>    
+    <execution id="31">      
+      <position height="21" width="0" x="0" y="2643"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="21" width="0" x="0" y="2685"/>    
+    </execution>    
+    <execution id="41">      
+      <position height="21" width="0" x="0" y="2961"/>    
+    </execution>    
+    <execution id="64">      
+      <position height="21" width="0" x="0" y="3913"/>    
+    </execution>    
+    <execution id="66">      
+      <position height="21" width="0" x="0" y="3955"/>    
+    </execution>    
+    <execution id="68">      
+      <position height="21" width="0" x="0" y="3997"/>    
+    </execution>    
+    <execution id="77">      
+      <position height="21" width="0" x="0" y="4339"/>    
+    </execution>    
+    <execution id="79">      
+      <position height="21" width="0" x="0" y="4461"/>    
+    </execution>    
+    <execution id="83">      
+      <position height="21" width="0" x="0" y="6032"/>    
+    </execution>    
+    <execution id="87">      
+      <position height="21" width="0" x="0" y="5012"/>    
+    </execution>    
+    <execution id="89">      
+      <position height="21" width="0" x="0" y="5054"/>    
+    </execution>    
+    <execution id="91">      
+      <position height="21" width="0" x="0" y="5096"/>    
+    </execution>    
+    <execution id="99">      
+      <position height="21" width="0" x="0" y="5372"/>    
+    </execution>    
+    <execution id="120">      
+      <position height="21" width="0" x="0" y="6205"/>    
+    </execution>    
+    <execution id="122">      
+      <position height="21" width="0" x="0" y="6327"/>    
+    </execution>    
+    <execution id="126">      
+      <position height="21" width="0" x="0" y="7215"/>    
+    </execution>    
+    <execution id="130">      
+      <position height="21" width="0" x="0" y="6869"/>    
+    </execution>    
+    <execution id="132">      
+      <position height="21" width="0" x="0" y="6911"/>    
+    </execution>    
+    <execution id="134">      
+      <position height="21" width="0" x="0" y="6953"/>    
+    </execution>    
+    <execution id="143">      
+      <position height="21" width="0" x="0" y="7362"/>    
+    </execution>    
+    <execution id="145">      
+      <position height="21" width="0" x="0" y="7404"/>    
+    </execution>    
+    <execution id="147">      
+      <position height="21" width="0" x="0" y="7724"/>    
+    </execution>    
+    <execution id="149">      
+      <position height="21" width="0" x="0" y="7766"/>    
+    </execution>    
+    <execution id="151">      
+      <position height="21" width="0" x="0" y="7892"/>    
+    </execution>    
+    <execution id="153">      
+      <position height="21" width="0" x="0" y="8108"/>    
+    </execution>    
+    <execution id="155">      
+      <position height="21" width="0" x="0" y="8150"/>    
+    </execution>    
+    <execution id="157">      
+      <position height="21" width="0" x="0" y="8276"/>    
+    </execution>    
+    <execution id="159">      
+      <position height="21" width="0" x="0" y="8492"/>    
+    </execution>    
+    <execution id="161">      
+      <position height="21" width="0" x="0" y="8534"/>    
+    </execution>    
+    <execution id="163">      
+      <position height="21" width="0" x="0" y="8660"/>    
+    </execution>    
+    <execution id="165">      
+      <position height="21" width="0" x="0" y="8876"/>    
+    </execution>    
+    <execution id="167">      
+      <position height="21" width="0" x="0" y="8918"/>    
+    </execution>    
+    <execution id="169">      
+      <position height="21" width="0" x="0" y="9044"/>    
+    </execution>    
+    <execution id="171">      
+      <position height="21" width="0" x="0" y="9298"/>    
+    </execution>    
+    <execution id="173">      
+      <position height="21" width="0" x="0" y="9340"/>    
+    </execution>    
+    <execution id="175">      
+      <position height="21" width="0" x="0" y="9466"/>    
+    </execution>    
+    <execution id="177">      
+      <position height="21" width="0" x="0" y="9682"/>    
+    </execution>    
+    <execution id="179">      
+      <position height="21" width="0" x="0" y="9724"/>    
+    </execution>    
+    <execution id="181">      
+      <position height="21" width="0" x="0" y="9850"/>    
+    </execution>    
+    <execution id="183">      
+      <position height="21" width="0" x="0" y="10066"/>    
+    </execution>    
+    <execution id="185">      
+      <position height="21" width="0" x="0" y="10108"/>    
+    </execution>    
+    <execution id="187">      
+      <position height="21" width="0" x="0" y="10234"/>    
+    </execution>    
+    <execution id="189">      
+      <position height="21" width="0" x="0" y="10450"/>    
+    </execution>    
+    <execution id="191">      
+      <position height="21" width="0" x="0" y="10492"/>    
+    </execution>    
+    <execution id="193">      
+      <position height="21" width="0" x="0" y="10618"/>    
+    </execution>    
+    <execution id="195">      
+      <position height="21" width="0" x="0" y="10806"/>    
+    </execution>    
+    <execution id="197">      
+      <position height="21" width="0" x="0" y="10848"/>    
+    </execution>    
+    <execution id="199">      
+      <position height="21" width="0" x="0" y="10974"/>    
+    </execution>    
+    <execution id="206">      
+      <position height="21" width="0" x="0" y="11291"/>    
+    </execution>    
+    <execution id="208">      
+      <position height="21" width="0" x="0" y="11333"/>    
+    </execution>    
+    <execution id="210">      
+      <position height="21" width="0" x="0" y="11375"/>    
+    </execution>    
+    <execution id="217">      
+      <position height="21" width="0" x="0" y="12039"/>    
+    </execution>    
+    <execution id="219">      
+      <position height="21" width="0" x="0" y="12081"/>    
+    </execution>  
+  </object>  
+  <object id="291" language="java" name="Datos.Flight" project="MBGA2" file="/MBGA2/src/Datos/Flight.java" 
+    binary="false" label="f" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="261">      
+      <position height="21" width="0" x="0" y="696"/>    
+    </execution>    
+    <execution id="263">      
+      <position height="21" width="0" x="0" y="738"/>    
+    </execution>    
+    <execution id="265">      
+      <position height="21" width="0" x="0" y="780"/>    
+    </execution>    
+    <execution id="267">      
+      <position height="21" width="0" x="0" y="864"/>    
+    </execution>    
+    <execution id="269">      
+      <position height="21" width="0" x="0" y="948"/>    
+    </execution>    
+    <execution id="271">      
+      <position height="21" width="0" x="0" y="990"/>    
+    </execution>    
+    <execution id="273">      
+      <position height="21" width="0" x="0" y="1032"/>    
+    </execution>    
+    <execution id="275">      
+      <position height="21" width="0" x="0" y="1140"/>    
+    </execution>    
+    <execution id="279">      
+      <position height="21" width="0" x="0" y="1581"/>    
+    </execution>    
+    <execution id="281">      
+      <position height="21" width="0" x="0" y="1623"/>    
+    </execution>    
+    <execution id="283">      
+      <position height="21" width="0" x="0" y="1703"/>    
+    </execution>    
+    <execution id="285">      
+      <position height="21" width="0" x="0" y="1863"/>    
+    </execution>    
+    <execution id="287">      
+      <position height="21" width="0" x="0" y="2455"/>    
+    </execution>    
+    <execution id="49">      
+      <position height="21" width="0" x="0" y="3129"/>    
+    </execution>    
+    <execution id="289">      
+      <position height="21" width="0" x="0" y="4866"/>    
+    </execution>    
+    <execution id="107">      
+      <position height="21" width="0" x="0" y="5540"/>    
+    </execution>  
+  </object>  
+  <object id="292" language="java" name="Datos.Flight" project="MBGA2" file="/MBGA2/src/Datos/Flight.java" 
+    binary="false" label="faux" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="242">      
+      <position height="21" width="0" x="0" y="11144"/>    
+    </execution>    
+    <execution id="244">      
+      <position height="21" width="0" x="0" y="11186"/>    
+    </execution>    
+    <execution id="248">      
+      <position height="21" width="0" x="0" y="11544"/>    
+    </execution>    
+    <execution id="250">      
+      <position height="21" width="0" x="0" y="11586"/>    
+    </execution>    
+    <execution id="252">      
+      <position height="21" width="0" x="0" y="11666"/>    
+    </execution>    
+    <execution id="254">      
+      <position height="21" width="0" x="0" y="11924"/>    
+    </execution>  
+  </object>  
+  <object id="293" language="java" name="Datos.Flight" project="MBGA2" file="/MBGA2/src/Datos/Flight.java" 
+    binary="false" label="sar" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="37">      
+      <position height="21" width="0" x="0" y="2877"/>    
+    </execution>    
+    <execution id="39">      
+      <position height="21" width="0" x="0" y="2919"/>    
+    </execution>    
+    <execution id="43">      
+      <position height="21" width="0" x="0" y="3003"/>    
+    </execution>    
+    <execution id="45">      
+      <position height="21" width="0" x="0" y="3045"/>    
+    </execution>    
+    <execution id="47">      
+      <position height="21" width="0" x="0" y="3087"/>    
+    </execution>    
+    <execution id="53">      
+      <position height="21" width="0" x="0" y="3265"/>    
+    </execution>    
+    <execution id="55">      
+      <position height="21" width="0" x="0" y="3307"/>    
+    </execution>    
+    <execution id="57">      
+      <position height="21" width="0" x="0" y="3391"/>    
+    </execution>    
+    <execution id="95">      
+      <position height="21" width="0" x="0" y="5288"/>    
+    </execution>    
+    <execution id="97">      
+      <position height="21" width="0" x="0" y="5330"/>    
+    </execution>    
+    <execution id="101">      
+      <position height="21" width="0" x="0" y="5414"/>    
+    </execution>    
+    <execution id="103">      
+      <position height="21" width="0" x="0" y="5456"/>    
+    </execution>    
+    <execution id="105">      
+      <position height="21" width="0" x="0" y="5498"/>    
+    </execution>    
+    <execution id="111">      
+      <position height="21" width="0" x="0" y="5676"/>    
+    </execution>    
+    <execution id="113">      
+      <position height="21" width="0" x="0" y="5718"/>    
+    </execution>    
+    <execution id="115">      
+      <position height="21" width="0" x="0" y="5802"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="294" interaction-operator="LOOP">    
+    <interaction-operand id="295" constraint="for:i &lt; fligths.size()">      
+      <fragment refId="296"/>    
+    </interaction-operand>    
+    <combined-fragment id="296" interaction-operator="OPT">      
+      <interaction-operand id="297" constraint="fligths.get(i).getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)">        
+        <fragment refId="272"/>        
+        <fragment refId="266"/>        
+        <fragment refId="270"/>        
+        <fragment refId="268"/>        
+        <fragment refId="298"/>        
+        <fragment refId="262"/>        
+        <fragment refId="258"/>        
+        <fragment refId="260"/>        
+        <fragment refId="264"/>      
+      </interaction-operand>      
+      <combined-fragment id="298" interaction-operator="ALT">        
+        <interaction-operand id="299" constraint="f.getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)"/>        
+        <interaction-operand id="300" constraint="else">          
+          <fragment refId="301"/>        
+        </interaction-operand>        
+        <combined-fragment id="301" interaction-operator="ALT">          
+          <interaction-operand id="302" 
+            constraint="f.getPlane_state().equalsIgnoreCase(&quot;Damaged&quot;) || (f.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;))">            
+            <fragment refId="274"/>          
+          </interaction-operand>          
+          <interaction-operand id="303" constraint="else"/>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="304" interaction-operator="LOOP">    
+    <interaction-operand id="305" constraint="for:i &lt; sar.size()">      
+      <fragment refId="280"/>      
+      <fragment refId="306"/>      
+      <fragment refId="276"/>      
+      <fragment refId="278"/>      
+      <fragment refId="307"/>    
+    </interaction-operand>    
+    <combined-fragment id="306" interaction-operator="ALT">      
+      <interaction-operand id="308" constraint="f.getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)">        
+        <fragment refId="282"/>      
+      </interaction-operand>      
+      <interaction-operand id="309" constraint="else"/>    
+    </combined-fragment>    
+    <combined-fragment id="307" interaction-operator="ALT">      
+      <interaction-operand id="310" constraint="f.getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)"/>      
+      <interaction-operand id="311" constraint="else">        
+        <fragment refId="312"/>      
+      </interaction-operand>      
+      <combined-fragment id="312" interaction-operator="ALT">        
+        <interaction-operand id="313" 
+          constraint="f.getPlane_state().equalsIgnoreCase(&quot;Damaged&quot;) || (f.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;))">          
+          <fragment refId="284"/>        
+        </interaction-operand>        
+        <interaction-operand id="314" constraint="else"/>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="315" interaction-operator="OPT">    
+    <interaction-operand id="316" constraint="this.sa.planeNotCrashed(text, this.airport.getFligths())">      
+      <fragment refId="317"/>      
+      <fragment refId="34"/>      
+      <fragment refId="26"/>      
+      <fragment refId="318"/>      
+      <fragment refId="32"/>      
+      <fragment refId="30"/>      
+      <fragment refId="28"/>    
+    </interaction-operand>    
+    <combined-fragment id="318" interaction-operator="LOOP">      
+      <interaction-operand id="319" constraint="for: fligths">        
+        <fragment refId="320"/>      
+      </interaction-operand>      
+      <combined-fragment id="320" interaction-operator="OPT">        
+        <interaction-operand id="321" constraint="f.getID().equalsIgnoreCase(a)">          
+          <fragment refId="322"/>          
+          <fragment refId="225"/>        
+        </interaction-operand>        
+        <combined-fragment id="322" interaction-operator="OPT">          
+          <interaction-operand id="323" constraint="!f.getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)">            
+            <fragment refId="286"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="317" interaction-operator="LOOP">      
+      <interaction-operand id="324" constraint="for: this.airport.getSar()">        
+        <fragment refId="325"/>      
+      </interaction-operand>      
+      <combined-fragment id="325" interaction-operator="OPT">        
+        <interaction-operand id="326" constraint="!sar.getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)">          
+          <fragment refId="38"/>          
+          <fragment refId="40"/>          
+          <fragment refId="36"/>          
+          <fragment refId="44"/>          
+          <fragment refId="50"/>          
+          <fragment refId="56"/>          
+          <fragment refId="52"/>          
+          <fragment refId="42"/>          
+          <fragment refId="46"/>          
+          <fragment refId="48"/>          
+          <fragment refId="54"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="327" interaction-operator="LOOP">    
+    <interaction-operand id="328" constraint="for: fligths">      
+      <fragment refId="329"/>    
+    </interaction-operand>    
+    <combined-fragment id="329" interaction-operator="OPT">      
+      <interaction-operand id="330" constraint="f.getID().equalsIgnoreCase(text)">        
+        <fragment refId="231"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="331" interaction-operator="OPT">    
+    <interaction-operand id="332" constraint="10 - r &lt;= 0 &amp;&amp; !this.airport.getFligths().isEmpty()">      
+      <fragment refId="76"/>      
+      <fragment refId="333"/>      
+      <fragment refId="334"/>    
+    </interaction-operand>    
+    <combined-fragment id="333" interaction-operator="LOOP">      
+      <interaction-operand id="335" 
+        constraint="while: i &lt; 50 &amp;&amp; !this.airport.getFligths().get(ran).getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)&#xd;     &amp;&amp; !this.airport.getFligths().get(ran).getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)">        
+        <fragment refId="78"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="334" interaction-operator="OPT">      
+      <interaction-operand id="336" constraint="i &lt; 50">        
+        <fragment refId="82"/>        
+        <fragment refId="337"/>        
+        <fragment refId="80"/>      
+      </interaction-operand>      
+      <combined-fragment id="337" interaction-operator="OPT">        
+        <interaction-operand id="338" constraint="this.sa.planeNotCrashed(text, this.airport.getFligths())">          
+          <fragment refId="86"/>          
+          <fragment refId="88"/>          
+          <fragment refId="339"/>          
+          <fragment refId="92"/>          
+          <fragment refId="84"/>          
+          <fragment refId="340"/>          
+          <fragment refId="90"/>        
+        </interaction-operand>        
+        <combined-fragment id="339" interaction-operator="LOOP">          
+          <interaction-operand id="341" constraint="for: fligths">            
+            <fragment refId="342"/>          
+          </interaction-operand>          
+          <combined-fragment id="342" interaction-operator="OPT">            
+            <interaction-operand id="343" constraint="f.getID().equalsIgnoreCase(a)">              
+              <fragment refId="344"/>              
+              <fragment refId="233"/>            
+            </interaction-operand>            
+            <combined-fragment id="344" interaction-operator="OPT">              
+              <interaction-operand id="345" constraint="!f.getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)">                
+                <fragment refId="288"/>              
+              </interaction-operand>            
+            </combined-fragment>          
+          </combined-fragment>        
+        </combined-fragment>        
+        <combined-fragment id="340" interaction-operator="LOOP">          
+          <interaction-operand id="346" constraint="for: this.airport.getSar()">            
+            <fragment refId="347"/>          
+          </interaction-operand>          
+          <combined-fragment id="347" interaction-operator="OPT">            
+            <interaction-operand id="348" constraint="!sar.getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)">              
+              <fragment refId="94"/>              
+              <fragment refId="108"/>              
+              <fragment refId="112"/>              
+              <fragment refId="110"/>              
+              <fragment refId="96"/>              
+              <fragment refId="102"/>              
+              <fragment refId="100"/>              
+              <fragment refId="98"/>              
+              <fragment refId="106"/>              
+              <fragment refId="114"/>              
+              <fragment refId="104"/>            
+            </interaction-operand>          
+          </combined-fragment>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="349" interaction-operator="OPT">    
+    <interaction-operand id="350" constraint="10 - r &lt;= 0 &amp;&amp; !this.airport.getFligths().isEmpty()">      
+      <fragment refId="351"/>      
+      <fragment refId="352"/>      
+      <fragment refId="119"/>    
+    </interaction-operand>    
+    <combined-fragment id="352" interaction-operator="LOOP">      
+      <interaction-operand id="353" 
+        constraint="while: i &lt; 50 &amp;&amp; !this.airport.getFligths().get(ran).getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)&#xd;     &amp;&amp; !this.airport.getFligths().get(ran).getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)">        
+        <fragment refId="121"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="351" interaction-operator="OPT">      
+      <interaction-operand id="354" constraint="i &lt; 50">        
+        <fragment refId="235"/>        
+        <fragment refId="137"/>        
+        <fragment refId="237"/>        
+        <fragment refId="127"/>        
+        <fragment refId="355"/>        
+        <fragment refId="131"/>        
+        <fragment refId="135"/>        
+        <fragment refId="129"/>        
+        <fragment refId="133"/>        
+        <fragment refId="123"/>        
+        <fragment refId="125"/>      
+      </interaction-operand>      
+      <combined-fragment id="355" interaction-operator="LOOP">        
+        <interaction-operand id="356" constraint="for: fligths">          
+          <fragment refId="357"/>        
+        </interaction-operand>        
+        <combined-fragment id="357" interaction-operator="OPT">          
+          <interaction-operand id="358" constraint="f.getID().equalsIgnoreCase(text)">            
+            <fragment refId="239"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="359" interaction-operator="LOOP">    
+    <interaction-operand id="360" constraint="for: this.airport.getPath().getCities()"/>  
+  </combined-fragment>  
+  <combined-fragment id="361" interaction-operator="LOOP">    
+    <interaction-operand id="362" constraint="while: (x &lt; aux.x || x &gt; aux.x) || (y &lt; aux.y || y &gt; aux.y)">      
+      <fragment refId="363"/>      
+      <fragment refId="364"/>      
+      <fragment refId="365"/>      
+      <fragment refId="366"/>    
+    </interaction-operand>    
+    <combined-fragment id="366" interaction-operator="OPT">      
+      <interaction-operand id="367" constraint="x &lt; aux.x">        
+        <fragment refId="150"/>        
+        <fragment refId="146"/>        
+        <fragment refId="148"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="363" interaction-operator="OPT">      
+      <interaction-operand id="368" constraint="x &gt; aux.x">        
+        <fragment refId="154"/>        
+        <fragment refId="156"/>        
+        <fragment refId="152"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="365" interaction-operator="OPT">      
+      <interaction-operand id="369" constraint="y &lt; aux.y">        
+        <fragment refId="158"/>        
+        <fragment refId="162"/>        
+        <fragment refId="160"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="364" interaction-operator="OPT">      
+      <interaction-operand id="370" constraint="y &gt; aux.y">        
+        <fragment refId="166"/>        
+        <fragment refId="164"/>        
+        <fragment refId="168"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="371" interaction-operator="LOOP">    
+    <interaction-operand id="372" constraint="while: (x &lt; mx || x &gt; mx) || (y &lt; my || y &gt; my)">      
+      <fragment refId="373"/>      
+      <fragment refId="374"/>      
+      <fragment refId="375"/>      
+      <fragment refId="376"/>    
+    </interaction-operand>    
+    <combined-fragment id="375" interaction-operator="OPT">      
+      <interaction-operand id="377" constraint="x &lt; mx">        
+        <fragment refId="172"/>        
+        <fragment refId="170"/>        
+        <fragment refId="174"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="374" interaction-operator="OPT">      
+      <interaction-operand id="378" constraint="x &gt; mx">        
+        <fragment refId="180"/>        
+        <fragment refId="176"/>        
+        <fragment refId="178"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="373" interaction-operator="OPT">      
+      <interaction-operand id="379" constraint="y &lt; my">        
+        <fragment refId="184"/>        
+        <fragment refId="186"/>        
+        <fragment refId="182"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="376" interaction-operator="OPT">      
+      <interaction-operand id="380" constraint="y &gt; my">        
+        <fragment refId="192"/>        
+        <fragment refId="190"/>        
+        <fragment refId="188"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="381" interaction-operator="ALT">    
+    <interaction-operand id="382" constraint="faux.getPlane_state().equalsIgnoreCase(&quot;Crashed&quot;)"/>    
+    <interaction-operand id="383" constraint="else">      
+      <fragment refId="251"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <combined-fragment id="384" interaction-operator="ALT">    
+    <interaction-operand id="385" constraint="faux.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;)">      
+      <fragment refId="253"/>    
+    </interaction-operand>    
+    <interaction-operand id="386" constraint="else"/>  
+  </combined-fragment>  
+  <message id="3" operation="addModelObserver(Observer.Observer):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="addModels(javax.swing.table.DefaultTableModel,javax.swing.table.DefaultTableModel):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" operation="setOnGoing(javax.swing.table.DefaultTableModel):void" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="setSar(javax.swing.table.DefaultTableModel):void" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="13" operation="addAll():void" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="addFlights(java.util.List&lt;Datos.Flight&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="fillSar(java.util.List&lt;Datos.Flight&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="getSar():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="24" operation="crashPlane(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" operation="planeCrashed(java.lang.String,java.util.List&lt;Datos.Flight&gt;):Datos.Flight" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="32" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="warnSAR(Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="36" operation="setFlight_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="37"/>  
+  </message>  
+  <message id="38" operation="setDeparture_time(java.sql.Timestamp):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="39"/>  
+  </message>  
+  <message id="40" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="41"/>  
+  </message>  
+  <message id="42" operation="setDestination(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="43"/>  
+  </message>  
+  <message id="44" operation="setPlane_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="45"/>  
+  </message>  
+  <message id="46" operation="setPath(Datos.Path):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="47"/>  
+  </message>  
+  <message id="48" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="49"/>  
+  </message>  
+  <message id="50" operation="sarPath(Datos.Flight,Datos.Flight):int" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="51"/>  
+  </message>  
+  <message id="52" operation="setArrival_time(java.sql.Timestamp):void" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="53"/>  
+  </message>  
+  <message id="54" operation="getDeparture_time():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="55"/>  
+  </message>  
+  <message id="56" operation="getPath():Datos.Path" asynchronous="false">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="57"/>  
+  </message>  
+  <message id="59" operation="delayPlane(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="60"/>  
+  </message>  
+  <message id="61" operation="planeDelayed(java.lang.String,java.util.List&lt;Datos.Flight&gt;):Datos.Flight" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="62"/>  
+  </message>  
+  <message id="63" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="64"/>  
+  </message>  
+  <message id="65" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="66"/>  
+  </message>  
+  <message id="67" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="68"/>  
+  </message>  
+  <message id="69" operation="getDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="70"/>  
+  </message>  
+  <message id="71" operation="getDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="72"/>  
+  </message>  
+  <message id="74" operation="randomCrash(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="73"/>    
+    <end type="TARGET" refId="75"/>  
+  </message>  
+  <message id="76" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="77"/>  
+  </message>  
+  <message id="78" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="79"/>  
+  </message>  
+  <message id="80" operation="crashPlane(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="81"/>  
+  </message>  
+  <message id="82" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="83"/>  
+  </message>  
+  <message id="84" operation="planeCrashed(java.lang.String,java.util.List&lt;Datos.Flight&gt;):Datos.Flight" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="85"/>  
+  </message>  
+  <message id="86" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="87"/>  
+  </message>  
+  <message id="88" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="89"/>  
+  </message>  
+  <message id="90" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="91"/>  
+  </message>  
+  <message id="92" operation="warnSAR(Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="93"/>  
+  </message>  
+  <message id="94" operation="setFlight_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="95"/>  
+  </message>  
+  <message id="96" operation="setDeparture_time(java.sql.Timestamp):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="97"/>  
+  </message>  
+  <message id="98" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="99"/>  
+  </message>  
+  <message id="100" operation="setDestination(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="101"/>  
+  </message>  
+  <message id="102" operation="setPlane_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="103"/>  
+  </message>  
+  <message id="104" operation="setPath(Datos.Path):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="105"/>  
+  </message>  
+  <message id="106" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="107"/>  
+  </message>  
+  <message id="108" operation="sarPath(Datos.Flight,Datos.Flight):int" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="109"/>  
+  </message>  
+  <message id="110" operation="setArrival_time(java.sql.Timestamp):void" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="111"/>  
+  </message>  
+  <message id="112" operation="getDeparture_time():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="113"/>  
+  </message>  
+  <message id="114" operation="getPath():Datos.Path" asynchronous="false">    
+    <end type="SOURCE" refId="93"/>    
+    <end type="TARGET" refId="115"/>  
+  </message>  
+  <message id="117" operation="randomDelay(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="116"/>    
+    <end type="TARGET" refId="118"/>  
+  </message>  
+  <message id="119" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="118"/>    
+    <end type="TARGET" refId="120"/>  
+  </message>  
+  <message id="121" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="118"/>    
+    <end type="TARGET" refId="122"/>  
+  </message>  
+  <message id="123" operation="delayPlane(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="118"/>    
+    <end type="TARGET" refId="124"/>  
+  </message>  
+  <message id="125" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="118"/>    
+    <end type="TARGET" refId="126"/>  
+  </message>  
+  <message id="127" operation="planeDelayed(java.lang.String,java.util.List&lt;Datos.Flight&gt;):Datos.Flight" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="128"/>  
+  </message>  
+  <message id="129" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="130"/>  
+  </message>  
+  <message id="131" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="132"/>  
+  </message>  
+  <message id="133" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="134"/>  
+  </message>  
+  <message id="135" operation="getDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="136"/>  
+  </message>  
+  <message id="137" operation="getDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="124"/>    
+    <end type="TARGET" refId="138"/>  
+  </message>  
+  <message id="140" operation="sarPath(Datos.Flight,Datos.Flight):int" asynchronous="false">    
+    <end type="SOURCE" refId="139"/>    
+    <end type="TARGET" refId="141"/>  
+  </message>  
+  <message id="142" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="143"/>  
+  </message>  
+  <message id="144" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="145"/>  
+  </message>  
+  <message id="146" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="147"/>  
+  </message>  
+  <message id="148" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="149"/>  
+  </message>  
+  <message id="150" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="151"/>  
+  </message>  
+  <message id="152" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="153"/>  
+  </message>  
+  <message id="154" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="155"/>  
+  </message>  
+  <message id="156" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="157"/>  
+  </message>  
+  <message id="158" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="159"/>  
+  </message>  
+  <message id="160" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="161"/>  
+  </message>  
+  <message id="162" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="163"/>  
+  </message>  
+  <message id="164" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="165"/>  
+  </message>  
+  <message id="166" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="167"/>  
+  </message>  
+  <message id="168" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="169"/>  
+  </message>  
+  <message id="170" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="171"/>  
+  </message>  
+  <message id="172" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="173"/>  
+  </message>  
+  <message id="174" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="175"/>  
+  </message>  
+  <message id="176" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="177"/>  
+  </message>  
+  <message id="178" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="179"/>  
+  </message>  
+  <message id="180" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="181"/>  
+  </message>  
+  <message id="182" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="183"/>  
+  </message>  
+  <message id="184" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="185"/>  
+  </message>  
+  <message id="186" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="187"/>  
+  </message>  
+  <message id="188" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="189"/>  
+  </message>  
+  <message id="190" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="191"/>  
+  </message>  
+  <message id="192" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="193"/>  
+  </message>  
+  <message id="194" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="195"/>  
+  </message>  
+  <message id="196" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="197"/>  
+  </message>  
+  <message id="198" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="141"/>    
+    <end type="TARGET" refId="199"/>  
+  </message>  
+  <message id="201" operation="searchPath(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="200"/>    
+    <end type="TARGET" refId="202"/>  
+  </message>  
+  <message id="203" 
+    operation="infoPath(Datos.map.Mapm,java.sql.Timestamp,java.util.List&lt;Datos.Flight&gt;,java.lang.String):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="202"/>    
+    <end type="TARGET" refId="204"/>  
+  </message>  
+  <message id="205" operation="getMap():Datos.map.Mapm" asynchronous="false">    
+    <end type="SOURCE" refId="202"/>    
+    <end type="TARGET" refId="206"/>  
+  </message>  
+  <message id="207" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="202"/>    
+    <end type="TARGET" refId="208"/>  
+  </message>  
+  <message id="209" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="202"/>    
+    <end type="TARGET" refId="210"/>  
+  </message>  
+  <message id="212" operation="searchPlane(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="211"/>    
+    <end type="TARGET" refId="213"/>  
+  </message>  
+  <message id="214" operation="infoPlane(java.sql.Timestamp,java.util.List&lt;Datos.Flight&gt;,java.lang.String):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="213"/>    
+    <end type="TARGET" refId="215"/>  
+  </message>  
+  <message id="216" operation="getTime():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="213"/>    
+    <end type="TARGET" refId="217"/>  
+  </message>  
+  <message id="218" operation="getFligths():java.util.List&lt;Flight&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="213"/>    
+    <end type="TARGET" refId="219"/>  
+  </message>  
+  <message id="221" operation="tableFill(javax.swing.table.DefaultTableModel,java.util.List&lt;Datos.Flight&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="222"/>  
+  </message>  
+  <message id="223" 
+    operation="tableSarFill(javax.swing.table.DefaultTableModel,java.util.List&lt;Datos.Flight&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="224"/>  
+  </message>  
+  <message id="225" operation="planeCrash(Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="226"/>  
+  </message>  
+  <message id="227" operation="setDelay(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="228"/>  
+  </message>  
+  <message id="229" operation="calcularDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="230"/>  
+  </message>  
+  <message id="231" operation="planeDelay(int,Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="232"/>  
+  </message>  
+  <message id="233" operation="planeCrash(Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="85"/>    
+    <end type="TARGET" refId="234"/>  
+  </message>  
+  <message id="235" operation="setDelay(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="128"/>    
+    <end type="TARGET" refId="236"/>  
+  </message>  
+  <message id="237" operation="calcularDelay():int" asynchronous="false">    
+    <end type="SOURCE" refId="128"/>    
+    <end type="TARGET" refId="238"/>  
+  </message>  
+  <message id="239" operation="planeDelay(int,Datos.Flight):void" asynchronous="false">    
+    <end type="SOURCE" refId="128"/>    
+    <end type="TARGET" refId="240"/>  
+  </message>  
+  <message id="241" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="204"/>    
+    <end type="TARGET" refId="242"/>  
+  </message>  
+  <message id="243" operation="getDestination():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="204"/>    
+    <end type="TARGET" refId="244"/>  
+  </message>  
+  <message id="245" operation="showPopUp(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="204"/>    
+    <end type="TARGET" refId="246"/>  
+  </message>  
+  <message id="247" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="215"/>    
+    <end type="TARGET" refId="248"/>  
+  </message>  
+  <message id="249" operation="getDestination():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="215"/>    
+    <end type="TARGET" refId="250"/>  
+  </message>  
+  <message id="251" operation="getArrival_time():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="215"/>    
+    <end type="TARGET" refId="252"/>  
+  </message>  
+  <message id="253" operation="getRetarded_value():int" asynchronous="false">    
+    <end type="SOURCE" refId="215"/>    
+    <end type="TARGET" refId="254"/>  
+  </message>  
+  <message id="255" operation="showPopUp(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="215"/>    
+    <end type="TARGET" refId="256"/>  
+  </message>  
+  <message id="258" operation="constructRow(Datos.Flight):java.lang.Object[]" asynchronous="false">    
+    <end type="SOURCE" refId="222"/>    
+    <end type="TARGET" refId="259"/>  
+  </message>  
+  <message id="260" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="261"/>  
+  </message>  
+  <message id="262" operation="getDestination():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="263"/>  
+  </message>  
+  <message id="264" operation="getDeparture_time():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="265"/>  
+  </message>  
+  <message id="266" operation="getArrival_time():java.sql.Timestamp" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="267"/>  
+  </message>  
+  <message id="268" operation="getSource():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="269"/>  
+  </message>  
+  <message id="270" operation="getCompany():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="271"/>  
+  </message>  
+  <message id="272" operation="getPlane_state():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="273"/>  
+  </message>  
+  <message id="274" operation="getRetarded_value():int" asynchronous="false">    
+    <end type="SOURCE" refId="259"/>    
+    <end type="TARGET" refId="275"/>  
+  </message>  
+  <message id="276" operation="constructRowSar(Datos.Flight):java.lang.Object[]" asynchronous="false">    
+    <end type="SOURCE" refId="224"/>    
+    <end type="TARGET" refId="277"/>  
+  </message>  
+  <message id="278" operation="getID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="277"/>    
+    <end type="TARGET" refId="279"/>  
+  </message>  
+  <message id="280" operation="getCompany():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="277"/>    
+    <end type="TARGET" refId="281"/>  
+  </message>  
+  <message id="282" operation="getPath():Datos.Path" asynchronous="false">    
+    <end type="SOURCE" refId="277"/>    
+    <end type="TARGET" refId="283"/>  
+  </message>  
+  <message id="284" operation="getRetarded_value():int" asynchronous="false">    
+    <end type="SOURCE" refId="277"/>    
+    <end type="TARGET" refId="285"/>  
+  </message>  
+  <message id="286" operation="setPlane_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="226"/>    
+    <end type="TARGET" refId="287"/>  
+  </message>  
+  <message id="288" operation="setPlane_state(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="234"/>    
+    <end type="TARGET" refId="289"/>  
+  </message>
+</sequence-diagram>

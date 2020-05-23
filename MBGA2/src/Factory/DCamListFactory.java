@@ -1,9 +1,9 @@
 package Factory;
 
 import DAOs.seg_dao_camlist;
+import Transfers.TListCam;
+import Transfers.Transfer;
 import DAOs.DAO;
-import Transfer.seg.TListCam;
-import Transfer.seg.Transfer;
 
 public class DCamListFactory extends DaoFactory {
 

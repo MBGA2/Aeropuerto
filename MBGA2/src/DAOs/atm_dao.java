@@ -1,6 +1,5 @@
 package DAOs;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -10,7 +9,6 @@ import Datos.Flight;
 
 public class atm_dao {
 
-	private Date current;
 
 	static int TCASILLA = 30;
 
@@ -30,11 +28,6 @@ public class atm_dao {
 			f.setRetarded_value(d + f.getRetarded_value());
 	}
 
-	public boolean flightFinished(Flight flight) {
-		if (current.after(flight.getArrival_time()) || current.equals(flight.getArrival_time()))
-			return true;
-		return false;
-	}
 
 	public void tableFill(DefaultTableModel table, List<Flight> fligths) {
 		for (int i = 0; i < fligths.size(); i++) {
@@ -46,7 +39,7 @@ public class atm_dao {
 	}
 
 	@SuppressWarnings("deprecation")
-	public Object[] constructRow(Flight f) {
+	private Object[] constructRow(Flight f) {
 		Object[] fila = new Object[9];
 		fila[0] = f.getID();
 		fila[1] = f.getDestination();
@@ -76,7 +69,7 @@ public class atm_dao {
 		}
 	}
 
-	public Object[] constructRowSar(Flight f) {
+	private Object[] constructRowSar(Flight f) {
 		String aux;
 		Object[] fila = new Object[9];
 		fila[0] = f.getID();

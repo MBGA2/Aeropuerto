@@ -1,9 +1,9 @@
 package Factory;
 
 import DAOs.seg_dao_cam;
+import Transfers.TCam;
+import Transfers.Transfer;
 import DAOs.DAO;
-import Transfer.seg.TCam;
-import Transfer.seg.Transfer;
 
 public class DCamFactory extends DaoFactory {
 

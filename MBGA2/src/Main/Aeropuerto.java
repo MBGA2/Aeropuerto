@@ -22,9 +22,6 @@ public class Aeropuerto extends Observable {
 	private listCam camaras;
 	private GeneratePlaneInfo gen;
 	private Mapm map;
-	public static final long HOUR = 3600 * 1000;
-	public static final long MIN = 60 * 1000;
-
 	public Aeropuerto(String nombre) {
 		this.nombre = nombre;
 		this.setFligths(new ArrayList<Flight>());
@@ -34,16 +31,6 @@ public class Aeropuerto extends Observable {
 		this.gen = new GeneratePlaneInfo();
 		this.map = new Mapm();
 		this.setSar(this.setSAR());
-	}
-
-	public Timestamp getLastDep() {
-		Timestamp t = null;
-		for (int i = 0; i < this.fligths.size(); i++) {
-			if (this.fligths.get(i).getSource().equalsIgnoreCase("Madrid")) {
-				t = this.fligths.get(i).getDeparture_time();
-			}
-		}
-		return t;
 	}
 
 	private ArrayList<Flight> setSAR() {
@@ -56,15 +43,6 @@ public class Aeropuerto extends Observable {
 		return aux;
 	}
 
-	public Timestamp getLastArr() {
-		Timestamp t = null;
-		for (int i = 0; i < this.fligths.size(); i++) {
-			if (this.fligths.get(i).getDestination().equalsIgnoreCase("Madrid")) {
-				t = this.fligths.get(i).getDeparture_time();
-			}
-		}
-		return t;
-	}
 
 	public GeneratePlaneInfo getGen() {
 		return gen;

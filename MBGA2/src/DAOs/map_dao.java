@@ -23,7 +23,7 @@ public class map_dao {
 		}
 	}
 
-	public Object[] constructRow(int i, Mapm m, Timestamp timestamp) {
+	private Object[] constructRow(int i, Mapm m, Timestamp timestamp) {
 		Object[] fila = new Object[20];
 		for (int j = 0; j < 20; j++) {
 			if (m.getInfoMap().containsKey(j + "," + i)) {

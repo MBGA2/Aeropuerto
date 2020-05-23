@@ -20,7 +20,7 @@ public class GeneratePlaneInfo {
 
 	}
 
-	public void fillDestiny() {
+	private void fillDestiny() {
 		this.capitals.add("Tirana");
 		this.capitals.add("Berlin");
 		this.capitals.add("Andorra La Vieja");
@@ -68,7 +68,7 @@ public class GeneratePlaneInfo {
 		this.capitals.add("Kiev");
 	}
 
-	public void fillCompanies() {
+	private void fillCompanies() {
 		this.companies.add("Ryanair");
 		this.companies.add("Lufthansa");
 		this.companies.add("Iberia");
@@ -81,7 +81,7 @@ public class GeneratePlaneInfo {
 		this.companies.add("Finnair");
 	}
 
-	public void fillGates() {
+	private void fillGates() {
 		this.gates.add("A1");
 		this.gates.add("A2");
 		this.gates.add("A3");

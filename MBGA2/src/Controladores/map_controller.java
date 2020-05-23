@@ -23,13 +23,6 @@ public class map_controller {
 
 	}
 
-	public Aeropuerto getAero() {
-		return aero;
-	}
-
-	public void setAero(Aeropuerto aero) {
-		this.aero = aero;
-	}
 
 	public void addModelObserver(Observer o) {
 		aero.addObserver(o);
@@ -37,7 +30,7 @@ public class map_controller {
 			aero.getFligths().get(i).addObserver(o);
 		}
 	}
-	public void fillMap(Flight f) {
+	protected void fillMap(Flight f) {
 		InfoCity destInfo = null, sourceInfo = null, stopInfo = null;
 		int j = 0, maxFlightsBox = 20;
 
@@ -114,7 +107,7 @@ public class map_controller {
 		}
 
 	}
-	public void refresh() {
+	protected void refresh() {
 		this.SA.fill(this.aero.getMap(),this.aero.getTime());
 	}
 	public void addTable(DefaultTableModel tableModel) {
@@ -126,7 +119,7 @@ public class map_controller {
 		
 	}
 
-	public String rescued() {
+	protected String rescued() {
 		String s = null;
 		Flight delete = null;
 		for (int i = 0; i < 14; i++) {

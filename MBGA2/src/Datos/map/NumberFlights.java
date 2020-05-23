@@ -13,11 +13,7 @@ public class NumberFlights {
 		this.infoFlights = new ArrayList<InfoPlaneOnMap>();
 	}
 
-	public List<InfoPlaneOnMap> getInfoFlights() {
-		return this.infoFlights;
-	}
-
-	public void addInfoFlight(Timestamp ini, Timestamp last, Flight f) {
+	protected void addInfoFlight(Timestamp ini, Timestamp last, Flight f) {
 		this.infoFlights.add(new InfoPlaneOnMap(ini, last, f));
 	}
 
@@ -33,7 +29,7 @@ public class NumberFlights {
 			this.infoFlights.remove(temp);
 	}
 
-	public void delayFlight(Flight f, int d, boolean first) {
+	protected void delayFlight(Flight f, int d, boolean first) {
 		InfoPlaneOnMap temp = null;
 		for (InfoPlaneOnMap aux : infoFlights)
 			if (aux.getFlight().getID().equalsIgnoreCase(f.getID()))
@@ -59,5 +55,9 @@ public class NumberFlights {
 			if (f.getInitialD().before(ini) && f.getLastD().after(ini))
 				aux.add(f.getFlight());
 		return aux;
+	}
+
+	public List<InfoPlaneOnMap> getInfoFlights() {
+		return this.infoFlights;
 	}
 }

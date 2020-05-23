@@ -18,14 +18,6 @@ public class inf_controller {
 
 	}
 
-	public Aeropuerto getAero() {
-		return aero;
-	}
-
-	public void setAero(Aeropuerto aero) {
-		this.aero = aero;
-	}
-
 	public void addModelObserver(Observer o) {
 		aero.addObserver(o);
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {

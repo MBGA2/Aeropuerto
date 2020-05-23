@@ -3,12 +3,12 @@ package SA;
 import java.sql.Timestamp;
 import java.util.List;
 import Datos.map.Mapm;
-import Utils.Tuple;
 
 import javax.swing.table.DefaultTableModel;
 
 import DAOs.atm_dao;
 import Datos.Flight;
+import Datos.Tuple;
 
 public class atm_SA {
 	private atm_dao dao;
@@ -18,12 +18,7 @@ public class atm_SA {
 	public atm_SA() {
 		this.dao = new atm_dao();
 	}
-	public DefaultTableModel getOnGoing() {
-		return onGoing;
-	}
-	public void setOnGoing(DefaultTableModel onGoing) {
-		this.onGoing = onGoing;
-	}
+	
 	public void fillSar(List<Flight> sar) {
 		this.sar.setRowCount(0);
 		this.dao.tableSarFill(this.sar,sar);
@@ -124,6 +119,11 @@ public class atm_SA {
 	public void setSar(DefaultTableModel sar) {
 		this.sar = sar;
 	}
-	
+	public DefaultTableModel getOnGoing() {
+		return onGoing;
+	}
+	public void setOnGoing(DefaultTableModel onGoing) {
+		this.onGoing = onGoing;
+	}
 	
 }

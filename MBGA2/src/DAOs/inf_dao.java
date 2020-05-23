@@ -31,7 +31,7 @@ public class inf_dao {
 		return h + ":" + m;
 	}
 
-	public Object[] constructRow(Flight f) {
+	private Object[] constructRow(Flight f) {
 		Object[] fila = new Object[9];
 		fila[0] = f.getDestination();
 		fila[1] = parseDate(f.getDeparture_time());
@@ -52,7 +52,7 @@ public class inf_dao {
 		return fila;
 	}
 
-	public Object[] constructArrRow(Flight f) {
+	private Object[] constructArrRow(Flight f) {
 		Object[] fila = new Object[9];
 		fila[0] = f.getSource();
 		fila[1] = parseDate(f.getArrival_time());

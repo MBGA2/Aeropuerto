@@ -6,12 +6,12 @@ import javax.swing.table.DefaultTableModel;
 import Main.Aeropuerto;
 import Observer.Observer;
 import SA.atm_SA;
-import Utils.NTYPE;
-import Utils.NotifyData;
-import Utils.Tuple;
 import Datos.Flight;
 import Datos.InfoCity;
+import Datos.NTYPE;
+import Datos.NotifyData;
 import Datos.Path;
+import Datos.Tuple;
 
 public class atm_controller {
 	private Aeropuerto airport;
@@ -29,7 +29,7 @@ public class atm_controller {
 		}
 	}
 
-	public int sarPath(Flight f, Flight sar) {
+	private int sarPath(Flight f, Flight sar) {
 		int x = -1, y = -1, mx = -1, my = -1, t = 0, ti = 60 * 60 * 1000, d = 0;
 		Tuple<Integer, Integer, Timestamp> aux = this.airport.getMap().currentPos(f, this.airport.getTime());
 		for (InfoCity city : this.airport.getPath().getCities()) {
@@ -107,7 +107,7 @@ public class atm_controller {
 		return d;
 	}
 
-	public void warnSAR(Flight f) {
+	private void warnSAR(Flight f) {
 		for (Flight sar : this.airport.getSar()) {
 			if (!sar.getFlight_state().equalsIgnoreCase("On_Going")) {
 				sar.setFlight_state("On_Going");

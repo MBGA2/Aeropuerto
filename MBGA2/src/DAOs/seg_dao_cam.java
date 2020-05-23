@@ -2,7 +2,7 @@ package DAOs;
 
 import Datos.seg.cam;
 import Datos.seg.camState;
-import Transfer.seg.TCam;
+import Transfers.TCam;
 
 public class seg_dao_cam implements DAO{
 	

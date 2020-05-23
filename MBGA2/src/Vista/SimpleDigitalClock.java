@@ -11,8 +11,8 @@ import java.sql.Timestamp;
 import javax.swing.Timer;
 
 import Controladores.main_controller;
-import Utils.NTYPE;
-import Utils.NotifyData;
+import Datos.NTYPE;
+import Datos.NotifyData;
 
 import java.awt.event.ActionEvent;
 

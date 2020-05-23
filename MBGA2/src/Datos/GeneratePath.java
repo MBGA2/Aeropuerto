@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class GeneratePath {
 	private ArrayList<InfoCity> cities;
 	private HashMap<String, ArrayList<String>> direct;
-	static int CASMAX = 10;
+	private static int CASMAX = 10;
 
 	public GeneratePath() {
 		this.cities = new ArrayList<InfoCity>();
@@ -15,7 +15,7 @@ public class GeneratePath {
 		this.calculateDirect();
 	}
 
-	public void cityConstruct() {
+	private void cityConstruct() {
 		cities.add(new InfoCity("Amsterdam", 5, 8));
 		cities.add(new InfoCity("Andorra La Vieja", 4, 10));
 		cities.add(new InfoCity("Ankara", 13, 11));
@@ -64,7 +64,7 @@ public class GeneratePath {
 		cities.add(new InfoCity("Zagreb", 8, 10));
 	}
 
-	public void calculateDirect() {
+	private void calculateDirect() {
 		for (InfoCity city : this.cities) {
 			ArrayList<String> aux = new ArrayList<String>();
 			for (InfoCity cityAux : this.cities)

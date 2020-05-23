@@ -6,16 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import DAOs.seg_dao_camlist;
+import Datos.NTYPE;
+import Datos.NotifyData;
 import Factory.DCamFactory;
 import Factory.DCamListFactory;
 import Factory.DaoFactory;
 import Factory.DaoFactoryImp;
 import Main.Aeropuerto;
-import Transfer.seg.TCam;
-import Transfer.seg.TListCam;
-import Transfer.seg.Transfer;
-import Utils.NTYPE;
-import Utils.NotifyData;
+import Transfers.TCam;
+import Transfers.TListCam;
+import Transfers.Transfer;
 
 public class seg_SA_imp implements seg_SA {
 

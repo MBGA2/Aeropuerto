@@ -2,7 +2,7 @@ package Observer;
 import java.util.ArrayList;
 import java.util.List;
 
-import Utils.NotifyData;
+import Datos.NotifyData;
 
 public class Observable {
 	

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import Controladores.seg_controller;
+import Datos.NotifyData;
 import Observer.Observer;
-import Transfer.seg.TListCam;
-import Utils.NotifyData;
+import Transfers.TListCam;
 
 public class seg_view_genCam extends javax.swing.JFrame implements Observer {
 

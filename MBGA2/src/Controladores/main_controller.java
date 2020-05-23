@@ -7,7 +7,6 @@ import BD.conexionBD;
 import Datos.*;
 import Main.Aeropuerto;
 import Observer.Observer;
-import Utils.NotifyData;
 
 public class main_controller implements Observer {
 
@@ -100,7 +99,7 @@ public class main_controller implements Observer {
 
 	}
 
-	public void newFligthDepartures() throws ClassNotFoundException, SQLException {
+	private void newFligthDepartures() throws ClassNotFoundException, SQLException {
 		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
 		Timestamp departure_time = calendar;
 		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
@@ -141,7 +140,7 @@ public class main_controller implements Observer {
 		this.map.fillMap(f);
 	}
 
-	public void newFligthArrivals() throws ClassNotFoundException, SQLException {
+	private void newFligthArrivals() throws ClassNotFoundException, SQLException {
 		String source = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
 		Timestamp departure_time = calendar;
 		Timestamp boarding_time = new Timestamp(departure_time.getTime() - (rand.nextInt(15) + 15) * MIN);
@@ -182,7 +181,7 @@ public class main_controller implements Observer {
 		this.map.fillMap(f);
 	}
 
-	public void add1Flight(Boolean going) throws ClassNotFoundException, SQLException {
+	private void add1Flight(Boolean going) throws ClassNotFoundException, SQLException {
 
 		String destination = info.getCapitals().get(rand.nextInt(info.getCapitals().size()));
 		String source = "Madrid";
@@ -233,7 +232,7 @@ public class main_controller implements Observer {
 		this.map.fillMap(f);
 	}
 
-	public void check() throws ClassNotFoundException, SQLException {
+	private void check() throws ClassNotFoundException, SQLException {
 		checkCrashing();
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {
 			this.aero.getFligths().get(i).setRealDate(aero.getTime());
@@ -262,7 +261,7 @@ public class main_controller implements Observer {
 		}
 	}
 
-	public void checkCrashing() throws ClassNotFoundException, SQLException {
+	private void checkCrashing() throws ClassNotFoundException, SQLException {
 		String id = null;
 		id = this.map.rescued();
 		if (id != null) {

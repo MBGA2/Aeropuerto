@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Datos.Flight;
-import Utils.Tuple;
+import Datos.Tuple;
 
 public class Mapm {
 	private HashMap<String, NumberFlights> infoMap;
@@ -46,9 +46,7 @@ public class Mapm {
 		this.infoMap.get(x + "," + y).removeFlight(f);
 	}
 
-	public HashMap<Flight, ArrayList<Tuple<Integer, Integer, Timestamp>>> getflightPathList() {
-		return this.flightList;
-	}
+	
 
 	public int checkFlightsInMap(int x, int y, Timestamp ini) {
 		return this.infoMap.get(x + "," + y).flightsOnTime(ini);
@@ -93,5 +91,8 @@ public class Mapm {
 
 	public HashMap<String, NumberFlights> getInfoMap() {
 		return infoMap;
+	}
+	public HashMap<Flight, ArrayList<Tuple<Integer, Integer, Timestamp>>> getflightPathList() {
+		return this.flightList;
 	}
 }
