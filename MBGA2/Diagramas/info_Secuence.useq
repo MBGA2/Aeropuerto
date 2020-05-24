@@ -233,8 +233,8 @@
   </object>  
   <combined-fragment id="142" interaction-operator="OPT">    
     <interaction-operand id="143" constraint="flag">      
-      <fragment refId="34"/>      
-      <fragment refId="144"/>    
+      <fragment refId="144"/>      
+      <fragment refId="34"/>    
     </interaction-operand>    
     <combined-fragment id="144" interaction-operator="LOOP">      
       <interaction-operand id="145" constraint="for:i &lt; l.size()">        
@@ -245,30 +245,30 @@
           <fragment refId="148"/>        
         </interaction-operand>        
         <interaction-operand id="149" constraint="else">          
-          <fragment refId="77"/>          
           <fragment refId="75"/>          
+          <fragment refId="79"/>          
           <fragment refId="81"/>          
-          <fragment refId="150"/>          
-          <fragment refId="73"/>          
-          <fragment refId="43"/>          
           <fragment refId="83"/>          
-          <fragment refId="79"/>        
+          <fragment refId="43"/>          
+          <fragment refId="77"/>          
+          <fragment refId="73"/>          
+          <fragment refId="150"/>        
         </interaction-operand>        
         <combined-fragment id="148" interaction-operator="OPT">          
           <interaction-operand id="151" constraint="!l.get(i).getFlight_state().equalsIgnoreCase(&quot;On_Going&quot;)">            
+            <fragment refId="47"/>            
+            <fragment refId="41"/>            
+            <fragment refId="59"/>            
+            <fragment refId="49"/>            
+            <fragment refId="57"/>            
             <fragment refId="55"/>            
+            <fragment refId="53"/>            
+            <fragment refId="51"/>            
+            <fragment refId="152"/>            
             <fragment refId="63"/>            
             <fragment refId="61"/>            
-            <fragment refId="65"/>            
-            <fragment refId="152"/>            
-            <fragment refId="53"/>            
-            <fragment refId="41"/>            
-            <fragment refId="49"/>            
-            <fragment refId="47"/>            
             <fragment refId="45"/>            
-            <fragment refId="51"/>            
-            <fragment refId="57"/>            
-            <fragment refId="59"/>          
+            <fragment refId="65"/>          
           </interaction-operand>          
           <combined-fragment id="152" interaction-operator="ALT">            
             <interaction-operand id="153" constraint="f.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;)">              
@@ -282,8 +282,8 @@
         <combined-fragment id="150" interaction-operator="ALT">          
           <interaction-operand id="155" constraint="f.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;)">            
             <fragment refId="87"/>            
-            <fragment refId="85"/>            
-            <fragment refId="89"/>          
+            <fragment refId="89"/>            
+            <fragment refId="85"/>          
           </interaction-operand>          
           <interaction-operand id="156" constraint="else"/>        
         </combined-fragment>      
@@ -292,15 +292,15 @@
   </combined-fragment>  
   <combined-fragment id="157" interaction-operator="LOOP">    
     <interaction-operand id="158" constraint="for:i &lt; l.size()">      
-      <fragment refId="93"/>      
       <fragment refId="95"/>      
-      <fragment refId="159"/>      
       <fragment refId="97"/>      
-      <fragment refId="99"/>      
+      <fragment refId="159"/>      
       <fragment refId="160"/>      
       <fragment refId="91"/>      
       <fragment refId="103"/>      
-      <fragment refId="101"/>    
+      <fragment refId="93"/>      
+      <fragment refId="101"/>      
+      <fragment refId="99"/>    
     </interaction-operand>    
     <combined-fragment id="160" interaction-operator="OPT">      
       <interaction-operand id="161" constraint="l.get(i).getDestination().equalsIgnoreCase(&quot;Madrid&quot;)"/>    
@@ -316,29 +316,29 @@
   </combined-fragment>  
   <combined-fragment id="164" interaction-operator="LOOP">    
     <interaction-operand id="165" constraint="for:i &lt; l.size()">      
-      <fragment refId="123"/>      
-      <fragment refId="166"/>      
       <fragment refId="117"/>      
-      <fragment refId="125"/>      
-      <fragment refId="127"/>      
-      <fragment refId="115"/>      
-      <fragment refId="111"/>      
       <fragment refId="121"/>      
+      <fragment refId="129"/>      
       <fragment refId="119"/>      
-      <fragment refId="131"/>      
+      <fragment refId="166"/>      
       <fragment refId="133"/>      
+      <fragment refId="127"/>      
+      <fragment refId="131"/>      
+      <fragment refId="123"/>      
       <fragment refId="167"/>      
+      <fragment refId="115"/>      
+      <fragment refId="125"/>      
       <fragment refId="113"/>      
-      <fragment refId="129"/>    
+      <fragment refId="111"/>    
     </interaction-operand>    
     <combined-fragment id="167" interaction-operator="OPT">      
       <interaction-operand id="168" constraint="l.get(i).getSource().equalsIgnoreCase(&quot;Madrid&quot;)"/>    
     </combined-fragment>    
     <combined-fragment id="166" interaction-operator="ALT">      
       <interaction-operand id="169" constraint="f.getPlane_state().equalsIgnoreCase(&quot;Delayed&quot;)">        
+        <fragment refId="139"/>        
         <fragment refId="135"/>        
-        <fragment refId="137"/>        
-        <fragment refId="139"/>      
+        <fragment refId="137"/>      
       </interaction-operand>      
       <interaction-operand id="170" constraint="else"/>    
     </combined-fragment>  

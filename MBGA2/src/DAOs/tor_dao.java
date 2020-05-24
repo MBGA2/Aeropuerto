@@ -90,7 +90,7 @@ public class tor_dao implements Observer {
 						&& (flightdelay.getGate().equalsIgnoreCase(todelay.getGate()))) {
 					try {
 
-						todelay.setFlight_state("Delayed");
+						todelay.setPlane_state("Delayed");
 						Timestamp newBoardingTime = new Timestamp(todelay.getBoarding_time().getTime() + delayMinutes);
 						todelay.setBoarding_time(newBoardingTime);
 						Timestamp newDEparturTime = new Timestamp(todelay.getDeparture_time().getTime() + delayMinutes);
@@ -116,7 +116,7 @@ public class tor_dao implements Observer {
 
 		} else if (data.getN() == NTYPE.TOR_CRASH) {
 			flightdelay = (Flight) data.getData();
-			flightdelay.setFlight_state("Cancelled");
+			flightdelay.setPlane_state("Crashed");
 		}
 
 	}
@@ -128,8 +128,8 @@ public class tor_dao implements Observer {
 		Object[] fila = new Object[8];
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {
 
-			if (this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Delayed")
-					|| this.aero.getFligths().get(i).getFlight_state().equalsIgnoreCase("Cancelled")) {
+			if (this.aero.getFligths().get(i).getPlane_state().equalsIgnoreCase("Delayed")
+					|| this.aero.getFligths().get(i).getPlane_state().equalsIgnoreCase("cancelled")|| this.aero.getFligths().get(i).getPlane_state().equalsIgnoreCase("Crashed")) {
 				// "#", "Destino", "Hora Salida", "Hora Llegada", "Puerta", "ID", "Compania",
 				// "Estado"
 
@@ -140,7 +140,7 @@ public class tor_dao implements Observer {
 				fila[4] = this.aero.getFligths().get(i).getGate();
 				fila[5] = this.aero.getFligths().get(i).getID();
 				fila[6] = this.aero.getFligths().get(i).getCompany();
-				fila[7] = parseDate(this.aero.getFligths().get(i).getBoarding_time());
+				fila[7] = this.aero.getFligths().get(i).getPlane_state();
 
 				tableModel.addRow(fila);
 			}

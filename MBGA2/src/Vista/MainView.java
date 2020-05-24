@@ -55,6 +55,7 @@ public class MainView extends JFrame {
 	private map_view map_view;
 	private seg_view seg_view;
 	private inf_view inf_view;
+	private tor_view tor_view;
 
 	public MainView(main_controller ctrl) {
 
@@ -73,7 +74,8 @@ public class MainView extends JFrame {
 		this.ATMpanel = atm_view.getMainPanel();
 		this.seg_view = new seg_view(this.ctrl.getSeg());
 		this.SEGpanel = seg_view.getMainPanel();
-		this.TORpanel = new tor_view(this.ctrl.getTor()).getMainPanel();
+		this.tor_view = new tor_view(this.ctrl.getTor());
+		this.TORpanel = tor_view.getMainPanel();
 
 	}
 

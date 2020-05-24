@@ -46,7 +46,10 @@ public class inf_dao {
 					+ parseDate(new Timestamp(f.getDeparture_time().getTime() + f.getRetarded_value() * MIN));
 		} else if (f.getPlane_state().equalsIgnoreCase("Crashed")) {
 			fila[8] = "cancelled";
-		} else {
+		} else if (f.getPlane_state().equalsIgnoreCase("cancelled")) {
+			fila[8] = "cancelled";
+		} 
+		else {
 			fila[8] = "";
 		}
 		return fila;

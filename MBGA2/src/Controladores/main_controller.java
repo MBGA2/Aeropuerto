@@ -23,11 +23,13 @@ public class main_controller implements Observer {
 	private conexionBD c;
 	private GeneratePlaneInfo info;
 	private Boolean connected;
+	private Boolean alarm;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
 	public main_controller(Aeropuerto aero) throws ClassNotFoundException {
 		this.first = aero.getTime();
+		this.alarm = true;
 		info = aero.getGen();
 		rand = new Random();
 		c = new conexionBD();
@@ -359,7 +361,9 @@ public class main_controller implements Observer {
 
 		case REFRESH:
 			try {
-				check();
+				if (alarm) {
+					check();
+				}
 				this.inf.addAll();
 				this.atm.addAll();
 				this.map.refresh();
@@ -367,8 +371,29 @@ public class main_controller implements Observer {
 				e.printStackTrace();
 			}
 			break;
+		case ALRM_CLOSE:
+			try {
+				cancelation();
+				this.alarm = false;
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 		default:
 			break;
+		}
+	}
+
+	private void cancelation() throws ClassNotFoundException, SQLException {
+		for (int i = 0; i < this.aero.getFligths().size(); i++) {
+			
+			if (this.aero.getFligths().get(i).getDeparture_time().after(this.aero.getTime())) {
+				this.aero.getFligths().get(i).setPlane_state("cancelled");
+			}
+			if (this.aero.getFligths().get(i).getDestination().equalsIgnoreCase("Madrid")){
+				removeFromDateBase(this.aero.getFligths().get(i).getID());
+				this.aero.getFligths().remove(i);
+				i--;
+			}
 		}
 	}
 
