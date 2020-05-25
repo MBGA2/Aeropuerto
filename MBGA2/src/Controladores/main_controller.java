@@ -243,7 +243,7 @@ public class main_controller implements Observer {
 	}
 
 	private void check() throws ClassNotFoundException, SQLException {
-		/*if(this.aero.getFligths().size()>0) {
+		if(this.aero.getFligths().size()>0) {
 			if(this.aero.getFligths().get(0).getRealDate().getHours()!=this.aero.getTime().getHours()) {
 				canCrash = true;
 			}
@@ -253,7 +253,9 @@ public class main_controller implements Observer {
 			this.atm.randomDelay(this.atm.getSliderDelay());
 			canCrash = false;
 		}
-		*/
+		for(int j = 0; j < this.aero.getSar().size();j++) {
+			this.aero.getSar().get(j).setRealDate(this.aero.getTime());
+		}
 		checkCrashing();
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {
 			this.aero.getFligths().get(i).setRealDate(aero.getTime());

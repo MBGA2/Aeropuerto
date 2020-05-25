@@ -58,7 +58,6 @@ public void generateForm(int n) throws ClassNotFoundException, SQLException {
 	private void newForm() throws ClassNotFoundException, SQLException {
 		
 		String passName = inForm.getNombre().get(rand.nextInt(inForm.getNombre().size()));
-		String state = inForm.getState().get(rand.nextInt(inForm.getState().size()));
 		String id_destination = inForm.getDestiny().get(rand.nextInt(inForm.getDestiny().size()));
 		String description = inForm.getDescripcion().get(rand.nextInt(inForm.getDescripcion().size()));
 		String contact = inForm.getContacto().get(rand.nextInt(inForm.getContacto().size()));
@@ -78,7 +77,7 @@ public void generateForm(int n) throws ClassNotFoundException, SQLException {
 		f.setDescription(description);
 		f.setfee(fee);
 		f.setContact(contact);
-		f.setState(state);
+		f.setState("Pendiente");
 		
 		this.aero.getForms().add(f);
 		this.addAll();

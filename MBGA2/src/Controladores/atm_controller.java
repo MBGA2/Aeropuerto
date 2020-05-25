@@ -108,19 +108,19 @@ public class atm_controller {
 	}
 
 	private void warnSAR(Flight f) {
-		/*
+		
 		for (Flight sar : this.airport.getSar()) {
 			if (!sar.getFlight_state().equalsIgnoreCase("On_Going")) {
 				sar.setFlight_state("On_Going");
 				sar.setDeparture_time(this.airport.getTime());
-				sar.setDestination("Madrid");
+				sar.setDestination("Avion Estrellado");
 				sar.setPlane_state("Correcto");
-				sar.setPath(new Path("Madrid", f.getID(), sarPath(f, sar)));
+				sar.setPath(new Path("Avion Estrellado", f.getID(), sarPath(f, sar)));
 				sar.setArrival_time(
 						new Timestamp(sar.getDeparture_time().getTime() + sar.getPath().getDuration() * 60000));
 				break;
 			}
-		}*/
+		}
 	}
 
 	public void randomCrash(int r) {

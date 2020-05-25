@@ -26,7 +26,6 @@ public class genForm {
 		fillNombre();
 		fillContact();
 		fillDescripcion();
-		fillState();
 
 	}
 
@@ -124,12 +123,7 @@ public class genForm {
 	
 	}
 	
-	public void fillState() {
-		this.state.add("Aceptado");
-		this.state.add("Denegado");
-		this.state.add("Pendiente");
 	
-	}
 
 	public String randomID() {
 		String pass;
