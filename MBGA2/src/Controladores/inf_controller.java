@@ -14,8 +14,6 @@ public class inf_controller {
 
 	public inf_controller(Aeropuerto aero) {
 		this.aero = aero;
-		this.SA = new inf_SA();
-
 	}
 
 	public void addModelObserver(Observer o) {
@@ -41,5 +39,9 @@ public class inf_controller {
 	public void addTables(DefaultTableModel model, DefaultTableModel model2) {
 		this.SA.setModelArrivals(model2);
 		this.SA.setModelDepartures(model);
+	}
+
+	public void setSA(inf_SA generaSAinf) {
+		this.SA = generaSAinf;
 	}
 }

@@ -29,6 +29,7 @@ public class SimpleDigitalClock extends JPanel {
 	String aHour = "";
 	String bMinute = "";
 	String cSecond = "";
+	Timer t;
 
 	public Timestamp getDate() {
 		return rite;
@@ -49,7 +50,7 @@ public class SimpleDigitalClock extends JPanel {
 	public SimpleDigitalClock(main_controller cont) {
 		rite = cont.getAeropuerto().getTime();
 		modifier = 1;
-		Timer t = new Timer(1000, new ActionListener() {
+		t = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cont.getAeropuerto().setTime(new Timestamp(cont.getAeropuerto().getTime().getTime() + 1000 * modifier));
 				rite = cont.getAeropuerto().getTime();

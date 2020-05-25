@@ -119,7 +119,7 @@ public class seg_CheckCam extends JPanel {
 			bAl.setVisible(true);
 			sAux2.actAlrm();
 			Component c = ((Component) e.getSource()).getParent().getParent().getParent().getParent().getParent()
-					.getParent();// Llegar a JFrame 6 ancestros para cerrar el framecamsingle
+					.getParent();
 			((JFrame) c).dispose();
 		} else
 			JOptionPane.showMessageDialog(null,
@@ -132,7 +132,6 @@ public class seg_CheckCam extends JPanel {
 		l.setEnabled(true);
 		l.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				System.out.print("clackS");
 				seg_CheckCam pAux;
 				pAux = cloneP();
 				java.awt.EventQueue.invokeLater(new Runnable() {

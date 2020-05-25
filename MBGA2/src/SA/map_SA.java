@@ -14,7 +14,6 @@ public class map_SA {
 	private DefaultTableModel f;
 
 	public map_SA() {
-		this.dao = new map_dao();
 	}
 
 	public void fill(Mapm m, Timestamp timestamp) {
@@ -60,5 +59,10 @@ public class map_SA {
 		}
 
 		return h + ":" + m;
+	}
+
+	public void setDao(map_dao generaDAOmap) {
+		this.dao = generaDAOmap;
+		
 	}
 }

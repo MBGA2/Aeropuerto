@@ -5,7 +5,7 @@ import java.util.List;
 
 public class seg_Resources {
 
-	public final static String genericCamPath = "src/Iconos/";
+	public final static String genericCamPath = "Iconos/";
 	public final static String extension = ".gif";
 
 	public static String mountPath(List<String> l) {

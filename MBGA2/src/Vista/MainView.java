@@ -12,11 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Controladores.main_controller;
-import Vista.Subsistemas.atm_view;
-import Vista.Subsistemas.inf_view;
-import Vista.Subsistemas.seg_view;
-import Vista.Subsistemas.tor_view;
-import Vista.Subsistemas.map_view;
+import Vista.Subsistemas.*;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -56,6 +52,8 @@ public class MainView extends JFrame {
 	private seg_view seg_view;
 	private inf_view inf_view;
 	private tor_view tor_view;
+	private adu_view adu_view;
+	private JPanel ADUPanel;
 
 	public MainView(main_controller ctrl) {
 
@@ -76,7 +74,8 @@ public class MainView extends JFrame {
 		this.SEGpanel = seg_view.getMainPanel();
 		this.tor_view = new tor_view(this.ctrl.getTor());
 		this.TORpanel = tor_view.getMainPanel();
-
+		this.adu_view = new adu_view(this.ctrl.getAdu());
+        this.ADUPanel =  adu_view.getMainPanel();
 	}
 
 	private void initGUI() {
@@ -170,6 +169,10 @@ public class MainView extends JFrame {
 		btnAduanas.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		btnAduanas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				centerPanel.removeAll();
+				centerPanel.add(ADUPanel);
+				centerPanel.repaint();
+				visualizar();
 			}
 
 		});

@@ -124,6 +124,8 @@ public class atm_view extends JFrame {
 		this.tableSarPane = new JScrollPane(this.sarTable);
 		this.rCrash.setMajorTickSpacing(50);
 		this.rCrash.setMinorTickSpacing(10);
+		this.atm_ctrl.setSliderCrash(1);
+		this.atm_ctrl.setSliderDelay(1);
 		this.rCrash.setPaintTicks(true);
 		this.rCrash.setPaintLabels(true);
 		this.rDelay.setMajorTickSpacing(50);
@@ -283,6 +285,7 @@ public class atm_view extends JFrame {
 				JSlider source = (JSlider) e.getSource();
 				if (!source.getValueIsAdjusting())
 					atm_ctrl.randomCrash(source.getValue());
+					atm_ctrl.setSliderCrash(source.getValue());
 			}
 		});
 
@@ -292,6 +295,7 @@ public class atm_view extends JFrame {
 				JSlider source = (JSlider) e.getSource();
 				if (!source.getValueIsAdjusting())
 					atm_ctrl.randomDelay(source.getValue());
+					atm_ctrl.setSliderDelay(source.getValue());
 			}
 		});
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableModel);

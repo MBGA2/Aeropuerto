@@ -10,13 +10,12 @@ import DAOs.atm_dao;
 import Datos.Flight;
 import Datos.Tuple;
 
-public class atm_SA {
+public class atm_SA{
 	private atm_dao dao;
 	private DefaultTableModel onGoing;
 	private DefaultTableModel sar;
 	private int delay;
 	public atm_SA() {
-		this.dao = new atm_dao();
 	}
 	
 	public void fillSar(List<Flight> sar) {
@@ -31,7 +30,7 @@ public class atm_SA {
 		return false;
 	}
 	public Flight planeCrashed(String a, List<Flight> fligths) {
-		Flight fli = null;
+		Flight fli = new Flight();
 		this.onGoing.setRowCount(0);
 		for(Flight f : fligths) 
 			if (f.getID().equalsIgnoreCase(a)) {
@@ -49,6 +48,7 @@ public class atm_SA {
 			if (f.getID().equalsIgnoreCase(text)) {
 				this.dao.planeDelay(this.delay,f);
 				fli = f;
+				break;
 			}
 		this.onGoing.fireTableDataChanged();
 		return fli;
@@ -124,6 +124,10 @@ public class atm_SA {
 	}
 	public void setOnGoing(DefaultTableModel onGoing) {
 		this.onGoing = onGoing;
+	}
+
+	public void setDao(atm_dao concreteDAO) {
+		this.dao = concreteDAO;
 	}
 	
 }

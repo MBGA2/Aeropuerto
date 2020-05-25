@@ -16,10 +16,10 @@ import Datos.Tuple;
 public class atm_controller {
 	private Aeropuerto airport;
 	private atm_SA sa;
-
+	private int sliderDelay;
+	private int sliderCrash;
 	public atm_controller(Aeropuerto airport) {
 		this.airport = airport;
-		this.sa = new atm_SA();
 	}
 
 	public void addModelObserver(Observer o) {
@@ -108,6 +108,7 @@ public class atm_controller {
 	}
 
 	private void warnSAR(Flight f) {
+		/*
 		for (Flight sar : this.airport.getSar()) {
 			if (!sar.getFlight_state().equalsIgnoreCase("On_Going")) {
 				sar.setFlight_state("On_Going");
@@ -119,7 +120,7 @@ public class atm_controller {
 						new Timestamp(sar.getDeparture_time().getTime() + sar.getPath().getDuration() * 60000));
 				break;
 			}
-		}
+		}*/
 	}
 
 	public void randomCrash(int r) {
@@ -179,5 +180,25 @@ public class atm_controller {
 	public void addAll() {
 		this.sa.addFlights(this.airport.getFligths());
 		this.sa.fillSar(this.airport.getSar());
+	}
+
+	public void setSA(atm_SA generaSAinf) {
+		this.sa = generaSAinf;
+	}
+
+	public int getSliderDelay() {
+		return sliderDelay;
+	}
+
+	public void setSliderDelay(int sliderDelay) {
+		this.sliderDelay = sliderDelay;
+	}
+
+	public int getSliderCrash() {
+		return sliderCrash;
+	}
+
+	public void setSliderCrash(int sliderCrash) {
+		this.sliderCrash = sliderCrash;
 	}
 }

@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import BD.conexionBD;
 import Datos.*;
+import Factory.controllerFactory;
+import Factory.controllerFactoryImp;
 import Main.Aeropuerto;
 import Observer.Observer;
 
@@ -24,12 +26,14 @@ public class main_controller implements Observer {
 	private GeneratePlaneInfo info;
 	private Boolean connected;
 	private Boolean alarm;
+	private Boolean canCrash;
 	public static final long HOUR = 3600 * 1000;
 	public static final long MIN = 60 * 1000;
 
 	public main_controller(Aeropuerto aero) throws ClassNotFoundException {
 		this.first = aero.getTime();
 		this.alarm = true;
+		this.canCrash = true;
 		info = aero.getGen();
 		rand = new Random();
 		c = new conexionBD();
@@ -41,12 +45,16 @@ public class main_controller implements Observer {
 			connected = true;
 		}
 		this.aero = aero;
+		controllerFactory c = new controllerFactoryImp();
+		this.inf = c.generaControllerInf(aero);
+		this.atm = c.generaControllerATM(aero);
+		this.map = c.generaControllerMAP(aero);
 		this.seg = new seg_controller(this.aero);
-		this.atm = new atm_controller(this.aero);
+		//this.atm = new atm_controller(this.aero);
 		this.adu = new adu_controller(this.aero);
-		this.inf = new inf_controller(this.aero);
+		//this.inf = new inf_controller(this.aero);
 		this.tor = new tor_controller(this.aero);
-		this.map = new map_controller(this.aero);
+		//this.map = new map_controller(this.aero);
 
 	}
 
@@ -235,6 +243,17 @@ public class main_controller implements Observer {
 	}
 
 	private void check() throws ClassNotFoundException, SQLException {
+		/*if(this.aero.getFligths().size()>0) {
+			if(this.aero.getFligths().get(0).getRealDate().getHours()!=this.aero.getTime().getHours()) {
+				canCrash = true;
+			}
+		}
+		if(canCrash) {
+			this.atm.randomCrash(this.atm.getSliderCrash());
+			this.atm.randomDelay(this.atm.getSliderDelay());
+			canCrash = false;
+		}
+		*/
 		checkCrashing();
 		for (int i = 0; i < this.aero.getFligths().size(); i++) {
 			this.aero.getFligths().get(i).setRealDate(aero.getTime());
@@ -365,6 +384,7 @@ public class main_controller implements Observer {
 					check();
 				}
 				this.inf.addAll();
+				this.adu.addAll();
 				this.atm.addAll();
 				this.map.refresh();
 			} catch (ClassNotFoundException | SQLException e) {

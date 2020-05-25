@@ -19,8 +19,6 @@ public class map_controller {
 
 	public map_controller(Aeropuerto aero) {
 		this.aero = aero;
-		this.SA = new map_SA();
-
 	}
 
 
@@ -149,5 +147,11 @@ public class map_controller {
 			}
 		}
 		return s;
+	}
+
+
+	public void setSA(map_SA generaSAatm) {
+		this.SA = generaSAatm;
+		
 	}
 }

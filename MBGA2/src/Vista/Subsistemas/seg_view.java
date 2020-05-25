@@ -59,7 +59,6 @@ public class seg_view extends JPanel implements Observer{
 		this.setVisible(false);
 		listCams.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent evento) {
-				System.out.println("Botoncete pulsadete");
 			}
 		}
 				);

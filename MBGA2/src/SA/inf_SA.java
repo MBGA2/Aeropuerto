@@ -7,13 +7,12 @@ import javax.swing.table.DefaultTableModel;
 import DAOs.inf_dao;
 import Datos.Flight;
 
-public class inf_SA {
+public class inf_SA{
 	private inf_dao dao;
 	private DefaultTableModel modelArrivals;
 	private DefaultTableModel modelDepartures;
 	private Boolean flag;
 	public inf_SA() {
-		this.dao = new inf_dao();
 		this.setFlag(true);
 	}
 
@@ -62,6 +61,10 @@ public class inf_SA {
 
 	public void setFlag(Boolean flag) {
 		this.flag = flag;
+	}
+
+	public void setDao(inf_dao concreteDAO) {
+		this.dao = concreteDAO;
 	}
 
 }

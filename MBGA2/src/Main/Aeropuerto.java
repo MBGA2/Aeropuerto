@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Datos.Flight;
+import Datos.Form;
 import Datos.GeneratePath;
 import Datos.GeneratePlaneInfo;
+import Datos.genForm;
 import Datos.map.Mapm;
 import Datos.seg.listCam;
 import Observer.Observable;
@@ -22,6 +24,8 @@ public class Aeropuerto extends Observable {
 	private listCam camaras;
 	private GeneratePlaneInfo gen;
 	private Mapm map;
+	private genForm genFor;
+	private List<Form> forms;
 	public Aeropuerto(String nombre) {
 		this.nombre = nombre;
 		this.setFligths(new ArrayList<Flight>());
@@ -31,6 +35,7 @@ public class Aeropuerto extends Observable {
 		this.gen = new GeneratePlaneInfo();
 		this.map = new Mapm();
 		this.setSar(this.setSAR());
+		this.setForms(new ArrayList<Form>());
 	}
 
 	private ArrayList<Flight> setSAR() {
@@ -103,4 +108,16 @@ public class Aeropuerto extends Observable {
 	public void setSar(List<Flight> sar) {
 		this.sar = sar;
 	}
+	public genForm genForms() {
+        return genFor;
+    }
+    public void setGenForm(genForm genForm) {
+        this.genFor = genForm;
+    }
+    public List<Form> getForms() {
+        return forms;
+    }
+    private void setForms(List<Form> forms) {
+        this.forms = forms;
+    }
 }

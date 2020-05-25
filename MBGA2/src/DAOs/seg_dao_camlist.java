@@ -2,7 +2,7 @@ package DAOs;
 
 import Datos.seg.cam;
 import Datos.seg.listCam;
-import Factory.DaoFactoryImp;
+import Factory.seg.DaoFactoryImp;
 import Transfers.TCam;
 import Transfers.TListCam;
 

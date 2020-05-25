@@ -80,8 +80,17 @@ public class tor_dao implements Observer {
 
 		Flight flightdelay = new Flight();
 		int delayMinutes;
-
+		c = new conexionBD();
+		
 		if (data.getN() == NTYPE.TOR_DELAY) {
+			Boolean connected = true;
+			try {
+				if (c.conectar() == null) {
+					connected = false;
+				}
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+			}
 			flightdelay = (Flight) data.getData();
 			delayMinutes = (int) data.getData2();
 
@@ -89,7 +98,7 @@ public class tor_dao implements Observer {
 				if (todelay.getDeparture_time().after(flightdelay.getDeparture_time())
 						&& (flightdelay.getGate().equalsIgnoreCase(todelay.getGate()))) {
 					try {
-
+						if (connected) {
 						todelay.setPlane_state("Delayed");
 						Timestamp newBoardingTime = new Timestamp(todelay.getBoarding_time().getTime() + delayMinutes);
 						todelay.setBoarding_time(newBoardingTime);
@@ -106,7 +115,7 @@ public class tor_dao implements Observer {
 						PreparedStatement ps = c.conectar().prepareStatement(sql);
 						ps.execute();
 						ps.close();
-						c.desconectar();
+						}
 					} catch (ClassNotFoundException | SQLException e) {
 						System.out.println("Error de conexion en la BBDD");
 

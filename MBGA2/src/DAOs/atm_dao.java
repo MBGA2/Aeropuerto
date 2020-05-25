@@ -5,9 +5,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import Builder.Builder;
 import Datos.Flight;
 
-public class atm_dao {
+public class atm_dao{
 
 
 	static int TCASILLA = 30;
@@ -38,13 +39,12 @@ public class atm_dao {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private Object[] constructRow(Flight f) {
 		Object[] fila = new Object[9];
 		fila[0] = f.getID();
 		fila[1] = f.getDestination();
-		fila[2] = f.getDeparture_time().toGMTString();
-		fila[3] = f.getArrival_time().toGMTString();
+		fila[2] = Builder.parseDate(f.getDeparture_time());
+		fila[3] = Builder.parseDate(f.getArrival_time());
 
 		fila[4] = f.getSource();
 		fila[5] = f.getCompany();
